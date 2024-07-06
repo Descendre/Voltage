@@ -17,7 +17,8 @@ export const LeftDetailBar = () => {
 				alignItems: 'center',
 				width: '200px',
 				height: '100%',
-				backgroundColor: palette.layout.secondary,
+				backgroundColor: palette.layout.primary,
+				borderRight: `solid 1px ${palette.layout.line}`,
 			}}
 		>
 			<LeftDetailBarHeader title={selectedLeftContent} />

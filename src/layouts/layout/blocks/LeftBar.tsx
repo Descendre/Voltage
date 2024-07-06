@@ -17,7 +17,7 @@ export const LeftBar = () => {
 				alignItems: 'center',
 				width: '50px',
 				height: '100%',
-				backgroundColor: palette.layout.primary,
+				backgroundColor: palette.layout.secondary,
 			}}
 		>
 			<LeftBarIcon icon={<LibraryMusicOutlined />} titleJp="プレイリスト" />
