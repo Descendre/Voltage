@@ -18,7 +18,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<ThemeProvider theme={siteTheme}>
-				<body>
+				<body style={{ overflow: 'hidden' }}>
 					<ContextProvider>
 						<CssBaseline />
 						<AppRouterCacheProvider>
