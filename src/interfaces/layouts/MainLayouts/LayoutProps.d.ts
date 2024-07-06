@@ -20,4 +20,5 @@ export interface LeftDetailHeaderListItemProps {
 	title: string;
 	subTitle: string;
 	url: string;
+	id: string;
 }
