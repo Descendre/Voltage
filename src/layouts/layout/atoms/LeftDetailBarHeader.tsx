@@ -1,6 +1,6 @@
 'use client';
-import { usePalette } from '@/hooks';
 import { LeftDetailBarHeaderProps } from '@/interfaces';
+import { usePalette } from '@/utils';
 import { AddCircleOutline, DeleteOutline } from '@mui/icons-material';
 import { Box, IconButton, Typography } from '@mui/material';
 import React from 'react';

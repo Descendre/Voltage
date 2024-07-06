@@ -1,5 +1,5 @@
 'use client';
-import { useBreakPoint, useLayouts, usePalette } from '@/hooks';
+import { useLayouts } from '@/hooks';
 import { Box } from '@mui/material';
 import React from 'react';
 import {
@@ -17,6 +17,7 @@ import {
 	Search,
 	SettingsSuggest,
 } from '@mui/icons-material';
+import { useBreakPoint, usePalette } from '@/utils';
 
 export const Header = () => {
 	const palette = usePalette();

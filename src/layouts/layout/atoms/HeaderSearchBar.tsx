@@ -1,5 +1,6 @@
 'use client';
-import { useLayouts, usePalette } from '@/hooks';
+import { useLayouts } from '@/hooks';
+import { usePalette } from '@/utils';
 import { Search } from '@mui/icons-material';
 import { Box, Chip, InputAdornment, TextField } from '@mui/material';
 import React, { useRef } from 'react';

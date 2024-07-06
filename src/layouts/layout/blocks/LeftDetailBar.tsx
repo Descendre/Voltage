@@ -1,9 +1,7 @@
 'use client';
 import {
-	useBreakPoint,
 	useFirstFetchComplete,
 	useLayouts,
-	usePalette,
 	usePlayList,
 	useSelectedContent,
 } from '@/hooks';
@@ -14,6 +12,7 @@ import {
 	LeftDetailBarProgress,
 	LeftDetailListItemButton,
 } from '../atoms';
+import { useBreakPoint, usePalette } from '@/utils';
 
 export const LeftDetailBar = () => {
 	const { selectedLeftContent } = useLayouts();

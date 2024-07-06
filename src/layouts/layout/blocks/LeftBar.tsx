@@ -1,9 +1,9 @@
 'use client';
-import { usePalette } from '@/hooks';
 import { Box } from '@mui/material';
 import React from 'react';
 import { LeftBarIcon } from '../atoms';
 import { LibraryMusicOutlined, PeopleAltOutlined } from '@mui/icons-material';
+import { usePalette } from '@/utils';
 
 export const LeftBar = () => {
 	const palette = usePalette();
