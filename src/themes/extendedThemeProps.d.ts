@@ -7,6 +7,10 @@ declare module '@mui/material/styles' {
 			secondary: string;
 			line: string;
 			subLine: string;
+			playIcon: {
+				play: string;
+				pause: string;
+			};
 		};
 		icon: {
 			main: string;
@@ -19,6 +23,10 @@ declare module '@mui/material/styles' {
 			secondary: string;
 			line: string;
 			subLine: string;
+			playIcon: {
+				play: string;
+				pause: string;
+			};
 		};
 		icon: {
 			main: string;

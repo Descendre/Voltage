@@ -79,9 +79,15 @@ export const Header = () => {
 								onClick={handleTogglePlay}
 								icon={
 									isPlay ? (
-										<Pause fontSize="small" />
+										<Pause
+											fontSize="small"
+											sx={{ color: palette.layout.playIcon.pause }}
+										/>
 									) : (
-										<PlayArrow fontSize="small" />
+										<PlayArrow
+											fontSize="small"
+											sx={{ color: palette.layout.playIcon.play }}
+										/>
 									)
 								}
 								title={isPlay ? '停止' : '再生'}
