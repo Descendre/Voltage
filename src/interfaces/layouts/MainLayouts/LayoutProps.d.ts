@@ -14,3 +14,9 @@ export interface LeftBarProps {
 export interface LeftDetailBarHeaderProps {
 	title: string;
 }
+
+export interface LeftDetailHeaderListItemProps {
+	title: string;
+	subTitle: string;
+	url: string;
+}
