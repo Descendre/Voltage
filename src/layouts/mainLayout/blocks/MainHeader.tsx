@@ -11,16 +11,19 @@ import {
 import {
 	Fullscreen,
 	FullscreenExit,
-	LibraryMusic,
 	MoreHoriz,
+	Pause,
+	PlayArrow,
 	Search,
 	SettingsSuggest,
 } from '@mui/icons-material';
+import { useMusic } from '@/hooks/context/useMusic';
 
 export const MainHeader = () => {
 	const palette = usePalette();
 	const breakpoint = useBreakPoint();
 	const { setIsPlayListModal, isFullScreen, handleToggleScreen } = useLayouts();
+	const { isPlay, handleTogglePlay } = useMusic();
 
 	return (
 		<>
@@ -70,8 +73,15 @@ export const MainHeader = () => {
 								title={isFullScreen ? '元の表示' : '全画面表示'}
 							/>
 							<HeaderIconButton
-								icon={<LibraryMusic fontSize="small" />}
-								title="プレイリスト"
+								onClick={handleTogglePlay}
+								icon={
+									isPlay ? (
+										<Pause fontSize="small" />
+									) : (
+										<PlayArrow fontSize="small" />
+									)
+								}
+								title={isPlay ? '停止' : '再生'}
 							/>
 							<HeaderIconButton
 								icon={<SettingsSuggest fontSize="small" />}
