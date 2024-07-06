@@ -1,5 +1,5 @@
 import { SpotifyTokenProps } from '@/interfaces';
-import { getCookie } from '@/utils';
+import { getCookie } from '@/utils/serverSide';
 import { NextResponse } from 'next/server';
 
 export const GET = async () => {

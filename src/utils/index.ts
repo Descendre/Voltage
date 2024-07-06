@@ -1,2 +1,2 @@
 export * from './generateRandomString';
-export * from './cookies';
+export * from './getDominantColor';
