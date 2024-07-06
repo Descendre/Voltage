@@ -10,4 +10,6 @@ export interface ContextProviderProps {
 	setSpotifyToken: React.Dispatch<
 		React.SetStateAction<SpotifyTokenProps | null>
 	>;
+	isPlayListModal: boolean;
+	setIsPlayListModal: React.Dispatch<React.SetStateAction<boolean>>;
 }

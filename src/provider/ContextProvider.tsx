@@ -16,11 +16,15 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		null
 	);
 
+	const [isPlayListModal, setIsPlayListModal] = useState<boolean>(false);
+
 	const contextValue = {
 		userInfo,
 		setUserInfo,
 		spotifyToken,
 		setSpotifyToken,
+		isPlayListModal,
+		setIsPlayListModal,
 	};
 
 	return <Context.Provider value={contextValue}>{children}</Context.Provider>;

@@ -1,8 +1,12 @@
+'use client';
+import { useLayouts } from '@/hooks';
 import { Search } from '@mui/icons-material';
 import { Box, Chip, InputAdornment, TextField } from '@mui/material';
 import React from 'react';
 
 export const HeaderSearchBar = () => {
+	const { setIsPlayListModal } = useLayouts();
+
 	return (
 		<Box
 			sx={{
@@ -18,7 +22,7 @@ export const HeaderSearchBar = () => {
 				variant="outlined"
 				size="small"
 				placeholder="プレイリストを作成する"
-				disabled
+				onClick={() => setIsPlayListModal(true)}
 				sx={{
 					maxWidth: '1200px',
 				}}
@@ -26,6 +30,7 @@ export const HeaderSearchBar = () => {
 					style: {
 						cursor: 'pointer',
 						height: '20px',
+						fontSize: '0.9rem',
 					},
 				}}
 				InputProps={{
