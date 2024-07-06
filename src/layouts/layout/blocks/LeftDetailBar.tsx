@@ -38,7 +38,8 @@ export const LeftDetailBar = () => {
 					overflowY: 'scroll',
 				}}
 			>
-				{userPlayList &&
+				{selectedLeftContent === 'プレイリスト' &&
+					userPlayList &&
 					userPlayList.items.map((item, index) => (
 						<LeftDetailHeaderListItem
 							key={index}
