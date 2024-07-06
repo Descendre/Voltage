@@ -16,9 +16,13 @@ export const useLayouts = (): UseLayoutsProps => {
 		setIsFullscreen,
 		selectedLeftContent,
 		setSelectedLeftContent,
+		isPlay,
+		setIsPlay,
 	} = context;
 
 	const handleToggleScreen = () => setIsFullscreen((prev) => !prev);
+
+	const handleTogglePlay = () => setIsPlay((prev) => !prev);
 
 	return {
 		isPlayListModal,
@@ -26,7 +30,10 @@ export const useLayouts = (): UseLayoutsProps => {
 		isFullScreen,
 		setIsFullscreen,
 		handleToggleScreen,
-		selectedLeftContent,
 		setSelectedLeftContent,
+		isPlay,
+		setIsPlay,
+		handleTogglePlay,
+		selectedLeftContent,
 	};
 };

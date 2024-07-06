@@ -3,6 +3,7 @@ import {
 	ContextProviderProps,
 	SpotifyTokenProps,
 	SpotifyUserInfoResponse,
+	SpotifyUserPlayListResponse,
 } from '@/interfaces';
 import { ReactNode, createContext, useState } from 'react';
 
@@ -16,24 +17,30 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		null
 	);
 
+	const [isPlay, setIsPlay] = useState<boolean>(false);
+	const [userPlayList, setUserPlayList] =
+		useState<SpotifyUserPlayListResponse | null>(null);
+
 	const [isPlayListModal, setIsPlayListModal] = useState<boolean>(false);
 	const [isFullScreen, setIsFullscreen] = useState<boolean>(false);
-	const [isPlay, setIsPlay] = useState<boolean>(false);
 	const [selectedLeftContent, setSelectedLeftContent] = useState<
 		'プレイリスト' | 'アーティスト'
 	>('プレイリスト');
-
 	const contextValue = {
 		userInfo,
 		setUserInfo,
 		spotifyToken,
 		setSpotifyToken,
+
+		isPlay,
+		setIsPlay,
+		userPlayList,
+		setUserPlayList,
+
 		isPlayListModal,
 		setIsPlayListModal,
 		isFullScreen,
 		setIsFullscreen,
-		isPlay,
-		setIsPlay,
 		selectedLeftContent,
 		setSelectedLeftContent,
 	};
