@@ -14,27 +14,27 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 					display: 'flex',
 					flexDirection: 'column',
 					justifyContent: 'start',
-					alignItems: 'center',
+					alignItems: 'start',
 					height: '100vh',
+					maxWidth: '100vw',
+					overflowX: 'hidden',
 				}}
 			>
 				<Header />
 				<Box
 					sx={{
-						flexGrow: 1,
 						display: 'flex',
-						width: '100vw',
 					}}
 				>
+					<LeftBar />
+					{selectedLeftContent && <LeftDetailBar />}
 					<Box
-						position="relative"
-						display="flex"
-						justifyContent="center"
-						alignItems="start"
-						maxHeight="calc(100vh - 60px)"
+						flexGrow={1}
+						height="100%"
+						sx={{
+							overflowY: 'scroll',
+						}}
 					>
-						<LeftBar />
-						{selectedLeftContent && <LeftDetailBar />}
 						{children}
 					</Box>
 				</Box>

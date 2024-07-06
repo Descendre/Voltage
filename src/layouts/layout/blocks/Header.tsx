@@ -33,6 +33,9 @@ export const Header = () => {
 		<>
 			<Box
 				sx={{
+					position: 'fixed',
+					top: 0,
+					left: 0,
 					zIndex: 100,
 					display: 'flex',
 					justifyContent: 'space-between',
@@ -101,6 +104,8 @@ export const Header = () => {
 					<HeaderAvatar />
 				</Box>
 			</Box>
+
+			<Box sx={{ height: '60px' }} />
 		</>
 	);
 };

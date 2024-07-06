@@ -24,7 +24,7 @@ export const LeftBarIcon = ({ icon, titleJp }: LeftBarProps) => {
 					justifyContent: 'center',
 					alignItems: 'center',
 					width: '100%',
-					aspectRatio: '1/1',
+					minHeight: '50px',
 					cursor: 'pointer',
 					boxSizing: 'border-box',
 					color:
