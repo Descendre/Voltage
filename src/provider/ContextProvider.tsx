@@ -18,8 +18,10 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 
 	const [isPlayListModal, setIsPlayListModal] = useState<boolean>(false);
 	const [isFullScreen, setIsFullscreen] = useState<boolean>(false);
-
 	const [isPlay, setIsPlay] = useState<boolean>(false);
+	const [selectedLeftContent, setSelectedLeftContent] = useState<
+		'プレイリスト' | 'アーティスト'
+	>('プレイリスト');
 
 	const contextValue = {
 		userInfo,
@@ -32,6 +34,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		setIsFullscreen,
 		isPlay,
 		setIsPlay,
+		selectedLeftContent,
+		setSelectedLeftContent,
 	};
 
 	return <Context.Provider value={contextValue}>{children}</Context.Provider>;

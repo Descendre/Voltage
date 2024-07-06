@@ -20,8 +20,8 @@ export const LeftBar = () => {
 				backgroundColor: palette.layout.primary,
 			}}
 		>
-			<LeftBarIcon icon={<LibraryMusicOutlined />} title="プレイリスト" />
-			<LeftBarIcon icon={<PeopleAltOutlined />} title="アーティスト" />
+			<LeftBarIcon icon={<LibraryMusicOutlined />} titleJp="プレイリスト" />
+			<LeftBarIcon icon={<PeopleAltOutlined />} titleJp="アーティスト" />
 		</Box>
 	);
 };

@@ -16,4 +16,8 @@ export interface ContextProviderProps {
 	setIsFullscreen: React.Dispatch<React.SetStateAction<boolean>>;
 	isPlay: boolean;
 	setIsPlay: React.Dispatch<React.SetStateAction<boolean>>;
+	selectedLeftContent: 'プレイリスト' | 'アーティスト';
+	setSelectedLeftContent: React.Dispatch<
+		React.SetStateAction<'プレイリスト' | 'アーティスト'>
+	>;
 }
