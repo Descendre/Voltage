@@ -1,17 +1,19 @@
 'use client';
-import { SpotifyUserInfoResponse } from '@/interfaces';
-import { axiosFetch } from '@/libs';
-import React, { useEffect } from 'react';
+import { useUserInfo } from '@/hooks';
+import { Avatar, Chip } from '@mui/material';
+import React from 'react';
 
 export const MainHeaderAvatar = () => {
-	useEffect(() => {
-		const feee = async () => {
-			const response =
-				await axiosFetch.get<SpotifyUserInfoResponse>('/api/user/userInfo');
-			console.log(response);
-		};
-		feee();
-	}, []);
+	const { userInfo } = useUserInfo();
+	const avatarUrl =
+		userInfo?.images && userInfo.images.length > 0
+			? userInfo.images[0].url
+			: '';
 
-	return <div>MainHeaderAvatar</div>;
+	return (
+		<Chip
+			avatar={<Avatar src={avatarUrl} />}
+			label={userInfo?.display_name || ''}
+		/>
+	);
 };

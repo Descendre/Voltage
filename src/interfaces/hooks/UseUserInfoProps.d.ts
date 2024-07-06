@@ -1,7 +1,6 @@
-import { SpotifyUserInfoResponse } from '../api';
 import { SpotifyTokenProps } from '../cookie';
 
-export interface ContextProviderProps {
+export interface UseUserInfoProps {
 	userInfo: SpotifyUserInfoResponse | null;
 	setUserInfo: React.Dispatch<
 		React.SetStateAction<SpotifyUserInfoResponse | null>
@@ -10,4 +9,5 @@ export interface ContextProviderProps {
 	setSpotifyToken: React.Dispatch<
 		React.SetStateAction<SpotifyTokenProps | null>
 	>;
+	handleSetSpotifyToken: () => Promise<void>;
 }

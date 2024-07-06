@@ -1,16 +1,15 @@
-import { SpotifyTokenProps, SpotifyUserInfoResponse } from '@/interfaces';
+import { SpotifyUserInfoResponse } from '@/interfaces';
 import { axiosFetch } from '@/libs';
-import { getCookie } from '@/utils';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export const GET = async () => {
-	const spotifyToken = getCookie<SpotifyTokenProps>('spotify_token');
-	if (!spotifyToken) return NextResponse.json(null);
+export const GET = async (req: NextRequest) => {
+	const authorizationHeader = req.headers.get('authorization');
+	const accessToken = authorizationHeader?.split(' ')[1];
 
 	const response = await axiosFetch.get<SpotifyUserInfoResponse>(
 		`${process.env.SPOTIFY_API_ENDPOINT}/me`,
 		{
-			Authorization: `Bearer ${spotifyToken.access_token}`,
+			Authorization: `Bearer ${accessToken}`,
 		}
 	);
 	return NextResponse.json(response);
