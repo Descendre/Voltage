@@ -5,10 +5,12 @@ export interface UseLayoutsProps {
 	setIsFullscreen: React.Dispatch<React.SetStateAction<boolean>>;
 	handleToggleScreen: () => void;
 	handleTogglePlay: () => void;
-	selectedLeftContent: 'プレイリスト' | 'アーティスト';
+	selectedLeftContent: 'プレイリスト' | 'アーティスト' | null;
 	setSelectedLeftContent: React.Dispatch<
-		React.SetStateAction<'プレイリスト' | 'アーティスト'>
+		React.SetStateAction<'プレイリスト' | 'アーティスト' | null>
 	>;
 	isPlay: boolean;
 	setIsPlay: React.Dispatch<React.SetStateAction<boolean>>;
+	isLeftDetail: boolean;
+	setIsLeftDetail: React.Dispatch<React.SetStateAction<boolean>>;
 }

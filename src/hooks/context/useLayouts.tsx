@@ -18,6 +18,8 @@ export const useLayouts = (): UseLayoutsProps => {
 		setSelectedLeftContent,
 		isPlay,
 		setIsPlay,
+		isLeftDetail,
+		setIsLeftDetail,
 	} = context;
 
 	const handleToggleScreen = () => setIsFullscreen((prev) => !prev);
@@ -35,5 +37,7 @@ export const useLayouts = (): UseLayoutsProps => {
 		setIsPlay,
 		handleTogglePlay,
 		selectedLeftContent,
+		isLeftDetail,
+		setIsLeftDetail,
 	};
 };
