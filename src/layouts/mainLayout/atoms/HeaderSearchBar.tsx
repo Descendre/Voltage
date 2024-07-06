@@ -2,10 +2,18 @@
 import { useLayouts } from '@/hooks';
 import { Search } from '@mui/icons-material';
 import { Box, Chip, InputAdornment, TextField } from '@mui/material';
-import React from 'react';
+import React, { useRef } from 'react';
 
 export const HeaderSearchBar = () => {
 	const { setIsPlayListModal } = useLayouts();
+	const disabledRef = useRef<HTMLInputElement>(null);
+
+	const handleBarClick = (): void => {
+		setIsPlayListModal(true);
+		if (disabledRef.current) {
+			disabledRef.current.blur();
+		}
+	};
 
 	return (
 		<Box
@@ -17,40 +25,46 @@ export const HeaderSearchBar = () => {
 				padding: '0 7%',
 			}}
 		>
-			<TextField
-				fullWidth
-				variant="outlined"
-				size="small"
-				placeholder="プレイリストを作成する"
-				onClick={() => setIsPlayListModal(true)}
-				sx={{
-					maxWidth: '1200px',
-				}}
-				inputProps={{
-					style: {
-						cursor: 'pointer',
-						height: '20px',
-						fontSize: '0.9rem',
-					},
-				}}
-				InputProps={{
-					startAdornment: (
-						<InputAdornment position="start">
-							<Search fontSize="small" />
-						</InputAdornment>
-					),
-					endAdornment: (
-						<InputAdornment position="end">
-							<Chip
-								disabled
-								variant="outlined"
-								label="Type [/] to search"
-								size="small"
-							/>
-						</InputAdornment>
-					),
-				}}
-			/>
+			<Box
+				onClick={handleBarClick}
+				sx={{ width: '100%', maxWidth: '1200px', cursor: 'pointer' }}
+			>
+				<TextField
+					fullWidth
+					disabled
+					inputRef={disabledRef}
+					variant="outlined"
+					size="small"
+					placeholder="プレイリストを作成する"
+					sx={{
+						pointerEvents: 'none',
+					}}
+					inputProps={{
+						readOnly: true,
+						style: {
+							height: '20px',
+							fontSize: '0.9rem',
+						},
+					}}
+					InputProps={{
+						startAdornment: (
+							<InputAdornment position="start">
+								<Search fontSize="small" />
+							</InputAdornment>
+						),
+						endAdornment: (
+							<InputAdornment position="end">
+								<Chip
+									disabled
+									variant="outlined"
+									label="Type [/] to search"
+									size="small"
+								/>
+							</InputAdornment>
+						),
+					}}
+				/>
+			</Box>
 		</Box>
 	);
 };
