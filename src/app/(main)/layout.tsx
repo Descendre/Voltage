@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import { darkTheme } from '@/themes';
 import { MainLayout } from '@/layouts';
+import { siteTheme } from '@/themes';
 
 export const metadata: Metadata = {
 	title: 'Voltage',
@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<ThemeProvider theme={darkTheme}>
+			<ThemeProvider theme={siteTheme}>
 				<body>
 					<CssBaseline />
 					<AppRouterCacheProvider>
