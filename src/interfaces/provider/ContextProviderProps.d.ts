@@ -1,4 +1,4 @@
-import { SpotifyUserInfoResponse } from '../api';
+import { SpotifyUserInfoResponse, SpotifyUserPlaylistResponse } from '../api';
 import { SpotifyTokenProps } from '../cookie';
 
 export interface ContextProviderProps {
@@ -10,14 +10,20 @@ export interface ContextProviderProps {
 	setSpotifyToken: React.Dispatch<
 		React.SetStateAction<SpotifyTokenProps | null>
 	>;
+
 	isPlayListModal: boolean;
 	setIsPlayListModal: React.Dispatch<React.SetStateAction<boolean>>;
 	isFullScreen: boolean;
 	setIsFullscreen: React.Dispatch<React.SetStateAction<boolean>>;
-	isPlay: boolean;
-	setIsPlay: React.Dispatch<React.SetStateAction<boolean>>;
 	selectedLeftContent: 'プレイリスト' | 'アーティスト';
 	setSelectedLeftContent: React.Dispatch<
 		React.SetStateAction<'プレイリスト' | 'アーティスト'>
+	>;
+	isPlay: boolean;
+	setIsPlay: React.Dispatch<React.SetStateAction<boolean>>;
+
+	userPlayList: SpotifyUserPlaylistResponse | null;
+	setUserPlayList: React.Dispatch<
+		React.SetStateAction<SpotifyUserPlaylistResponse | null>
 	>;
 }

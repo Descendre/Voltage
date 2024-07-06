@@ -1,11 +1,12 @@
 'use client';
-import { useLayouts, usePalette } from '@/hooks';
+import { useLayouts, usePalette, usePlayList } from '@/hooks';
 import { Box } from '@mui/material';
 import React from 'react';
 import { LeftDetailBarHeader } from '../atoms';
 
 export const LeftDetailBar = () => {
 	const { selectedLeftContent } = useLayouts();
+	const { userPlayList } = usePlayList();
 	const palette = usePalette();
 
 	return (

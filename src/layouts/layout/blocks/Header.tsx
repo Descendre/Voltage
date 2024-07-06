@@ -17,13 +17,17 @@ import {
 	Search,
 	SettingsSuggest,
 } from '@mui/icons-material';
-import { useMusic } from '@/hooks/context/useMusic';
 
 export const Header = () => {
 	const palette = usePalette();
 	const breakpoint = useBreakPoint();
-	const { setIsPlayListModal, isFullScreen, handleToggleScreen } = useLayouts();
-	const { isPlay, handleTogglePlay } = useMusic();
+	const {
+		setIsPlayListModal,
+		isFullScreen,
+		handleToggleScreen,
+		handleTogglePlay,
+		isPlay,
+	} = useLayouts();
 
 	return (
 		<>
