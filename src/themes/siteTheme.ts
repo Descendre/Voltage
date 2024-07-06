@@ -1,7 +1,7 @@
 'use client';
 import { createTheme } from '@mui/material';
 
-export const darkTheme = createTheme({
+export const siteTheme = createTheme({
 	palette: {
 		mode: 'dark',
 		layout: {
