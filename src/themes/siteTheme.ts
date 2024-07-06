@@ -18,4 +18,20 @@ export const siteTheme = createTheme({
 			hide: '#888',
 		},
 	},
+	components: {
+		MuiCssBaseline: {
+			styleOverrides: `
+            ::-webkit-scrollbar{
+                width: 10px;
+				max-width: 1vw;
+            },
+            ::-webkit-scrollbar-thumb {
+                background-color: rgba(255, 255, 255, 0.3);
+            },
+            ::-webkit-scrollbar-track {
+                background-color: transparent;
+            }
+            `,
+		},
+	},
 });
