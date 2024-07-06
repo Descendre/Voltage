@@ -3,7 +3,7 @@ import { useBreakPoint } from '@/hooks';
 import { Avatar } from '@mui/material';
 import React from 'react';
 
-export const MainHeaderLogo = () => {
+export const HeaderLogo = () => {
 	const breakpoint = useBreakPoint();
 
 	return (

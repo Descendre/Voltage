@@ -5,3 +5,8 @@ export interface HeaderIconButtonProps<T = void> {
 	title?: string;
 	onClick?: (T: arg) => void;
 }
+
+export interface LeftBarProps {
+	icon: ReactNode;
+	title: string;
+}
