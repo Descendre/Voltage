@@ -20,7 +20,6 @@ export const useSelectedContent = (): UseSelectedContentProps => {
 	};
 
 	const { selectedContents, setSelectedContents } = context;
-	console.log(selectedContents);
 	return {
 		selectedContents,
 		setSelectedContents,

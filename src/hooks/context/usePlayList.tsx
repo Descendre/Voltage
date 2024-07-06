@@ -25,7 +25,6 @@ export const usePlayList = (): UsePlayListProps => {
 				Authorization: `Bearer ${spotifyToken.access_token}`,
 			}
 		);
-		console.log(response);
 		setUserPlayList(response);
 	};
 
