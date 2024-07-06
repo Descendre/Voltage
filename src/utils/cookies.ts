@@ -5,7 +5,7 @@ export const getCookie = <T>(key: string): T | undefined => {
 	const cookieObject = cookie.get(key);
 	if (!cookieObject) return undefined;
 	const valueString = cookieObject.value;
-	const value: T = JSON.parse(valueString.toString());
+	const value: T = JSON.parse(valueString);
 	return value;
 };
 

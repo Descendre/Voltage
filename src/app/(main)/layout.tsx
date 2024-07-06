@@ -3,6 +3,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { MainLayout } from '@/layouts';
 import { siteTheme } from '@/themes';
+import { ContextProvider } from '@/provider';
 
 export const metadata: Metadata = {
 	title: 'Voltage',
@@ -18,10 +19,12 @@ export default function RootLayout({
 		<html lang="en">
 			<ThemeProvider theme={siteTheme}>
 				<body>
-					<CssBaseline />
-					<AppRouterCacheProvider>
-						<MainLayout>{children}</MainLayout>
-					</AppRouterCacheProvider>
+					<ContextProvider>
+						<CssBaseline />
+						<AppRouterCacheProvider>
+							<MainLayout>{children}</MainLayout>
+						</AppRouterCacheProvider>
+					</ContextProvider>
 				</body>
 			</ThemeProvider>
 		</html>
