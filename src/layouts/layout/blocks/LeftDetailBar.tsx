@@ -1,10 +1,11 @@
 'use client';
-import { usePalette } from '@/hooks';
+import { useLayouts, usePalette } from '@/hooks';
 import { Box } from '@mui/material';
 import React from 'react';
 import { LeftDetailBarHeader } from '../atoms';
 
 export const LeftDetailBar = () => {
+	const { selectedLeftContent } = useLayouts();
 	const palette = usePalette();
 
 	return (
@@ -19,7 +20,7 @@ export const LeftDetailBar = () => {
 				backgroundColor: palette.layout.secondary,
 			}}
 		>
-			<LeftDetailBarHeader title="aaaaa" />
+			<LeftDetailBarHeader title={selectedLeftContent} />
 		</Box>
 	);
 };

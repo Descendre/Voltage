@@ -14,7 +14,7 @@ export const LeftDetailBarHeader = ({ title }: LeftDetailBarHeaderProps) => {
 			<Box>
 				<Typography
 					noWrap
-					variant="body1"
+					variant="body2"
 					sx={{
 						width: '100%',
 						textAlign: 'center',

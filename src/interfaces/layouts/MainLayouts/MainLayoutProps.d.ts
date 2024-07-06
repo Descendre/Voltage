@@ -8,7 +8,7 @@ export interface HeaderIconButtonProps<T = void> {
 
 export interface LeftBarProps {
 	icon: ReactNode;
-	title: string;
+	titleJp: 'プレイリスト' | 'アーティスト';
 }
 
 export interface LeftDetailBarHeaderProps {

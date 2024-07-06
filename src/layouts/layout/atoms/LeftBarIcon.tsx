@@ -1,10 +1,15 @@
+'use client';
+import { useLayouts } from '@/hooks';
 import { LeftBarProps } from '@/interfaces';
 import { Box, Tooltip } from '@mui/material';
 
-export const LeftBarIcon = ({ icon, title }: LeftBarProps) => {
+export const LeftBarIcon = ({ icon, titleJp }: LeftBarProps) => {
+	const { setSelectedLeftContent } = useLayouts();
+
 	return (
-		<Tooltip title={title} placement="right" arrow>
+		<Tooltip title={titleJp} placement="right" arrow>
 			<Box
+				onClick={() => setSelectedLeftContent(titleJp)}
 				sx={{
 					display: 'flex',
 					justifyContent: 'center',
