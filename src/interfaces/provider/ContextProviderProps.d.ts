@@ -1,4 +1,8 @@
-import { SpotifyUserInfoResponse, SpotifyUserPlaylistResponse } from '../api';
+import {
+	PlaylistItem,
+	SpotifyUserInfoResponse,
+	SpotifyUserPlaylistResponse,
+} from '../api';
 import { SpotifyTokenProps } from '../cookie';
 
 export interface ContextProviderProps {
@@ -32,6 +36,14 @@ export interface ContextProviderProps {
 	setIsFirstFetchComplete: React.Dispatch<
 		React.SetStateAction<isFirstFetchCompleteProps>
 	>;
+	selectedContents: selectedContentsProps;
+	setSelectedContents: React.Dispatch<
+		React.SetStateAction<selectedContentsProps>
+	>;
+}
+
+export interface selectedContentsProps {
+	playList: PlaylistItem | null;
 }
 
 export interface isFirstFetchCompleteProps {

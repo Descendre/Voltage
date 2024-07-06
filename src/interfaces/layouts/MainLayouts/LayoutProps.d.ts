@@ -16,6 +16,7 @@ export interface LeftDetailBarHeaderProps {
 }
 
 export interface LeftDetailHeaderListItemProps {
+	onClick: () => void;
 	title: string;
 	subTitle: string;
 	url: string;

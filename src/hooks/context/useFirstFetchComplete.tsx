@@ -17,7 +17,6 @@ export const useFirstFetchComplete = (): UseFirstFetchCompleteProps => {
 			userPlayList: userPlayList ? true : false,
 		});
 	}, [userPlayList]);
-	console.log(isFirstFetchComplete);
 
 	return {
 		isFirstFetchComplete,
