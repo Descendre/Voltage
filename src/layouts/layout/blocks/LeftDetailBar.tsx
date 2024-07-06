@@ -62,6 +62,7 @@ export const LeftDetailBar = () => {
 									title={item.name}
 									subTitle={item.description}
 									url={item.images[0]?.url}
+									id={item.id}
 								/>
 							))
 						) : (
