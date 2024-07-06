@@ -14,4 +14,6 @@ export interface ContextProviderProps {
 	setIsPlayListModal: React.Dispatch<React.SetStateAction<boolean>>;
 	isFullScreen: boolean;
 	setIsFullscreen: React.Dispatch<React.SetStateAction<boolean>>;
+	isPlay: boolean;
+	setIsPlay: React.Dispatch<React.SetStateAction<boolean>>;
 }
