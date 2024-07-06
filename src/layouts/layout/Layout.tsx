@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Header, LeftBar, PlayListModal } from './blocks';
+import { Header, LeftBar, LeftDetailBar, PlayListModal } from './blocks';
 import { Box } from '@mui/material';
 
 export const Layout = ({ children }: { children: ReactNode }) => {
@@ -23,6 +23,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 					}}
 				>
 					<LeftBar />
+					<LeftDetailBar />
 					{children}
 				</Box>
 			</Box>

@@ -6,6 +6,7 @@ export const siteTheme = createTheme({
 		mode: 'dark',
 		layout: {
 			primary: '#000',
+			secondary: '#1a1a1a',
 		},
 	},
 });
