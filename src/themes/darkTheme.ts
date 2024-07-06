@@ -4,5 +4,8 @@ import { createTheme } from '@mui/material';
 export const darkTheme = createTheme({
 	palette: {
 		mode: 'dark',
+		layout: {
+			primary: '#000',
+		},
 	},
 });
