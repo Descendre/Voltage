@@ -17,6 +17,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 	);
 
 	const [isPlayListModal, setIsPlayListModal] = useState<boolean>(false);
+	const [isFullScreen, setIsFullscreen] = useState<boolean>(false);
 
 	const contextValue = {
 		userInfo,
@@ -25,6 +26,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		setSpotifyToken,
 		isPlayListModal,
 		setIsPlayListModal,
+		isFullScreen,
+		setIsFullscreen,
 	};
 
 	return <Context.Provider value={contextValue}>{children}</Context.Provider>;

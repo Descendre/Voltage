@@ -9,10 +9,16 @@ export const useLayouts = (): UseLayoutsProps => {
 		throw new Error('Context is not provided');
 	}
 
-	const { isPlayListModal, setIsPlayListModal } = context;
+	const { isPlayListModal, setIsPlayListModal, isFullScreen, setIsFullscreen } =
+		context;
+
+	const handleToggleScreen = () => setIsFullscreen((prev) => !prev);
 
 	return {
 		isPlayListModal,
 		setIsPlayListModal,
+		isFullScreen,
+		setIsFullscreen,
+		handleToggleScreen,
 	};
 };

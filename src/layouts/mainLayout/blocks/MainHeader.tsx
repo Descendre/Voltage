@@ -1,13 +1,6 @@
 'use client';
-import { useBreakPoint, usePalette } from '@/hooks';
-import {
-	Avatar,
-	Box,
-	Button,
-	IconButton,
-	ToggleButton,
-	ToggleButtonGroup,
-} from '@mui/material';
+import { useBreakPoint, useLayouts, usePalette } from '@/hooks';
+import { Box } from '@mui/material';
 import React from 'react';
 import {
 	HeaderIconButton,
@@ -17,6 +10,7 @@ import {
 } from '../atoms';
 import {
 	Fullscreen,
+	FullscreenExit,
 	LibraryMusic,
 	MoreHoriz,
 	Search,
@@ -26,6 +20,7 @@ import {
 export const MainHeader = () => {
 	const palette = usePalette();
 	const breakpoint = useBreakPoint();
+	const { setIsPlayListModal, isFullScreen, handleToggleScreen } = useLayouts();
 
 	return (
 		<>
@@ -55,14 +50,24 @@ export const MainHeader = () => {
 				>
 					{['xs'].includes(breakpoint) ? (
 						<>
-							<HeaderIconButton icon={<Search fontSize="small" />} />
+							<HeaderIconButton
+								icon={<Search fontSize="small" />}
+								onClick={setIsPlayListModal}
+							/>
 							<HeaderIconButton icon={<MoreHoriz fontSize="small" />} />
 						</>
 					) : (
 						<>
 							<HeaderIconButton
-								icon={<Fullscreen fontSize="small" />}
-								title="レイアウト"
+								onClick={handleToggleScreen}
+								icon={
+									isFullScreen ? (
+										<FullscreenExit fontSize="small" />
+									) : (
+										<Fullscreen fontSize="small" />
+									)
+								}
+								title={isFullScreen ? '元の表示' : '全画面表示'}
 							/>
 							<HeaderIconButton
 								icon={<LibraryMusic fontSize="small" />}
