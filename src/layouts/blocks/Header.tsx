@@ -1,7 +1,11 @@
+'use client';
+import { usePalette } from '@/hooks';
 import { Box } from '@mui/material';
 import React from 'react';
 
 export const Header = () => {
+	const palette = usePalette();
+
 	return (
 		<Box
 			sx={{
@@ -12,8 +16,8 @@ export const Header = () => {
 				justifyContent: 'space-between',
 				alignItems: 'center',
 				width: '100vw',
-				height: '50px',
-				backgroundColor: '#aff',
+				height: '60px',
+				backgroundColor: palette.layout.primary,
 			}}
 		></Box>
 	);
