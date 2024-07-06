@@ -1,1 +1,1 @@
-export * from './MainLayoutProps';
+export * from './LayoutProps';

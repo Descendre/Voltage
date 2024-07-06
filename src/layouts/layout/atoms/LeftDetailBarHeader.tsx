@@ -1,23 +1,30 @@
+'use client';
+import { usePalette } from '@/hooks';
 import { LeftDetailBarHeaderProps } from '@/interfaces';
 import { AddCircleOutline, DeleteOutline } from '@mui/icons-material';
 import { Box, IconButton, Typography } from '@mui/material';
 import React from 'react';
 
 export const LeftDetailBarHeader = ({ title }: LeftDetailBarHeaderProps) => {
+	const palette = usePalette();
+
 	return (
 		<Box
 			sx={{
 				width: '100%',
-				backgroundColor: '#444',
 			}}
 		>
 			<Box>
 				<Typography
 					noWrap
 					variant="body2"
+					fontWeight="bold"
 					sx={{
 						width: '100%',
+						padding: '5px 0',
 						textAlign: 'center',
+						fontSize: '0.8rem',
+						backgroundColor: palette.primary.main,
 					}}
 				>
 					{title}
@@ -30,6 +37,7 @@ export const LeftDetailBarHeader = ({ title }: LeftDetailBarHeaderProps) => {
 					}}
 				>
 					<IconButton
+						color="info"
 						disableTouchRipple
 						size="small"
 						sx={{
@@ -40,6 +48,7 @@ export const LeftDetailBarHeader = ({ title }: LeftDetailBarHeaderProps) => {
 						<AddCircleOutline fontSize="small" />
 					</IconButton>
 					<IconButton
+						color="error"
 						disableTouchRipple
 						size="small"
 						sx={{

@@ -5,12 +5,22 @@ declare module '@mui/material/styles' {
 		layout: {
 			primary: string;
 			secondary: string;
+			line: string;
+		};
+		icon: {
+			main: string;
+			hide: string;
 		};
 	}
 	interface PaletteOptions {
 		layout: {
 			primary: string;
 			secondary: string;
+			line: string;
+		};
+		icon: {
+			main: string;
+			hide: string;
 		};
 	}
 }

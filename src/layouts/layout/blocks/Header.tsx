@@ -39,6 +39,7 @@ export const Header = () => {
 					height: '60px',
 					padding: ['xs', 'sm'].includes(breakpoint) ? '0 5px' : '0 15px',
 					backgroundColor: palette.layout.primary,
+					borderBottom: `solid 1px ${palette.layout.line}`,
 				}}
 			>
 				<HeaderLogo />

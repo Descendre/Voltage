@@ -1,11 +1,12 @@
 'use client';
-import { useLayouts } from '@/hooks';
+import { useLayouts, usePalette } from '@/hooks';
 import { Search } from '@mui/icons-material';
 import { Box, Chip, InputAdornment, TextField } from '@mui/material';
 import React, { useRef } from 'react';
 
 export const HeaderSearchBar = () => {
 	const { setIsPlayListModal } = useLayouts();
+	const palette = usePalette();
 	const disabledRef = useRef<HTMLInputElement>(null);
 
 	const handleBarClick = (): void => {
@@ -49,7 +50,7 @@ export const HeaderSearchBar = () => {
 					InputProps={{
 						startAdornment: (
 							<InputAdornment position="start">
-								<Search fontSize="small" />
+								<Search fontSize="small" sx={{ color: palette.icon.hide }} />
 							</InputAdornment>
 						),
 						endAdornment: (
