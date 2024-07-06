@@ -1,7 +1,7 @@
 'use client';
 import { useBreakPoint, useLayouts } from '@/hooks';
 import { Close } from '@mui/icons-material';
-import { Box, Grow, IconButton, Modal, Paper } from '@mui/material';
+import { Grow, IconButton, Modal, Paper } from '@mui/material';
 import React, { useEffect } from 'react';
 
 export const PlayListModal = () => {
