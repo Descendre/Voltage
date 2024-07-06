@@ -1,7 +1,7 @@
 import { Avatar } from '@mui/material';
 import React from 'react';
 
-export const HeaderLogo = () => {
+export const MainHeaderLogo = () => {
 	return (
 		<Avatar
 			src="/SOZO_logo_transparent2.svg"

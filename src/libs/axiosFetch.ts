@@ -3,6 +3,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 export const axiosFetch = {
 	post: async <T>(
 		url: string,
+		body: any,
 		header?: { [key: string]: string }
 	): Promise<T> => {
 		const config: AxiosRequestConfig = {
@@ -12,6 +13,7 @@ export const axiosFetch = {
 				...header,
 			},
 			method: 'POST',
+			data: body,
 		};
 		try {
 			const response = await axios(config);
