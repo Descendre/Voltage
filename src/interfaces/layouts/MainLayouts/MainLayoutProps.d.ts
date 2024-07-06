@@ -10,3 +10,7 @@ export interface LeftBarProps {
 	icon: ReactNode;
 	title: string;
 }
+
+export interface LeftDetailBarHeaderProps {
+	title: string;
+}
