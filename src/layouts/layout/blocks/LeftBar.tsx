@@ -3,7 +3,7 @@ import { usePalette } from '@/hooks';
 import { Box } from '@mui/material';
 import React from 'react';
 import { LeftBarIcon } from '../atoms';
-import { LibraryMusic } from '@mui/icons-material';
+import { LibraryMusicOutlined, PeopleAltOutlined } from '@mui/icons-material';
 
 export const LeftBar = () => {
 	const palette = usePalette();
@@ -20,7 +20,8 @@ export const LeftBar = () => {
 				backgroundColor: palette.layout.primary,
 			}}
 		>
-			<LeftBarIcon icon={<LibraryMusic />} title="プレイリスト" />
+			<LeftBarIcon icon={<LibraryMusicOutlined />} title="プレイリスト" />
+			<LeftBarIcon icon={<PeopleAltOutlined />} title="アーティスト" />
 		</Box>
 	);
 };
