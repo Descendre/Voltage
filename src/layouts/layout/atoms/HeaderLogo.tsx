@@ -1,5 +1,5 @@
 'use client';
-import { useBreakPoint } from '@/hooks';
+import { useBreakPoint } from '@/utils';
 import { Avatar } from '@mui/material';
 import React from 'react';
 

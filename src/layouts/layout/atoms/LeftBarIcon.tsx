@@ -1,6 +1,7 @@
 'use client';
-import { useLayouts, usePalette } from '@/hooks';
+import { useLayouts } from '@/hooks';
 import { LeftBarProps } from '@/interfaces';
+import { usePalette } from '@/utils';
 import { Box, Tooltip } from '@mui/material';
 
 export const LeftBarIcon = ({ icon, titleJp }: LeftBarProps) => {

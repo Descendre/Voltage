@@ -1,6 +1,6 @@
 'use client';
-import { usePalette } from '@/hooks';
 import { HeaderIconButtonProps } from '@/interfaces';
+import { usePalette } from '@/utils';
 import { IconButton, Tooltip } from '@mui/material';
 import React from 'react';
 

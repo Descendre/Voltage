@@ -1,5 +1,6 @@
 'use client';
-import { useBreakPoint, useLayouts } from '@/hooks';
+import { useLayouts } from '@/hooks';
+import { useBreakPoint } from '@/utils';
 import { Close } from '@mui/icons-material';
 import { Grow, IconButton, Modal, Paper } from '@mui/material';
 import React, { useEffect } from 'react';
