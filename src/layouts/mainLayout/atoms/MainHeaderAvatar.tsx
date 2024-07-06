@@ -15,7 +15,7 @@ export const MainHeaderAvatar = () => {
 	return (
 		<>
 			{['xs', 'sm'].includes(breakpoint) ? (
-				<Avatar src={avatarUrl} sx={{ marginLeft: '8px' }} />
+				<Avatar src={avatarUrl} sx={{ marginLeft: '8px', cursor: 'pointer' }} />
 			) : (
 				<Chip
 					variant="outlined"
