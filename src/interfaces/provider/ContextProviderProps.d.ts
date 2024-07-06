@@ -15,12 +15,14 @@ export interface ContextProviderProps {
 	setIsPlayListModal: React.Dispatch<React.SetStateAction<boolean>>;
 	isFullScreen: boolean;
 	setIsFullscreen: React.Dispatch<React.SetStateAction<boolean>>;
-	selectedLeftContent: 'プレイリスト' | 'アーティスト';
+	selectedLeftContent: 'プレイリスト' | 'アーティスト' | null;
 	setSelectedLeftContent: React.Dispatch<
-		React.SetStateAction<'プレイリスト' | 'アーティスト'>
+		React.SetStateAction<'プレイリスト' | 'アーティスト' | null>
 	>;
 	isPlay: boolean;
 	setIsPlay: React.Dispatch<React.SetStateAction<boolean>>;
+	isLeftDetail: boolean;
+	setIsLeftDetail: React.Dispatch<React.SetStateAction<boolean>>;
 
 	userPlayList: SpotifyUserPlaylistResponse | null;
 	setUserPlayList: React.Dispatch<
