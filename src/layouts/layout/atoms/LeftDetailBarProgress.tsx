@@ -13,7 +13,7 @@ export const LeftDetailBarProgress = () => {
 				height: '100px',
 			}}
 		>
-			<CircularProgress color="primary" />
+			<CircularProgress color="primary" size={30} />
 		</Box>
 	);
 };

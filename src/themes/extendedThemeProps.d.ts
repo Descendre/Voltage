@@ -6,6 +6,7 @@ declare module '@mui/material/styles' {
 			primary: string;
 			secondary: string;
 			line: string;
+			subLine: string;
 		};
 		icon: {
 			main: string;
@@ -17,6 +18,7 @@ declare module '@mui/material/styles' {
 			primary: string;
 			secondary: string;
 			line: string;
+			subLine: string;
 		};
 		icon: {
 			main: string;

@@ -12,6 +12,7 @@ export const siteTheme = createTheme({
 			primary: '#000',
 			secondary: '#111',
 			line: blue[900],
+			subLine: '#555',
 		},
 		icon: {
 			main: '#fff',

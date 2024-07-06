@@ -17,7 +17,7 @@ export const LeftDetailListItemButton = ({
 	return (
 		<ListItemButton
 			onClick={onClick}
-			sx={{ cursor: 'pointer', backgroundColor: '#111', borderRadius: '10px' }}
+			sx={{ cursor: 'pointer', borderRadius: '10px', height: '60px' }}
 		>
 			<ListItemAvatar>
 				<Avatar
@@ -28,7 +28,7 @@ export const LeftDetailListItemButton = ({
 			</ListItemAvatar>
 			<ListItemText
 				primary={title}
-				secondary={subTitle}
+				secondary={subTitle || '説明なし'}
 				primaryTypographyProps={{
 					sx: {
 						textOverflow: 'ellipsis',
