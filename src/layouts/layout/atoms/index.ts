@@ -5,3 +5,4 @@ export * from './HeaderSearchBar';
 export * from './LeftBarIcon';
 export * from './LeftDetailBarHeader';
 export * from './LeftDetailHeaderListItem';
+export * from './LeftDetailBarProgress';
