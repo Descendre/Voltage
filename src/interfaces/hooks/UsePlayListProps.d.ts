@@ -1,5 +1,7 @@
+import { SpotifyUserPlayListResponse } from '../api';
+
 export interface UsePlayListProps {
-	userPlayList: SpotifyUserPlaylistResponse | null;
+	userPlayList: SpotifyUserPlayListResponse | null;
 	setUserPlayList: React.Dispatch<
 		React.SetStateAction<SpotifyUserPlaylistResponse | null>
 	>;

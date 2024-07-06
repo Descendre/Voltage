@@ -17,10 +17,10 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		null
 	);
 
-	const [isPlay, setIsPlay] = useState<boolean>(false);
 	const [userPlayList, setUserPlayList] =
 		useState<SpotifyUserPlayListResponse | null>(null);
 
+	const [isPlay, setIsPlay] = useState<boolean>(false);
 	const [isPlayListModal, setIsPlayListModal] = useState<boolean>(false);
 	const [isFullScreen, setIsFullscreen] = useState<boolean>(false);
 	const [selectedLeftContent, setSelectedLeftContent] = useState<
