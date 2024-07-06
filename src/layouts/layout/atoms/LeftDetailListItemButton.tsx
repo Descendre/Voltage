@@ -1,5 +1,5 @@
 'use client';
-import { useSelectedContent } from '@/hooks';
+import { useDominantColors, useSelectedContent } from '@/hooks';
 import { LeftDetailHeaderListItemProps } from '@/interfaces';
 import { getDominantColor, hexToRgba } from '@/utils';
 import { KeyboardArrowRight } from '@mui/icons-material';
@@ -19,19 +19,7 @@ export const LeftDetailListItemButton = ({
 	id,
 }: LeftDetailHeaderListItemProps) => {
 	const { selectedContents } = useSelectedContent();
-
-	const [dominantColor, setDominantColor] = useState('transparent');
-	const [dominantRgbaColor, setDominantRgbaColor] = useState('transparent');
-
-	useEffect(() => {
-		const getColor = async () => {
-			const color = await getDominantColor(url);
-			const rgbaColor = hexToRgba(color, 0.2);
-			setDominantColor(color);
-			setDominantRgbaColor(rgbaColor);
-		};
-		getColor();
-	}, [url]);
+	const { dominantColor, dominantRgbaColor } = useDominantColors(url, 0.2);
 
 	return (
 		<ListItemButton
