@@ -31,7 +31,6 @@ export const useUserInfo = (): UseUserInfoProps => {
 				Authorization: `Bearer ${spotifyToken.access_token}`,
 			}
 		);
-
 		setUserInfo(response);
 	};
 
