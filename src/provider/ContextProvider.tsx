@@ -5,6 +5,7 @@ import {
 	SpotifyUserInfoResponse,
 	SpotifyUserPlayListResponse,
 	isFirstFetchCompleteProps,
+	selectedContentsProps,
 } from '@/interfaces';
 import { ReactNode, createContext, useState } from 'react';
 
@@ -20,6 +21,10 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 
 	const [userPlayList, setUserPlayList] =
 		useState<SpotifyUserPlayListResponse | null>(null);
+	const [selectedContents, setSelectedContents] =
+		useState<selectedContentsProps>({
+			playList: null,
+		});
 
 	const [isPlay, setIsPlay] = useState<boolean>(false);
 	const [isPlayListModal, setIsPlayListModal] = useState<boolean>(false);
@@ -38,6 +43,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 
 		userPlayList,
 		setUserPlayList,
+		selectedContents,
+		setSelectedContents,
 
 		isPlay,
 		setIsPlay,

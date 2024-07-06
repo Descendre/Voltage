@@ -17,6 +17,7 @@ export interface PlaylistItem {
 	images: Image[];
 	name: string;
 	owner: Owner;
+	primary_color: string;
 	public: boolean;
 	snapshot_id: string;
 	tracks: Tracks;

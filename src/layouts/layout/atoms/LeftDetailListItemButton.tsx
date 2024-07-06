@@ -1,15 +1,22 @@
 import { LeftDetailHeaderListItemProps } from '@/interfaces';
 import { KeyboardArrowRight } from '@mui/icons-material';
-import { Avatar, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
+import {
+	Avatar,
+	ListItemAvatar,
+	ListItemButton,
+	ListItemText,
+} from '@mui/material';
 import React from 'react';
 
-export const LeftDetailHeaderListItem = ({
+export const LeftDetailListItemButton = ({
 	title,
 	subTitle,
 	url,
+	onClick,
 }: LeftDetailHeaderListItemProps) => {
 	return (
-		<ListItem
+		<ListItemButton
+			onClick={onClick}
 			sx={{ cursor: 'pointer', backgroundColor: '#111', borderRadius: '10px' }}
 		>
 			<ListItemAvatar>
@@ -39,6 +46,6 @@ export const LeftDetailHeaderListItem = ({
 				}}
 			/>
 			<KeyboardArrowRight />
-		</ListItem>
+		</ListItemButton>
 	);
 };
