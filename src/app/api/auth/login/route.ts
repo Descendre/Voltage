@@ -1,12 +1,9 @@
 import { generateRandomString } from '@/utils';
-import { cookies } from 'next/headers';
+import { hasCookie } from '@/utils/serverSide';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const GET = (request: NextRequest) => {
-	const cookie = cookies();
-	const spotifyToken = cookie.get('spotify_token');
-
-	if (spotifyToken) {
+	if (hasCookie('spotify_token')) {
 		const redirectUrl = new URL('/', request.url);
 		return NextResponse.redirect(redirectUrl.toString());
 	}
