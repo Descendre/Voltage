@@ -28,4 +28,12 @@ export interface ContextProviderProps {
 	setUserPlayList: React.Dispatch<
 		React.SetStateAction<SpotifyUserPlaylistResponse | null>
 	>;
+	isFirstFetchComplete: isFirstFetchCompleteProps;
+	setIsFirstFetchComplete: React.Dispatch<
+		React.SetStateAction<isFirstFetchCompleteProps>
+	>;
+}
+
+export interface isFirstFetchCompleteProps {
+	userPlayList: boolean;
 }

@@ -1,12 +1,18 @@
 'use client';
 import { useBreakPoint, useLayouts, usePalette, usePlayList } from '@/hooks';
-import { Box, List } from '@mui/material';
+import { Box, CircularProgress, List } from '@mui/material';
 import React from 'react';
-import { LeftDetailBarHeader, LeftDetailHeaderListItem } from '../atoms';
+import {
+	LeftDetailBarHeader,
+	LeftDetailBarProgress,
+	LeftDetailHeaderListItem,
+} from '../atoms';
+import { useFirstFetchComplete } from '@/hooks/context/useFirstFetchComplete';
 
 export const LeftDetailBar = () => {
 	const { selectedLeftContent } = useLayouts();
 	const { userPlayList } = usePlayList();
+	const { isFirstFetchComplete } = useFirstFetchComplete();
 	const palette = usePalette();
 	const breakpoint = useBreakPoint();
 
@@ -39,14 +45,17 @@ export const LeftDetailBar = () => {
 				}}
 			>
 				{selectedLeftContent === 'プレイリスト' &&
-					userPlayList &&
-					userPlayList.items.map((item, index) => (
-						<LeftDetailHeaderListItem
-							key={index}
-							title={item.name}
-							subTitle={item.description}
-							url={item.images[0]?.url}
-						/>
+					(isFirstFetchComplete.userPlayList ? (
+						userPlayList?.items.map((item, index) => (
+							<LeftDetailHeaderListItem
+								key={index}
+								title={item.name}
+								subTitle={item.description}
+								url={item.images[0]?.url}
+							/>
+						))
+					) : (
+						<LeftDetailBarProgress />
 					))}
 			</List>
 		</Box>

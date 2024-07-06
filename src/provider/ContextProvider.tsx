@@ -4,6 +4,7 @@ import {
 	SpotifyTokenProps,
 	SpotifyUserInfoResponse,
 	SpotifyUserPlayListResponse,
+	isFirstFetchCompleteProps,
 } from '@/interfaces';
 import { ReactNode, createContext, useState } from 'react';
 
@@ -27,17 +28,19 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		'プレイリスト' | 'アーティスト' | null
 	>('プレイリスト');
 	const [isLeftDetail, setIsLeftDetail] = useState<boolean>(false);
+	const [isFirstFetchComplete, setIsFirstFetchComplete] =
+		useState<isFirstFetchCompleteProps>({ userPlayList: false });
 	const contextValue = {
 		userInfo,
 		setUserInfo,
 		spotifyToken,
 		setSpotifyToken,
 
-		isPlay,
-		setIsPlay,
 		userPlayList,
 		setUserPlayList,
 
+		isPlay,
+		setIsPlay,
 		isPlayListModal,
 		setIsPlayListModal,
 		isFullScreen,
@@ -46,6 +49,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		setSelectedLeftContent,
 		isLeftDetail,
 		setIsLeftDetail,
+		isFirstFetchComplete,
+		setIsFirstFetchComplete,
 	};
 
 	return <Context.Provider value={contextValue}>{children}</Context.Provider>;
