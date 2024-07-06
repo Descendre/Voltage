@@ -2,7 +2,7 @@
 import { usePalette } from '@/hooks';
 import { Box } from '@mui/material';
 import React from 'react';
-import { MainHeaderLogo } from '../atoms';
+import { MainHeaderAvatar, MainHeaderLogo } from '../atoms';
 
 export const MainHeader = () => {
 	const palette = usePalette();
@@ -23,6 +23,7 @@ export const MainHeader = () => {
 				}}
 			>
 				<MainHeaderLogo />
+				<MainHeaderAvatar />
 			</Box>
 			<Box
 				sx={{

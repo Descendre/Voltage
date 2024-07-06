@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 export default function Home() {
 	const router = useRouter();
 	useEffect(() => {
-		router.push('/api/login');
+		router.push('/api/auth/login');
 	}, []);
 	return <>aaa</>;
 }
