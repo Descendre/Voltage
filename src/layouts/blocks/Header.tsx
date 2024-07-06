@@ -2,6 +2,7 @@
 import { usePalette } from '@/hooks';
 import { Box } from '@mui/material';
 import React from 'react';
+import { HeaderLogo } from '../atoms';
 
 export const Header = () => {
 	const palette = usePalette();
@@ -19,6 +20,8 @@ export const Header = () => {
 				height: '60px',
 				backgroundColor: palette.layout.primary,
 			}}
-		></Box>
+		>
+			<HeaderLogo />
+		</Box>
 	);
 };
