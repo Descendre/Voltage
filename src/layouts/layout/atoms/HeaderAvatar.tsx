@@ -4,7 +4,7 @@ import { ArrowDropDown } from '@mui/icons-material';
 import { Avatar, Chip } from '@mui/material';
 import React from 'react';
 
-export const MainHeaderAvatar = () => {
+export const HeaderAvatar = () => {
 	const { userInfo } = useUserInfo();
 	const breakpoint = useBreakPoint();
 	const avatarUrl =

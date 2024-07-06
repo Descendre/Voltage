@@ -3,10 +3,10 @@ import { useBreakPoint, useLayouts, usePalette } from '@/hooks';
 import { Box } from '@mui/material';
 import React from 'react';
 import {
+	HeaderAvatar,
 	HeaderIconButton,
+	HeaderLogo,
 	HeaderSearchBar,
-	MainHeaderAvatar,
-	MainHeaderLogo,
 } from '../atoms';
 import {
 	Fullscreen,
@@ -19,7 +19,7 @@ import {
 } from '@mui/icons-material';
 import { useMusic } from '@/hooks/context/useMusic';
 
-export const MainHeader = () => {
+export const Header = () => {
 	const palette = usePalette();
 	const breakpoint = useBreakPoint();
 	const { setIsPlayListModal, isFullScreen, handleToggleScreen } = useLayouts();
@@ -41,7 +41,7 @@ export const MainHeader = () => {
 					backgroundColor: palette.layout.primary,
 				}}
 			>
-				<MainHeaderLogo />
+				<HeaderLogo />
 				{!['xs'].includes(breakpoint) && <HeaderSearchBar />}
 				<Box
 					sx={{
@@ -89,7 +89,7 @@ export const MainHeader = () => {
 							/>
 						</>
 					)}
-					<MainHeaderAvatar />
+					<HeaderAvatar />
 				</Box>
 			</Box>
 
