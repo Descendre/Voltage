@@ -13,14 +13,24 @@ import {
 	LeftDetailListItemButton,
 } from '../atoms';
 import { useBreakPoint, usePalette } from '@/utils';
+import { PlaylistItem } from '@/interfaces';
 
 export const LeftDetailBar = () => {
-	const { selectedLeftContent } = useLayouts();
+	const { selectedLeftContent, setSelectedLeftContent, setIsLeftDetail } =
+		useLayouts();
 	const { userPlayList } = usePlayList();
 	const { isFirstFetchComplete } = useFirstFetchComplete();
 	const { handleSelectContent } = useSelectedContent();
 	const palette = usePalette();
 	const breakpoint = useBreakPoint();
+
+	const handleIconClick = (item: PlaylistItem): void => {
+		handleSelectContent({ name: 'playList', content: item });
+		if (['xs'].includes(breakpoint)) {
+			setIsLeftDetail(false);
+			setSelectedLeftContent(null);
+		}
+	};
 
 	return (
 		<>
@@ -55,9 +65,7 @@ export const LeftDetailBar = () => {
 						(isFirstFetchComplete.userPlayList ? (
 							userPlayList?.items.map((item, index) => (
 								<LeftDetailListItemButton
-									onClick={() =>
-										handleSelectContent({ name: 'playList', content: item })
-									}
+									onClick={() => handleIconClick(item)}
 									key={index}
 									title={item.name}
 									subTitle={item.description}
