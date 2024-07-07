@@ -3,3 +3,4 @@ export * from './UseLayoutsProps';
 export * from './UsePlayListProps';
 export * from './UseFirstFetchCompleteProps';
 export * from './UseSelectedContentProps';
+export * from './UserArtistProps';

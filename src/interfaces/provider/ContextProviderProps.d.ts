@@ -1,5 +1,6 @@
 import {
 	PlaylistItem,
+	SpotifyUserArtistResponse,
 	SpotifyUserInfoResponse,
 	SpotifyUserPlaylistResponse,
 } from '../api';
@@ -15,25 +16,29 @@ export interface ContextProviderProps {
 		React.SetStateAction<SpotifyTokenProps | null>
 	>;
 
-	isPlayListModal: boolean;
-	setIsPlayListModal: React.Dispatch<React.SetStateAction<boolean>>;
-	isFullScreen: boolean;
-	setIsFullscreen: React.Dispatch<React.SetStateAction<boolean>>;
+	userPlayList: SpotifyUserPlaylistResponse | null;
+	setUserPlayList: React.Dispatch<
+		React.SetStateAction<SpotifyUserPlaylistResponse | null>
+	>;
+	userArtist: SpotifyUserArtistResponse | null;
+	setUserArtist: React.Dispatch<
+		React.SetStateAction<SpotifyUserArtistResponse | null>
+	>;
 	selectedLeftContent: 'プロフィール' | 'プレイリスト' | 'アーティスト' | null;
 	setSelectedLeftContent: React.Dispatch<
 		React.SetStateAction<
 			'プロフィール' | 'プレイリスト' | 'アーティスト' | null
 		>
 	>;
+
+	isPlayListModal: boolean;
+	setIsPlayListModal: React.Dispatch<React.SetStateAction<boolean>>;
+	isFullScreen: boolean;
+	setIsFullscreen: React.Dispatch<React.SetStateAction<boolean>>;
 	isPlay: boolean;
 	setIsPlay: React.Dispatch<React.SetStateAction<boolean>>;
 	isLeftDetail: boolean;
 	setIsLeftDetail: React.Dispatch<React.SetStateAction<boolean>>;
-
-	userPlayList: SpotifyUserPlaylistResponse | null;
-	setUserPlayList: React.Dispatch<
-		React.SetStateAction<SpotifyUserPlaylistResponse | null>
-	>;
 	isFirstFetchComplete: isFirstFetchCompleteProps;
 	setIsFirstFetchComplete: React.Dispatch<
 		React.SetStateAction<isFirstFetchCompleteProps>

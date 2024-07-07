@@ -1,5 +1,6 @@
 'use client';
 import {
+	useArtist,
 	useFirstFetchComplete,
 	useLayouts,
 	usePlayList,
@@ -23,6 +24,7 @@ export const LeftDetailBar = () => {
 	const { handleSelectContent } = useSelectedContent();
 	const palette = usePalette();
 	const breakpoint = useBreakPoint();
+	const { userArtist } = useArtist();
 
 	const handleIconClick = (item: PlaylistItem): void => {
 		handleSelectContent({ name: 'playList', content: item });
