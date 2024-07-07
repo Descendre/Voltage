@@ -24,7 +24,7 @@ export const LeftDetailBarHeader = ({ title }: LeftDetailBarHeaderProps) => {
 						padding: '5px 0',
 						textAlign: 'center',
 						fontSize: '0.8rem',
-						backgroundColor: palette.primary.main,
+						backgroundColor: palette.layout.heading,
 					}}
 				>
 					{title}

@@ -31,6 +31,12 @@ export interface ContextProviderProps {
 			'プロフィール' | 'プレイリスト' | 'アーティスト' | null
 		>
 	>;
+	selectedLastContent: 'プロフィール' | 'プレイリスト' | 'アーティスト' | null;
+	setSelectedLastContent: React.Dispatch<
+		React.SetStateAction<
+			'プロフィール' | 'プレイリスト' | 'アーティスト' | null
+		>
+	>;
 
 	isPlayListModal: boolean;
 	setIsPlayListModal: React.Dispatch<React.SetStateAction<boolean>>;

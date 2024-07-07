@@ -15,7 +15,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 					flexDirection: 'column',
 					justifyContent: 'start',
 					alignItems: 'start',
-					height: '100vh',
+					height: '100%',
 					maxWidth: '100vw',
 					overflowX: 'hidden',
 				}}
@@ -34,7 +34,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 						flexGrow={1}
 						height="100%"
 						sx={{
-							overflowY: 'scroll',
+							overflowY: 'overlay',
 						}}
 					>
 						{children}

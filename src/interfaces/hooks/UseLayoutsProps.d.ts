@@ -11,6 +11,12 @@ export interface UseLayoutsProps {
 			'プロフィール' | 'プレイリスト' | 'アーティスト' | null
 		>
 	>;
+	selectedLastContent: 'プロフィール' | 'プレイリスト' | 'アーティスト' | null;
+	setSelectedLastContent: React.Dispatch<
+		React.SetStateAction<
+			'プロフィール' | 'プレイリスト' | 'アーティスト' | null
+		>
+	>;
 	isPlay: boolean;
 	setIsPlay: React.Dispatch<React.SetStateAction<boolean>>;
 	isLeftDetail: boolean;

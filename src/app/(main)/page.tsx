@@ -1,10 +1,12 @@
 'use client';
-import { useUserInfo } from '@/hooks';
+import { useLayouts, useSelectedContent, useUserInfo } from '@/hooks';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 export default function Home() {
 	const { spotifyToken, handleSetSpotifyToken } = useUserInfo();
+	const { selectedLastContent } = useLayouts();
+	const { selectedContents } = useSelectedContent();
 	const router = useRouter();
 
 	useEffect(() => {
@@ -14,5 +16,16 @@ export default function Home() {
 			await handleSetSpotifyToken();
 		})();
 	}, []);
-	return <>aaa</>;
+
+	return (
+		<>
+			{selectedLastContent === 'プレイリスト' && selectedContents.playList
+				? 'playList'
+				: selectedLastContent === 'アーティスト' && selectedContents.artist
+					? 'artist'
+					: selectedLastContent === 'プロフィール'
+						? 'profile'
+						: ''}
+		</>
+	);
 }

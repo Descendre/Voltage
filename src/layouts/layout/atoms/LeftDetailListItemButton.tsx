@@ -19,23 +19,25 @@ export const LeftDetailListItemButton = ({
 	id,
 }: LeftDetailHeaderListItemProps) => {
 	const { selectedContents } = useSelectedContent();
-	const { dominantColor, dominantRgbaColor } = useDominantColors(url, 0.2);
+	const { dominantColor, dominantRgbaColor } = useDominantColors(url);
+
+	const isThiSelected =
+		id === selectedContents.playList?.id || id === selectedContents.artist?.id;
 
 	return (
 		<ListItemButton
 			onClick={onClick}
 			sx={{
 				cursor: 'pointer',
-				borderRadius: '10px',
 				height: '60px',
-				backgroundColor:
-					id === selectedContents.playList?.id ||
-					id === selectedContents.artist?.id
-						? dominantRgbaColor
-						: 'transparent',
+				backgroundColor: isThiSelected
+					? `rgba(${dominantRgbaColor}, 0.7)`
+					: 'transparent',
 				transition: 'background-color 0.15s ease-in-out',
 				'&:hover': {
-					backgroundColor: dominantRgbaColor,
+					backgroundColor: isThiSelected
+						? `rgba(${dominantRgbaColor}, 0.7)`
+						: `rgba(${dominantRgbaColor}, 0.1)`,
 				},
 				'.MuiTouchRipple-child': {
 					color: dominantColor,
