@@ -15,6 +15,16 @@ import {
 	LeftDetailListItemButton,
 } from '../atoms';
 import { useBreakPoint, usePalette } from '@/utils';
+import {
+	DndContext,
+	DragEndEvent,
+	useDroppable,
+	useSensor,
+	useSensors,
+	MouseSensor,
+} from '@dnd-kit/core';
+import { SortableContext } from '@dnd-kit/sortable';
+import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 
 export const LeftDetailBar = () => {
 	const { selectedLeftContent } = useLayouts();
@@ -25,6 +35,21 @@ export const LeftDetailBar = () => {
 	const { handleContentClick } = useSelectedContent();
 	const palette = usePalette();
 	const breakpoint = useBreakPoint();
+
+	const { setNodeRef } = useDroppable({
+		id: 'unique-id',
+	});
+	const sensors = useSensors(
+		useSensor(MouseSensor, { activationConstraint: { distance: 5 } })
+	);
+
+	const handleDragEnd = (result: DragEndEvent) => {
+		const { active, over } = result;
+		if (active && over) {
+			console.log('元の位置:', active.id);
+			console.log('入れ替え先の位置:', over.id);
+		}
+	};
 
 	return (
 		<>
@@ -47,61 +72,82 @@ export const LeftDetailBar = () => {
 				<LeftDetailBarHeader
 					title={selectedLeftContent !== null ? selectedLeftContent : ''}
 				/>
-				<List
-					sx={{
-						flexGrow: 1,
-						width: '100%',
-						overflowY: 'overlay',
-					}}
+				<DndContext
+					sensors={sensors}
+					onDragEnd={handleDragEnd}
+					modifiers={[restrictToVerticalAxis]}
 				>
-					{selectedLeftContent === 'コレクション' &&
-						(isFirstFetchComplete.userSavedTrack ? (
-							userSavedTrack?.items.map((item, index) => (
-								<LeftDetailListItemButton
-									onClick={() =>
-										handleContentClick('userSavedTrack', item.track)
+					<List
+						ref={setNodeRef}
+						sx={{
+							flexGrow: 1,
+							width: '100%',
+							overflowY: 'overlay',
+						}}
+					>
+						{selectedLeftContent === 'コレクション' &&
+							(isFirstFetchComplete.userSavedTrack ? (
+								<SortableContext
+									items={
+										userSavedTrack?.items.map((item) => item.track.id) || []
 									}
-									key={index}
-									title={item.track.name}
-									subTitle={item.track.name}
-									url={item.track.album.images[0]?.url}
-									id={item.track.id}
-								/>
-							))
-						) : (
-							<LeftDetailBarProgress />
-						))}
-					{selectedLeftContent === 'プレイリスト' &&
-						(isFirstFetchComplete.userPlayList ? (
-							userPlayList?.items.map((item, index) => (
-								<LeftDetailListItemButton
-									onClick={() => handleContentClick('playList', item)}
-									key={index}
-									title={item.name}
-									subTitle={item.description}
-									url={item.images[0]?.url}
-									id={item.id}
-								/>
-							))
-						) : (
-							<LeftDetailBarProgress />
-						))}
-					{selectedLeftContent === 'アーティスト' &&
-						(isFirstFetchComplete.userArtist ? (
-							userArtist?.artists.items.map((item, index) => (
-								<LeftDetailListItemButton
-									onClick={() => handleContentClick('artist', item)}
-									key={index}
-									title={item.name}
-									subTitle={[...item.genres].toString()}
-									url={item.images[0]?.url}
-									id={item.id}
-								/>
-							))
-						) : (
-							<LeftDetailBarProgress />
-						))}
-				</List>
+								>
+									{userSavedTrack?.items.map((item, index) => (
+										<LeftDetailListItemButton
+											onClick={() =>
+												handleContentClick('userSavedTrack', item.track)
+											}
+											key={index}
+											title={item.track.name}
+											subTitle={item.track.name}
+											url={item.track.album.images[0]?.url}
+											id={item.track.id}
+										/>
+									))}
+								</SortableContext>
+							) : (
+								<LeftDetailBarProgress />
+							))}
+						{selectedLeftContent === 'プレイリスト' &&
+							(isFirstFetchComplete.userPlayList ? (
+								<SortableContext
+									items={userPlayList?.items.map((item) => item.id) || []}
+								>
+									{userPlayList?.items.map((item, index) => (
+										<LeftDetailListItemButton
+											onClick={() => handleContentClick('playList', item)}
+											key={index}
+											title={item.name}
+											subTitle={item.description}
+											url={item.images[0]?.url}
+											id={item.id}
+										/>
+									))}
+								</SortableContext>
+							) : (
+								<LeftDetailBarProgress />
+							))}
+						{selectedLeftContent === 'アーティスト' &&
+							(isFirstFetchComplete.userArtist ? (
+								<SortableContext
+									items={userArtist?.artists.items.map((item) => item.id) || []}
+								>
+									{userArtist?.artists.items.map((item, index) => (
+										<LeftDetailListItemButton
+											onClick={() => handleContentClick('artist', item)}
+											key={index}
+											title={item.name}
+											subTitle={[...item.genres].toString()}
+											url={item.images[0]?.url}
+											id={item.id}
+										/>
+									))}
+								</SortableContext>
+							) : (
+								<LeftDetailBarProgress />
+							))}
+					</List>
+				</DndContext>
 			</Box>
 			{!['xs', 'xm'].includes(breakpoint) && (
 				<Box sx={{ width: '300px', maxWidth: 'calc(100% - 50px)' }} />
