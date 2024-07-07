@@ -4,6 +4,7 @@ import {
 	SpotifyUserArtistResponse,
 	SpotifyUserInfoResponse,
 	SpotifyUserPlaylistResponse,
+	SpotifyUserSavedTrackResponse,
 } from '../api';
 import { SpotifyTokenProps } from '../cookie';
 
@@ -24,6 +25,10 @@ export interface ContextProviderProps {
 	userArtist: SpotifyUserArtistResponse | null;
 	setUserArtist: React.Dispatch<
 		React.SetStateAction<SpotifyUserArtistResponse | null>
+	>;
+	userSavedTrack: SpotifyUserSavedTrackResponse | null;
+	setUserSavedTrack: React.Dispatch<
+		React.SetStateAction<SpotifyUserSavedTrackResponse | null>
 	>;
 	selectedLeftContent:
 		| 'コレクション'
