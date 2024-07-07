@@ -6,25 +6,25 @@ export interface UseLayoutsProps {
 	handleToggleScreen: () => void;
 	handleTogglePlay: () => void;
 	selectedLeftContent:
-		| 'マイライブラリ'
+		| 'コレクション'
 		| 'プロフィール'
 		| 'プレイリスト'
 		| 'アーティスト'
 		| null;
 	setSelectedLeftContent: React.Dispatch<
 		React.SetStateAction<
-			'マイライブラリ' | 'プロフィール' | 'プレイリスト' | 'アーティスト' | null
+			'コレクション' | 'プロフィール' | 'プレイリスト' | 'アーティスト' | null
 		>
 	>;
 	selectedLastContent:
-		| 'マイライブラリ'
+		| 'コレクション'
 		| 'プロフィール'
 		| 'プレイリスト'
 		| 'アーティスト'
 		| null;
 	setSelectedLastContent: React.Dispatch<
 		React.SetStateAction<
-			'マイライブラリ' | 'プロフィール' | 'プレイリスト' | 'アーティスト' | null
+			'コレクション' | 'プロフィール' | 'プレイリスト' | 'アーティスト' | null
 		>
 	>;
 	isPlay: boolean;
