@@ -2,7 +2,11 @@
 import { Box } from '@mui/material';
 import React from 'react';
 import { LeftBarIcon } from '../atoms';
-import { LibraryMusicOutlined, PeopleAltOutlined } from '@mui/icons-material';
+import {
+	AccountCircleOutlined,
+	LibraryMusicOutlined,
+	PeopleAltOutlined,
+} from '@mui/icons-material';
 import { usePalette } from '@/utils';
 
 export const LeftBar = () => {
@@ -35,6 +39,7 @@ export const LeftBar = () => {
 			>
 				<LeftBarIcon icon={<LibraryMusicOutlined />} titleJp="プレイリスト" />
 				<LeftBarIcon icon={<PeopleAltOutlined />} titleJp="アーティスト" />
+				<LeftBarIcon icon={<AccountCircleOutlined />} titleJp="プロフィール" />
 			</Box>
 
 			<Box sx={{ width: '50px' }} />

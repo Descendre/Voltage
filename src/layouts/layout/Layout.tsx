@@ -27,7 +27,9 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 					}}
 				>
 					<LeftBar />
-					{selectedLeftContent && isLeftDetail && <LeftDetailBar />}
+					{selectedLeftContent &&
+						selectedLeftContent !== 'プロフィール' &&
+						isLeftDetail && <LeftDetailBar />}
 					<Box
 						flexGrow={1}
 						height="100%"
