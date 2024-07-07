@@ -9,12 +9,17 @@ export const useFirstFetchComplete = (): UseFirstFetchCompleteProps => {
 		throw new Error('Context is not provided');
 	}
 
-	const { userPlayList, isFirstFetchComplete, setIsFirstFetchComplete } =
-		context;
+	const {
+		userPlayList,
+		userArtist,
+		isFirstFetchComplete,
+		setIsFirstFetchComplete,
+	} = context;
 
 	useEffect(() => {
 		setIsFirstFetchComplete({
 			userPlayList: userPlayList ? true : false,
+			userArtist: userArtist ? true : false,
 		});
 	}, [userPlayList]);
 

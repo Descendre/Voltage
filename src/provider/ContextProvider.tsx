@@ -37,7 +37,10 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 	>('プレイリスト');
 	const [isLeftDetail, setIsLeftDetail] = useState<boolean>(true);
 	const [isFirstFetchComplete, setIsFirstFetchComplete] =
-		useState<isFirstFetchCompleteProps>({ userPlayList: false });
+		useState<isFirstFetchCompleteProps>({
+			userPlayList: false,
+			userArtist: false,
+		});
 	const contextValue = {
 		userInfo,
 		setUserInfo,

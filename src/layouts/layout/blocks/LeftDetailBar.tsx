@@ -14,20 +14,23 @@ import {
 	LeftDetailListItemButton,
 } from '../atoms';
 import { useBreakPoint, usePalette } from '@/utils';
-import { PlaylistItem } from '@/interfaces';
+import { PlaylistItem, SpotifyArtistProps } from '@/interfaces';
 
 export const LeftDetailBar = () => {
 	const { selectedLeftContent, setSelectedLeftContent, setIsLeftDetail } =
 		useLayouts();
 	const { userPlayList } = usePlayList();
+	const { userArtist } = useArtist();
 	const { isFirstFetchComplete } = useFirstFetchComplete();
 	const { handleSelectContent } = useSelectedContent();
 	const palette = usePalette();
 	const breakpoint = useBreakPoint();
-	const { userArtist } = useArtist();
 
-	const handleIconClick = (item: PlaylistItem): void => {
-		handleSelectContent({ name: 'playList', content: item });
+	const handleIconClick = (
+		name: 'playList' | 'artist',
+		item: PlaylistItem | SpotifyArtistProps
+	): void => {
+		handleSelectContent({ name: name, content: item });
 		if (['xs'].includes(breakpoint)) {
 			setIsLeftDetail(false);
 			setSelectedLeftContent(null);
@@ -67,10 +70,25 @@ export const LeftDetailBar = () => {
 						(isFirstFetchComplete.userPlayList ? (
 							userPlayList?.items.map((item, index) => (
 								<LeftDetailListItemButton
-									onClick={() => handleIconClick(item)}
+									onClick={() => handleIconClick('playList', item)}
 									key={index}
 									title={item.name}
 									subTitle={item.description}
+									url={item.images[0]?.url}
+									id={item.id}
+								/>
+							))
+						) : (
+							<LeftDetailBarProgress />
+						))}
+					{selectedLeftContent === 'アーティスト' &&
+						(isFirstFetchComplete.userArtist ? (
+							userArtist?.artists.items.map((item, index) => (
+								<LeftDetailListItemButton
+									onClick={() => handleIconClick('artist', item)}
+									key={index}
+									title={item.name}
+									subTitle={[...item.genres].toString()}
 									url={item.images[0]?.url}
 									id={item.id}
 								/>

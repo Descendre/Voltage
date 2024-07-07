@@ -1,3 +1,4 @@
+import { UseArtistProps } from './UserArtistProps.d';
 import { PlaylistItem } from '../api';
 import { selectedContentsProps } from '../provider';
 
@@ -10,6 +11,6 @@ export interface UseSelectedContentProps {
 }
 
 export interface handleSelectContentProps {
-	name: 'playList';
-	content: PlaylistItem;
+	name: 'playList' | 'artist';
+	content: PlaylistItem | SpotifyArtistItemProps;
 }

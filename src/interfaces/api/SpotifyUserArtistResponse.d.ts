@@ -24,5 +24,5 @@ export interface SpotifyArtistItemProps {
 }
 
 export interface SpotifyUserArtistResponse {
-	artists: SpotifyArtistItems;
+	artists: SpotifyArtistItemProps;
 }

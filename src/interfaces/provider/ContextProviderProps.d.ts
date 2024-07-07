@@ -55,4 +55,5 @@ export interface selectedContentsProps {
 
 export interface isFirstFetchCompleteProps {
 	userPlayList: boolean;
+	userArtist: boolean;
 }
