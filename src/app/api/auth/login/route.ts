@@ -10,6 +10,7 @@ export const GET = (request: NextRequest) => {
 
 	const scopes = [
 		'streaming',
+		'user-follow-read',
 		'user-read-email',
 		'user-read-private',
 		'playlist-modify-public',

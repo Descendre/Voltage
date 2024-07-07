@@ -2,6 +2,7 @@
 import {
 	ContextProviderProps,
 	SpotifyTokenProps,
+	SpotifyUserArtistResponse,
 	SpotifyUserInfoResponse,
 	SpotifyUserPlayListResponse,
 	isFirstFetchCompleteProps,
@@ -21,6 +22,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 
 	const [userPlayList, setUserPlayList] =
 		useState<SpotifyUserPlayListResponse | null>(null);
+	const [userArtist, setUserArtist] =
+		useState<SpotifyUserArtistResponse | null>(null);
 	const [selectedContents, setSelectedContents] =
 		useState<selectedContentsProps>({
 			playList: null,
@@ -43,6 +46,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 
 		userPlayList,
 		setUserPlayList,
+		userArtist,
+		setUserArtist,
 		selectedContents,
 		setSelectedContents,
 
