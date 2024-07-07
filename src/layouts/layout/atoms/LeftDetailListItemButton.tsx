@@ -1,7 +1,8 @@
 'use client';
 import { useDominantColors, useSelectedContent } from '@/hooks';
 import { LeftDetailHeaderListItemProps } from '@/interfaces';
-import { KeyboardArrowRight } from '@mui/icons-material';
+import { DragHandle } from '@mui/icons-material';
+import { CSS } from '@dnd-kit/utilities';
 import {
 	Avatar,
 	ListItemAvatar,
@@ -9,6 +10,7 @@ import {
 	ListItemText,
 } from '@mui/material';
 import React from 'react';
+import { useSortable } from '@dnd-kit/sortable';
 
 export const LeftDetailListItemButton = ({
 	title,
@@ -17,6 +19,15 @@ export const LeftDetailListItemButton = ({
 	onClick,
 	id,
 }: LeftDetailHeaderListItemProps) => {
+	const { attributes, listeners, setNodeRef, transform, transition } =
+		useSortable({
+			id: id,
+		});
+	const style = {
+		transform: CSS.Transform.toString(transform),
+		transition,
+	};
+
 	const { selectedContents } = useSelectedContent();
 	const { dominantColor, dominantRgbaColor } = useDominantColors(url);
 
@@ -27,6 +38,10 @@ export const LeftDetailListItemButton = ({
 
 	return (
 		<ListItemButton
+			ref={setNodeRef}
+			style={style}
+			{...listeners}
+			{...attributes}
 			onClick={onClick}
 			sx={{
 				cursor: 'pointer',
@@ -71,7 +86,7 @@ export const LeftDetailListItemButton = ({
 					},
 				}}
 			/>
-			<KeyboardArrowRight />
+			<DragHandle fontSize="small" />
 		</ListItemButton>
 	);
 };
