@@ -3,6 +3,7 @@ import '@mui/material/styles';
 declare module '@mui/material/styles' {
 	interface Palette {
 		layout: {
+			heading: string;
 			primary: string;
 			secondary: string;
 			line: string;
@@ -19,6 +20,7 @@ declare module '@mui/material/styles' {
 	}
 	interface PaletteOptions {
 		layout: {
+			heading: string;
 			primary: string;
 			secondary: string;
 			line: string;

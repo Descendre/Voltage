@@ -36,6 +36,9 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 	const [selectedLeftContent, setSelectedLeftContent] = useState<
 		'プロフィール' | 'プレイリスト' | 'アーティスト' | null
 	>('プレイリスト');
+	const [selectedLastContent, setSelectedLastContent] = useState<
+		'プロフィール' | 'プレイリスト' | 'アーティスト' | null
+	>('プレイリスト');
 	const [isLeftDetail, setIsLeftDetail] = useState<boolean>(true);
 	const [isFirstFetchComplete, setIsFirstFetchComplete] =
 		useState<isFirstFetchCompleteProps>({
@@ -63,6 +66,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		setIsFullscreen,
 		selectedLeftContent,
 		setSelectedLeftContent,
+		selectedLastContent,
+		setSelectedLastContent,
 		isLeftDetail,
 		setIsLeftDetail,
 		isFirstFetchComplete,

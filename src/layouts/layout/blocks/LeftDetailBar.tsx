@@ -49,8 +49,7 @@ export const LeftDetailBar = () => {
 					sx={{
 						flexGrow: 1,
 						width: '100%',
-						padding: '10px',
-						overflowY: 'scroll',
+						overflowY: 'overlay',
 					}}
 				>
 					{selectedLeftContent === 'プレイリスト' &&

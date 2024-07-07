@@ -1,18 +1,22 @@
 'use client';
 import { createTheme } from '@mui/material';
-import { blue, green, orange } from '@mui/material/colors';
+import { green, orange } from '@mui/material/colors';
 
 export const siteTheme = createTheme({
 	palette: {
 		mode: 'dark',
 		primary: {
-			main: blue[800],
+			main: orange[900],
+		},
+		background: {
+			default: '#151515',
 		},
 		layout: {
-			primary: '#000',
-			secondary: '#111',
-			line: blue[900],
-			subLine: '#555',
+			heading: '#233240',
+			primary: '#0d1318',
+			secondary: '#000000',
+			line: '#233240',
+			subLine: '#233240',
 			playIcon: {
 				play: green['A700'],
 				pause: orange['A700'],
@@ -31,7 +35,7 @@ export const siteTheme = createTheme({
 				max-width: 2vw;
             },
             ::-webkit-scrollbar-thumb {
-                background-color: rgba(255, 255, 255, 0.3);
+                background-color: #233240;
             },
             ::-webkit-scrollbar-track {
                 background-color: transparent;
