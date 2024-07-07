@@ -8,6 +8,10 @@ export interface UseSelectedContentProps {
 		React.SetStateAction<selectedContentsProps>
 	>;
 	handleSelectContent: (prev: handleSelectContentProps) => void;
+	handleContentClick: (
+		name: 'playList' | 'artist',
+		item: PlaylistItem | SpotifyArtistProps
+	) => void;
 }
 
 export interface handleSelectContentProps {
