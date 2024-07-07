@@ -4,6 +4,7 @@ import React from 'react';
 import { LeftBarIcon } from '../atoms';
 import {
 	AccountCircleOutlined,
+	FavoriteBorderOutlined,
 	LibraryMusicOutlined,
 	PeopleAltOutlined,
 } from '@mui/icons-material';
@@ -37,6 +38,10 @@ export const LeftBar = () => {
 					backgroundColor: palette.layout.secondary,
 				}}
 			>
+				<LeftBarIcon
+					icon={<FavoriteBorderOutlined />}
+					titleJp="マイライブラリ"
+				/>
 				<LeftBarIcon icon={<LibraryMusicOutlined />} titleJp="プレイリスト" />
 				<LeftBarIcon icon={<PeopleAltOutlined />} titleJp="アーティスト" />
 				<LeftBarIcon icon={<AccountCircleOutlined />} titleJp="プロフィール" />
