@@ -34,11 +34,11 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 	const [isPlayListModal, setIsPlayListModal] = useState<boolean>(false);
 	const [isFullScreen, setIsFullscreen] = useState<boolean>(false);
 	const [selectedLeftContent, setSelectedLeftContent] = useState<
-		'プロフィール' | 'プレイリスト' | 'アーティスト' | null
-	>('プレイリスト');
+		'マイライブラリ' | 'プロフィール' | 'プレイリスト' | 'アーティスト' | null
+	>('マイライブラリ');
 	const [selectedLastContent, setSelectedLastContent] = useState<
-		'プロフィール' | 'プレイリスト' | 'アーティスト' | null
-	>('プレイリスト');
+		'マイライブラリ' | 'プロフィール' | 'プレイリスト' | 'アーティスト' | null
+	>('マイライブラリ');
 	const [isLeftDetail, setIsLeftDetail] = useState<boolean>(true);
 	const [isFirstFetchComplete, setIsFirstFetchComplete] =
 		useState<isFirstFetchCompleteProps>({
