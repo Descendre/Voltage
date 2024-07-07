@@ -34,7 +34,6 @@ export const useArtist = (): UseArtistProps => {
 			handleSetArtistList(spotifyToken);
 		})();
 	}, [spotifyToken]);
-	console.log(userArtist);
 
 	return {
 		userArtist,
