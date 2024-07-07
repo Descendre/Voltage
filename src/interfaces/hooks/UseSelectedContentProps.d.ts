@@ -1,5 +1,5 @@
 import { UseArtistProps } from './UserArtistProps.d';
-import { PlaylistItem } from '../api';
+import { PlaylistItem, SpotifyArtistProps, SpotifyTrackProps } from '../api';
 import { selectedContentsProps } from '../provider';
 
 export interface UseSelectedContentProps {
@@ -9,12 +9,12 @@ export interface UseSelectedContentProps {
 	>;
 	handleSelectContent: (prev: handleSelectContentProps) => void;
 	handleContentClick: (
-		name: 'playList' | 'artist',
-		item: PlaylistItem | SpotifyArtistProps
+		name: 'userSavedTrack' | 'playList' | 'artist',
+		item: SpotifyTrackProps | PlaylistItem | SpotifyArtistProps
 	) => void;
 }
 
 export interface handleSelectContentProps {
-	name: 'playList' | 'artist';
-	content: PlaylistItem | SpotifyArtistItemProps;
+	name: 'userSavedTrack' | 'playList' | 'artist';
+	content: SpotifyTrackProps | PlaylistItem | SpotifyArtistProps | null;
 }

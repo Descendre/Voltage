@@ -29,6 +29,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		useState<SpotifyUserSavedTrackResponse | null>(null);
 	const [selectedContents, setSelectedContents] =
 		useState<selectedContentsProps>({
+			userSavedTrack: null,
 			playList: null,
 			artist: null,
 		});
@@ -45,6 +46,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 	const [isLeftDetail, setIsLeftDetail] = useState<boolean>(true);
 	const [isFirstFetchComplete, setIsFirstFetchComplete] =
 		useState<isFirstFetchCompleteProps>({
+			userSavedTrack: false,
 			userPlayList: false,
 			userArtist: false,
 		});

@@ -1,6 +1,7 @@
 import {
 	PlaylistItem,
 	SpotifyArtistProps,
+	SpotifyTrackProps,
 	SpotifyUserArtistResponse,
 	SpotifyUserInfoResponse,
 	SpotifyUserPlaylistResponse,
@@ -72,11 +73,13 @@ export interface ContextProviderProps {
 }
 
 export interface selectedContentsProps {
+	userSavedTrack: SpotifyTrackProps | null;
 	playList: PlaylistItem | null;
 	artist: SpotifyArtistProps | null;
 }
 
 export interface isFirstFetchCompleteProps {
+	userSavedTrack: boolean;
 	userPlayList: boolean;
 	userArtist: boolean;
 }
