@@ -5,7 +5,7 @@ import { Box } from '@mui/material';
 import { useLayouts } from '@/hooks';
 
 export const Layout = ({ children }: { children: ReactNode }) => {
-	const { selectedLeftContent } = useLayouts();
+	const { selectedLeftContent, isLeftDetail } = useLayouts();
 
 	return (
 		<>
@@ -27,7 +27,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 					}}
 				>
 					<LeftBar />
-					{selectedLeftContent && <LeftDetailBar />}
+					{selectedLeftContent && isLeftDetail && <LeftDetailBar />}
 					<Box
 						flexGrow={1}
 						height="100%"

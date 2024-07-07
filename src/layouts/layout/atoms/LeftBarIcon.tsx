@@ -6,9 +6,11 @@ import { Box, Tooltip } from '@mui/material';
 
 export const LeftBarIcon = ({ icon, titleJp }: LeftBarProps) => {
 	const palette = usePalette();
-	const { selectedLeftContent, setSelectedLeftContent } = useLayouts();
+	const { selectedLeftContent, setSelectedLeftContent, setIsLeftDetail } =
+		useLayouts();
 
 	const handleSelectedLeftContent = () => {
+		setIsLeftDetail(true);
 		if (titleJp === selectedLeftContent) {
 			setSelectedLeftContent(null);
 		} else {

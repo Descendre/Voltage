@@ -32,7 +32,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 	const [selectedLeftContent, setSelectedLeftContent] = useState<
 		'プレイリスト' | 'アーティスト' | null
 	>('プレイリスト');
-	const [isLeftDetail, setIsLeftDetail] = useState<boolean>(false);
+	const [isLeftDetail, setIsLeftDetail] = useState<boolean>(true);
 	const [isFirstFetchComplete, setIsFirstFetchComplete] =
 		useState<isFirstFetchCompleteProps>({ userPlayList: false });
 	const contextValue = {
