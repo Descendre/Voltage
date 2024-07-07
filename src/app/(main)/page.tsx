@@ -1,5 +1,5 @@
 'use client';
-import { useLayouts, useSelectedContent, useUserInfo } from '@/hooks';
+import { useLayouts, useSelectedContent, useTrack, useUserInfo } from '@/hooks';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
@@ -8,6 +8,7 @@ export default function Home() {
 	const { selectedLastContent } = useLayouts();
 	const { selectedContents } = useSelectedContent();
 	const router = useRouter();
+	const {} = useTrack();
 
 	useEffect(() => {
 		(async () => {

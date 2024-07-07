@@ -15,6 +15,7 @@ export const GET = (request: NextRequest) => {
 		'user-read-private',
 		'playlist-modify-public',
 		'playlist-modify-private',
+		'user-library-read',
 	];
 
 	const params = new URLSearchParams();
