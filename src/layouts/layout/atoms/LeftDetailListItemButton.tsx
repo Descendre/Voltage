@@ -9,7 +9,7 @@ import {
 	ListItemButton,
 	ListItemText,
 } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 export const LeftDetailListItemButton = ({
 	title,
@@ -29,7 +29,8 @@ export const LeftDetailListItemButton = ({
 				borderRadius: '10px',
 				height: '60px',
 				backgroundColor:
-					id === selectedContents.playList?.id
+					id === selectedContents.playList?.id ||
+					id === selectedContents.artist?.id
 						? dominantRgbaColor
 						: 'transparent',
 				transition: 'background-color 0.15s ease-in-out',

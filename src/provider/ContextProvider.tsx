@@ -27,6 +27,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 	const [selectedContents, setSelectedContents] =
 		useState<selectedContentsProps>({
 			playList: null,
+			artist: null,
 		});
 
 	const [isPlay, setIsPlay] = useState<boolean>(false);
