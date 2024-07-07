@@ -1,7 +1,6 @@
 'use client';
 import {
 	SpotifyTokenProps,
-	SpotifyUserArtistResponse,
 	SpotifyUserSavedTrackResponse,
 	UseTrackProps,
 } from '@/interfaces';
@@ -35,7 +34,6 @@ export const useTrack = (): UseTrackProps => {
 			handleSetTrackList(spotifyToken);
 		})();
 	}, [spotifyToken]);
-	console.log(userSavedTrack);
 
 	return {
 		userSavedTrack,

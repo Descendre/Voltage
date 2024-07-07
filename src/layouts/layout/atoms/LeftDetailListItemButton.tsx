@@ -1,7 +1,6 @@
 'use client';
 import { useDominantColors, useSelectedContent } from '@/hooks';
 import { LeftDetailHeaderListItemProps } from '@/interfaces';
-import { getDominantColor, hexToRgba } from '@/utils';
 import { KeyboardArrowRight } from '@mui/icons-material';
 import {
 	Avatar,
@@ -22,7 +21,9 @@ export const LeftDetailListItemButton = ({
 	const { dominantColor, dominantRgbaColor } = useDominantColors(url);
 
 	const isThiSelected =
-		id === selectedContents.playList?.id || id === selectedContents.artist?.id;
+		id === selectedContents.playList?.id ||
+		id === selectedContents.artist?.id ||
+		id === selectedContents.userSavedTrack?.id;
 
 	return (
 		<ListItemButton
@@ -33,11 +34,11 @@ export const LeftDetailListItemButton = ({
 				backgroundColor: isThiSelected
 					? `rgba(${dominantRgbaColor}, 0.7)`
 					: 'transparent',
-				transition: 'background-color 0.15s ease-in-out',
+				transition: 'background-color 0s ease-in-out',
 				'&:hover': {
 					backgroundColor: isThiSelected
 						? `rgba(${dominantRgbaColor}, 0.7)`
-						: `rgba(${dominantRgbaColor}, 0.1)`,
+						: `rgba(${dominantRgbaColor}, 0.2)`,
 				},
 				'.MuiTouchRipple-child': {
 					color: dominantColor,

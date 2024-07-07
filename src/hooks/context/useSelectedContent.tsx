@@ -2,6 +2,7 @@
 import {
 	PlaylistItem,
 	SpotifyArtistProps,
+	SpotifyTrackProps,
 	UseSelectedContentProps,
 	handleSelectContentProps,
 } from '@/interfaces';
@@ -27,8 +28,8 @@ export const useSelectedContent = (): UseSelectedContentProps => {
 	};
 
 	const handleContentClick = (
-		name: 'playList' | 'artist',
-		item: PlaylistItem | SpotifyArtistProps
+		name: 'userSavedTrack' | 'playList' | 'artist',
+		item: SpotifyTrackProps | PlaylistItem | SpotifyArtistProps
 	): void => {
 		if (selectedContents[name] && selectedContents[name]?.id === item.id) {
 			handleSelectContent({ name, content: null });
@@ -42,6 +43,7 @@ export const useSelectedContent = (): UseSelectedContentProps => {
 	};
 
 	const { selectedContents, setSelectedContents } = context;
+
 	return {
 		selectedContents,
 		setSelectedContents,

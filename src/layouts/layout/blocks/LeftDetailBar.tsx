@@ -5,6 +5,7 @@ import {
 	useLayouts,
 	usePlayList,
 	useSelectedContent,
+	useTrack,
 } from '@/hooks';
 import { Box, List } from '@mui/material';
 import React from 'react';
@@ -17,6 +18,7 @@ import { useBreakPoint, usePalette } from '@/utils';
 
 export const LeftDetailBar = () => {
 	const { selectedLeftContent } = useLayouts();
+	const { userSavedTrack } = useTrack();
 	const { userPlayList } = usePlayList();
 	const { userArtist } = useArtist();
 	const { isFirstFetchComplete } = useFirstFetchComplete();
@@ -52,6 +54,23 @@ export const LeftDetailBar = () => {
 						overflowY: 'overlay',
 					}}
 				>
+					{selectedLeftContent === 'コレクション' &&
+						(isFirstFetchComplete.userSavedTrack ? (
+							userSavedTrack?.items.map((item, index) => (
+								<LeftDetailListItemButton
+									onClick={() =>
+										handleContentClick('userSavedTrack', item.track)
+									}
+									key={index}
+									title={item.track.name}
+									subTitle={item.track.name}
+									url={item.track.album.images[0]?.url}
+									id={item.track.id}
+								/>
+							))
+						) : (
+							<LeftDetailBarProgress />
+						))}
 					{selectedLeftContent === 'プレイリスト' &&
 						(isFirstFetchComplete.userPlayList ? (
 							userPlayList?.items.map((item, index) => (

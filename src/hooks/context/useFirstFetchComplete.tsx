@@ -10,6 +10,7 @@ export const useFirstFetchComplete = (): UseFirstFetchCompleteProps => {
 	}
 
 	const {
+		userSavedTrack,
 		userPlayList,
 		userArtist,
 		isFirstFetchComplete,
@@ -18,6 +19,7 @@ export const useFirstFetchComplete = (): UseFirstFetchCompleteProps => {
 
 	useEffect(() => {
 		setIsFirstFetchComplete({
+			userSavedTrack: userSavedTrack ? true : false,
 			userPlayList: userPlayList ? true : false,
 			userArtist: userArtist ? true : false,
 		});
