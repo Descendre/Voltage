@@ -26,25 +26,25 @@ export interface ContextProviderProps {
 		React.SetStateAction<SpotifyUserArtistResponse | null>
 	>;
 	selectedLeftContent:
-		| 'マイライブラリ'
+		| 'コレクション'
 		| 'プロフィール'
 		| 'プレイリスト'
 		| 'アーティスト'
 		| null;
 	setSelectedLeftContent: React.Dispatch<
 		React.SetStateAction<
-			'マイライブラリ' | 'プロフィール' | 'プレイリスト' | 'アーティスト' | null
+			'コレクション' | 'プロフィール' | 'プレイリスト' | 'アーティスト' | null
 		>
 	>;
 	selectedLastContent:
-		| 'マイライブラリ'
+		| 'コレクション'
 		| 'プロフィール'
 		| 'プレイリスト'
 		| 'アーティスト'
 		| null;
 	setSelectedLastContent: React.Dispatch<
 		React.SetStateAction<
-			'マイライブラリ' | 'プロフィール' | 'プレイリスト' | 'アーティスト' | null
+			'コレクション' | 'プロフィール' | 'プレイリスト' | 'アーティスト' | null
 		>
 	>;
 
