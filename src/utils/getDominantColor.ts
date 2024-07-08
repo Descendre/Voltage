@@ -13,7 +13,7 @@ export const getDominantColor = async (imageUrl: string): Promise<string> => {
 			palette.LightMuted;
 
 		if (dominantSwatch) {
-			const rgb = dominantSwatch.getRgb();
+			const rgb = dominantSwatch.getRgb().map(Math.round);
 			const color = rgb.reduce(
 				(acc, curr) => acc + ('0' + curr.toString(16)).slice(-2),
 				'#'
