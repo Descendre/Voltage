@@ -2,10 +2,18 @@ import { ReactNode } from 'react';
 
 export interface UserRoutingProps {
 	currentContent: ReactNode;
-	handleRouting: ({ contentType, contentId }: HandleRoutingProps) => void;
+	handleLeftBarRouting: ({ contentType }: HandleLeftBarRoutingProps) => void;
+	handleLeftDetailRouting: ({
+		contentType,
+		contentId,
+	}: HandleLeftDetailRoutingProps) => void;
 }
 
-export interface HandleRoutingProps {
+export interface HandleLeftBarRoutingProps {
+	contentType?: 'userSavedTrack' | 'playList' | 'artist';
+}
+
+export interface HandleLeftDetailRoutingProps {
 	contentType: 'userSavedTrack' | 'playList' | 'artist';
 	contentId: string;
 }

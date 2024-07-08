@@ -24,6 +24,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 				<Box
 					sx={{
 						display: 'flex',
+						width: '100%',
 					}}
 				>
 					<LeftBar />

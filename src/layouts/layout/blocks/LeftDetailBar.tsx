@@ -24,7 +24,7 @@ export const LeftDetailBar = () => {
 	const { userArtist } = useArtist();
 	const { isFirstFetchComplete } = useFirstFetchComplete();
 	const { handleContentClick } = useSelectedContent();
-	const { handleRouting } = useRouting();
+	const { handleLeftDetailRouting } = useRouting();
 	const palette = usePalette();
 	const breakpoint = useBreakPoint();
 
@@ -62,7 +62,7 @@ export const LeftDetailBar = () => {
 								<LeftDetailListItemButton
 									onClick={() => {
 										handleContentClick('userSavedTrack', item.track);
-										handleRouting({
+										handleLeftDetailRouting({
 											contentType: 'userSavedTrack',
 											contentId: item.track.id,
 										});
@@ -83,7 +83,7 @@ export const LeftDetailBar = () => {
 								<LeftDetailListItemButton
 									onClick={() => {
 										handleContentClick('playList', item);
-										handleRouting({
+										handleLeftDetailRouting({
 											contentType: 'playList',
 											contentId: item.id,
 										});
@@ -104,7 +104,7 @@ export const LeftDetailBar = () => {
 								<LeftDetailListItemButton
 									onClick={() => {
 										handleContentClick('artist', item);
-										handleRouting({
+										handleLeftDetailRouting({
 											contentType: 'artist',
 											contentId: item.id,
 										});

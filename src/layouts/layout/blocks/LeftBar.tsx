@@ -38,9 +38,21 @@ export const LeftBar = () => {
 					backgroundColor: palette.layout.secondary,
 				}}
 			>
-				<LeftBarIcon icon={<FavoriteBorderOutlined />} titleJp="コレクション" />
-				<LeftBarIcon icon={<LibraryMusicOutlined />} titleJp="プレイリスト" />
-				<LeftBarIcon icon={<PeopleAltOutlined />} titleJp="アーティスト" />
+				<LeftBarIcon
+					icon={<FavoriteBorderOutlined />}
+					titleJp="コレクション"
+					contentType="userSavedTrack"
+				/>
+				<LeftBarIcon
+					icon={<LibraryMusicOutlined />}
+					titleJp="プレイリスト"
+					contentType="playList"
+				/>
+				<LeftBarIcon
+					icon={<PeopleAltOutlined />}
+					titleJp="アーティスト"
+					contentType="artist"
+				/>
 				<LeftBarIcon icon={<AccountCircleOutlined />} titleJp="プロフィール" />
 			</Box>
 
