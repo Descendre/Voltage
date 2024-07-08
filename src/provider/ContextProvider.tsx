@@ -1,4 +1,5 @@
 'use client';
+import { NoSelected } from '@/contents';
 import {
 	ContextProviderProps,
 	SpotifyTokenProps,
@@ -33,6 +34,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 			playList: null,
 			artist: null,
 		});
+	const [currentContent, setCurrentContent] = useState<ReactNode>(NoSelected);
 
 	const [isPlay, setIsPlay] = useState<boolean>(false);
 	const [isPlayListModal, setIsPlayListModal] = useState<boolean>(false);
@@ -64,6 +66,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		setUserSavedTrack,
 		selectedContents,
 		setSelectedContents,
+		currentContent,
+		setCurrentContent,
 
 		isPlay,
 		setIsPlay,

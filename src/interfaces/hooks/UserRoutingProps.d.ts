@@ -1,4 +1,7 @@
+import { ReactNode } from 'react';
+
 export interface UserRoutingProps {
+	currentContent: ReactNode;
 	handleRouting: ({ contentType, contentId }: HandleRoutingProps) => void;
 }
 
