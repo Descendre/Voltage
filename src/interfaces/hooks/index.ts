@@ -7,3 +7,4 @@ export * from './UserArtistProps';
 export * from './UseDominantColorProps';
 export * from './UseTrackProps';
 export * from './UserRoutingProps';
+export * from './UseMusicProps';

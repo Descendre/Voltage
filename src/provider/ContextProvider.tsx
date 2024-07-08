@@ -39,6 +39,9 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 	const [currentContent, setCurrentContent] = useState<
 		'userSavedTrack' | 'playList' | 'artist' | 'search' | null
 	>(null);
+	const [currentTrack, setCurrentTrack] = useState<HTMLAudioElement | null>(
+		null
+	);
 
 	const [isPlay, setIsPlay] = useState<boolean>(false);
 	const [isSearchModal, setIsSearchModal] = useState<boolean>(false);
@@ -83,6 +86,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		setSelectedContents,
 		currentContent,
 		setCurrentContent,
+		currentTrack,
+		setCurrentTrack,
 
 		isPlay,
 		setIsPlay,
