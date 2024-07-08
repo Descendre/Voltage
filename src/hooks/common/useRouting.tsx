@@ -2,7 +2,11 @@
 import { useRouter } from 'next/navigation';
 import { useSelectedContent, useUserInfo } from '../context';
 import { useContext, useEffect } from 'react';
-import { UserRoutingProps, HandleRoutingProps } from '@/interfaces';
+import {
+	UserRoutingProps,
+	HandleLeftBarRoutingProps,
+	HandleLeftDetailRoutingProps,
+} from '@/interfaces';
 import { Context } from '@/provider';
 import { Artist, NoSelected, PlayList, UserSavedTrack } from '@/contents';
 
@@ -20,6 +24,7 @@ export const useRouting = (): UserRoutingProps => {
 
 	useEffect(() => {
 		(async () => {
+			console.log('a');
 			const coolieSpotifyToken = await handleSetSpotifyToken();
 			if (coolieSpotifyToken) return;
 			router.push('/api/auth/login');
@@ -27,10 +32,37 @@ export const useRouting = (): UserRoutingProps => {
 		})();
 	}, []);
 
-	const handleRouting = ({
+	const handleLeftBarRouting = ({
+		contentType,
+	}: HandleLeftBarRoutingProps): void => {
+		switch (contentType) {
+			case `userSavedTrack`:
+				if (selectedContents.userSavedTrack) {
+					setCurrentContent(UserSavedTrack);
+					break;
+				}
+				break;
+			case `playList`:
+				if (selectedContents.playList) {
+					setCurrentContent(PlayList);
+					break;
+				}
+				break;
+			case 'artist':
+				if (selectedContents.artist) {
+					setCurrentContent(Artist);
+					break;
+				}
+				break;
+			default:
+				break;
+		}
+	};
+
+	const handleLeftDetailRouting = ({
 		contentType,
 		contentId,
-	}: HandleRoutingProps): void => {
+	}: HandleLeftDetailRoutingProps): void => {
 		switch (contentType) {
 			case `userSavedTrack`:
 				if (selectedContents.userSavedTrack) {
@@ -72,6 +104,7 @@ export const useRouting = (): UserRoutingProps => {
 
 	return {
 		currentContent,
-		handleRouting,
+		handleLeftBarRouting,
+		handleLeftDetailRouting,
 	};
 };

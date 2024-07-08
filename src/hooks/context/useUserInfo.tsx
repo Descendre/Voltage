@@ -39,6 +39,7 @@ export const useUserInfo = (): UseUserInfoProps => {
 	useEffect(() => {
 		if (!spotifyToken) return;
 		(async (): Promise<void> => {
+			console.log('call');
 			handleSetUserInfo(spotifyToken);
 		})();
 	}, [spotifyToken]);

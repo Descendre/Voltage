@@ -1,3 +1,9 @@
+import { ContentsBackground } from '@/components';
+
 export const UserSavedTrack = () => {
-	return <div>UserSavedTrack</div>;
+	return (
+		<ContentsBackground>
+			<div>UserSavedTrack</div>
+		</ContentsBackground>
+	);
 };

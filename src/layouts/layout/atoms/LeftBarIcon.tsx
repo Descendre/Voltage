@@ -1,10 +1,11 @@
 'use client';
-import { useLayouts } from '@/hooks';
+import { useLayouts, useRouting } from '@/hooks';
 import { LeftBarProps } from '@/interfaces';
 import { usePalette } from '@/utils';
 import { Box, Tooltip } from '@mui/material';
 
-export const LeftBarIcon = ({ icon, titleJp }: LeftBarProps) => {
+export const LeftBarIcon = ({ icon, titleJp, contentType }: LeftBarProps) => {
+	const { handleLeftBarRouting } = useRouting();
 	const palette = usePalette();
 	const {
 		selectedLeftContent,
@@ -26,7 +27,10 @@ export const LeftBarIcon = ({ icon, titleJp }: LeftBarProps) => {
 	return (
 		<Tooltip title={titleJp} placement="right" arrow>
 			<Box
-				onClick={() => handleSelectedLeftContent()}
+				onClick={() => {
+					handleSelectedLeftContent();
+					handleLeftBarRouting({ contentType: contentType });
+				}}
 				sx={{
 					display: 'flex',
 					justifyContent: 'center',
