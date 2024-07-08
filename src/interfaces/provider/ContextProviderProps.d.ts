@@ -72,6 +72,10 @@ export interface ContextProviderProps {
 			'userSavedTrack' | 'playList' | 'artist' | 'search' | null
 		>
 	>;
+	currentTrack: HTMLAudioElement | null;
+	setCurrentTrack: React.Dispatch<
+		React.SetStateAction<HTMLAudioElement | null>
+	>;
 
 	isSearchModal: boolean;
 	setIsSearchModal: React.Dispatch<React.SetStateAction<boolean>>;

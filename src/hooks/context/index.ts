@@ -6,3 +6,4 @@ export * from './useSelectedContent';
 export * from './useArtist';
 export * from './useTrack';
 export * from './useRouting';
+export * from './useMusic';
