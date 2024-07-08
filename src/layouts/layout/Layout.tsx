@@ -1,6 +1,12 @@
 'use client';
 import React, { ReactNode } from 'react';
-import { Header, LeftBar, LeftDetailBar, PlayListModal } from './blocks';
+import {
+	Footer,
+	Header,
+	LeftBar,
+	LeftDetailBar,
+	PlayListModal,
+} from './blocks';
 import { Box } from '@mui/material';
 import { useLayouts } from '@/hooks';
 
@@ -15,14 +21,15 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 					flexDirection: 'column',
 					justifyContent: 'start',
 					alignItems: 'start',
-					height: '100%',
-					maxWidth: '100vw',
+					height: '100vh',
+					width: '100%',
 					overflowX: 'hidden',
 				}}
 			>
 				<Header />
 				<Box
 					sx={{
+						height: 'calc(100% - 60px)',
 						display: 'flex',
 						width: '100%',
 					}}
@@ -31,14 +38,16 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 					{selectedLeftContent &&
 						selectedLeftContent !== 'プロフィール' &&
 						isLeftDetail && <LeftDetailBar />}
-					<Box
-						flexGrow={1}
-						height="100%"
-						sx={{
-							overflowY: 'overlay',
-						}}
-					>
-						{children}
+					<Box position="relative" flexGrow={1} height="100%">
+						<Box
+							height="calc(100% - 80px)"
+							sx={{
+								overflowY: 'overlay',
+							}}
+						>
+							{children}
+						</Box>
+						<Footer />
 					</Box>
 				</Box>
 			</Box>

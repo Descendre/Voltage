@@ -65,6 +65,8 @@ export interface ContextProviderProps {
 	setIsPlay: React.Dispatch<React.SetStateAction<boolean>>;
 	isLeftDetail: boolean;
 	setIsLeftDetail: React.Dispatch<React.SetStateAction<boolean>>;
+	isFooter: boolean;
+	setIsFooter: React.Dispatch<React.SetStateAction<boolean>>;
 	isFirstFetchComplete: isFirstFetchCompleteProps;
 	setIsFirstFetchComplete: React.Dispatch<
 		React.SetStateAction<isFirstFetchCompleteProps>

@@ -46,6 +46,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		'コレクション' | 'プロフィール' | 'プレイリスト' | 'アーティスト' | null
 	>('コレクション');
 	const [isLeftDetail, setIsLeftDetail] = useState<boolean>(true);
+	const [isFooter, setIsFooter] = useState<boolean>(true);
 	const [isFirstFetchComplete, setIsFirstFetchComplete] =
 		useState<isFirstFetchCompleteProps>({
 			userSavedTrack: false,
@@ -81,6 +82,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		setSelectedLastContent,
 		isLeftDetail,
 		setIsLeftDetail,
+		isFooter,
+		setIsFooter,
 		isFirstFetchComplete,
 		setIsFirstFetchComplete,
 	};
