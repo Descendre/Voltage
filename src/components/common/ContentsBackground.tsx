@@ -3,21 +3,21 @@ import { useDominantColors } from '@/hooks';
 import { ContentsBackgroundProps } from '@/interfaces';
 import { Box } from '@mui/material';
 
-export const ContentsBackground = ({
-	children,
-	url,
-}: ContentsBackgroundProps) => {
+export const ContentsBackground = ({ url }: ContentsBackgroundProps) => {
 	const { dominantRgbaColor } = useDominantColors(url || '');
 
 	return (
 		<Box
+			zIndex={-1}
+			position="fixed"
+			top={0}
+			left={0}
 			width="100%"
-			height="1000px"
+			height="100%"
 			sx={{
-				background: `linear-gradient(to bottom, rgba(${dominantRgbaColor}, 0.4), rgba(21, 21, 21, 0))`,
+				backgroundColor: `rgba(${dominantRgbaColor}, 0.1)`,
+				transition: 'background-color 0.3s ease',
 			}}
-		>
-			{children}
-		</Box>
+		></Box>
 	);
 };

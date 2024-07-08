@@ -5,6 +5,7 @@ import {
 	SpotifyTrackProps,
 	UseSelectedContentProps,
 	handleSelectContentProps,
+	searchParamProps,
 } from '@/interfaces';
 import { Context } from '@/provider';
 import { useContext } from 'react';

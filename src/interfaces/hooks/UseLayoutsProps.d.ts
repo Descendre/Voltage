@@ -1,6 +1,6 @@
 export interface UseLayoutsProps {
-	isPlayListModal: boolean;
-	setIsPlayListModal: React.Dispatch<React.SetStateAction<boolean>>;
+	isSearchModal: boolean;
+	setIsSearchModal: React.Dispatch<React.SetStateAction<boolean>>;
 	isFullScreen: boolean;
 	setIsFullscreen: React.Dispatch<React.SetStateAction<boolean>>;
 	handleToggleScreen: () => void;
@@ -10,10 +10,16 @@ export interface UseLayoutsProps {
 		| 'プロフィール'
 		| 'プレイリスト'
 		| 'アーティスト'
+		| '検索'
 		| null;
 	setSelectedLeftContent: React.Dispatch<
 		React.SetStateAction<
-			'コレクション' | 'プロフィール' | 'プレイリスト' | 'アーティスト' | null
+			| 'コレクション'
+			| 'プロフィール'
+			| 'プレイリスト'
+			| 'アーティスト'
+			| '検索'
+			| null
 		>
 	>;
 	selectedLastContent:
@@ -21,10 +27,16 @@ export interface UseLayoutsProps {
 		| 'プロフィール'
 		| 'プレイリスト'
 		| 'アーティスト'
+		| '検索'
 		| null;
 	setSelectedLastContent: React.Dispatch<
 		React.SetStateAction<
-			'コレクション' | 'プロフィール' | 'プレイリスト' | 'アーティスト' | null
+			| 'コレクション'
+			| 'プロフィール'
+			| 'プレイリスト'
+			| 'アーティスト'
+			| '検索'
+			| null
 		>
 	>;
 	isPlay: boolean;

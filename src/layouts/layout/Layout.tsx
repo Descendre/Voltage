@@ -1,17 +1,24 @@
 'use client';
 import React, { ReactNode } from 'react';
-import {
-	Footer,
-	Header,
-	LeftBar,
-	LeftDetailBar,
-	PlayListModal,
-} from './blocks';
+import { Footer, Header, LeftBar, LeftDetailBar, SearchModal } from './blocks';
 import { Box } from '@mui/material';
 import { useLayouts } from '@/hooks';
+import { useBreakPoint } from '@/utils';
 
 export const Layout = ({ children }: { children: ReactNode }) => {
+	const breakpoint = useBreakPoint();
 	const { selectedLeftContent, isLeftDetail } = useLayouts();
+
+	let isLeftDetailBar: boolean;
+	if (
+		selectedLeftContent &&
+		selectedLeftContent !== 'プロフィール' &&
+		isLeftDetail
+	) {
+		isLeftDetailBar = true;
+	} else {
+		isLeftDetailBar = false;
+	}
 
 	return (
 		<>
@@ -35,12 +42,21 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 					}}
 				>
 					<LeftBar />
-					{selectedLeftContent &&
-						selectedLeftContent !== 'プロフィール' &&
-						isLeftDetail && <LeftDetailBar />}
-					<Box position="relative" flexGrow={1} height="100%">
+					{isLeftDetailBar && <LeftDetailBar />}
+					<Box
+						position="relative"
+						width={
+							['xs'].includes(breakpoint)
+								? 'calc(100vw - 50px)'
+								: `calc(100% - ${isLeftDetailBar ? '350px' : '50px'})`
+						}
+						height="100%"
+					>
 						<Box
-							height="calc(100% - 80px)"
+							width="100%"
+							height={
+								['xs'].includes(breakpoint) ? '100%' : 'calc(100% - 80px)'
+							}
 							sx={{
 								overflowY: 'overlay',
 							}}
@@ -52,7 +68,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 				</Box>
 			</Box>
 
-			<PlayListModal />
+			<SearchModal />
 		</>
 	);
 };

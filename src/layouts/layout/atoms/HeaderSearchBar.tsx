@@ -1,17 +1,17 @@
 'use client';
 import { useLayouts } from '@/hooks';
 import { usePalette } from '@/utils';
-import { Search } from '@mui/icons-material';
+import { Mic } from '@mui/icons-material';
 import { Box, Chip, InputAdornment, TextField } from '@mui/material';
 import React, { useRef } from 'react';
 
 export const HeaderSearchBar = () => {
-	const { setIsPlayListModal } = useLayouts();
+	const { setIsSearchModal } = useLayouts();
 	const palette = usePalette();
 	const disabledRef = useRef<HTMLInputElement>(null);
 
 	const handleBarClick = (): void => {
-		setIsPlayListModal(true);
+		setIsSearchModal(true);
 		if (disabledRef.current) {
 			disabledRef.current.blur();
 		}
@@ -37,7 +37,7 @@ export const HeaderSearchBar = () => {
 					inputRef={disabledRef}
 					variant="outlined"
 					size="small"
-					placeholder="プレイリストを作成する"
+					placeholder="Voltageに話しかける"
 					sx={{
 						pointerEvents: 'none',
 					}}
@@ -51,7 +51,7 @@ export const HeaderSearchBar = () => {
 					InputProps={{
 						startAdornment: (
 							<InputAdornment position="start">
-								<Search fontSize="small" sx={{ color: palette.icon.hide }} />
+								<Mic fontSize="small" sx={{ color: palette.icon.hide }} />
 							</InputAdornment>
 						),
 						endAdornment: (
@@ -59,7 +59,7 @@ export const HeaderSearchBar = () => {
 								<Chip
 									disabled
 									variant="outlined"
-									label="Type [/] to search"
+									label="Type [/] to speech"
 									size="small"
 								/>
 							</InputAdornment>

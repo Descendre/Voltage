@@ -8,6 +8,7 @@ declare module '@mui/material/styles' {
 			secondary: string;
 			line: string;
 			subLine: string;
+			grayLine: string;
 			playIcon: {
 				play: string;
 				pause: string;
@@ -25,6 +26,7 @@ declare module '@mui/material/styles' {
 			secondary: string;
 			line: string;
 			subLine: string;
+			grayLine: string;
 			playIcon: {
 				play: string;
 				pause: string;

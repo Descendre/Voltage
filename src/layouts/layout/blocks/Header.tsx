@@ -11,10 +11,10 @@ import {
 import {
 	Fullscreen,
 	FullscreenExit,
+	Mic,
 	MoreHoriz,
 	Pause,
 	PlayArrow,
-	Search,
 	SettingsSuggest,
 } from '@mui/icons-material';
 import { useBreakPoint, usePalette } from '@/utils';
@@ -23,7 +23,7 @@ export const Header = () => {
 	const palette = usePalette();
 	const breakpoint = useBreakPoint();
 	const {
-		setIsPlayListModal,
+		setIsSearchModal,
 		isFullScreen,
 		handleToggleScreen,
 		handleTogglePlay,
@@ -61,8 +61,8 @@ export const Header = () => {
 					{['xs'].includes(breakpoint) ? (
 						<>
 							<HeaderIconButton
-								icon={<Search fontSize="small" />}
-								onClick={setIsPlayListModal}
+								icon={<Mic fontSize="small" />}
+								onClick={setIsSearchModal}
 							/>
 							<HeaderIconButton icon={<MoreHoriz fontSize="small" />} />
 						</>

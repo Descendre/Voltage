@@ -37,10 +37,16 @@ export interface ContextProviderProps {
 		| 'プロフィール'
 		| 'プレイリスト'
 		| 'アーティスト'
+		| '検索'
 		| null;
 	setSelectedLeftContent: React.Dispatch<
 		React.SetStateAction<
-			'コレクション' | 'プロフィール' | 'プレイリスト' | 'アーティスト' | null
+			| 'コレクション'
+			| 'プロフィール'
+			| 'プレイリスト'
+			| 'アーティスト'
+			| '検索'
+			| null
 		>
 	>;
 	selectedLastContent:
@@ -48,19 +54,27 @@ export interface ContextProviderProps {
 		| 'プロフィール'
 		| 'プレイリスト'
 		| 'アーティスト'
+		| '検索'
 		| null;
 	setSelectedLastContent: React.Dispatch<
 		React.SetStateAction<
-			'コレクション' | 'プロフィール' | 'プレイリスト' | 'アーティスト' | null
+			| 'コレクション'
+			| 'プロフィール'
+			| 'プレイリスト'
+			| 'アーティスト'
+			| '検索'
+			| null
 		>
 	>;
-	currentContent: 'userSavedTrack' | 'playList' | 'artist' | null;
+	currentContent: 'userSavedTrack' | 'playList' | 'artist' | 'search' | null;
 	setCurrentContent: React.Dispatch<
-		React.SetStateAction<'userSavedTrack' | 'playList' | 'artist' | null>
+		React.SetStateAction<
+			'userSavedTrack' | 'playList' | 'artist' | 'search' | null
+		>
 	>;
 
-	isPlayListModal: boolean;
-	setIsPlayListModal: React.Dispatch<React.SetStateAction<boolean>>;
+	isSearchModal: boolean;
+	setIsSearchModal: React.Dispatch<React.SetStateAction<boolean>>;
 	isFullScreen: boolean;
 	setIsFullscreen: React.Dispatch<React.SetStateAction<boolean>>;
 	isPlay: boolean;
@@ -83,10 +97,15 @@ export interface selectedContentsProps {
 	userSavedTrack: SpotifyTrackProps | null;
 	playList: PlaylistItem | null;
 	artist: SpotifyArtistProps | null;
+	search: searchParamProps | null;
 }
 
 export interface isFirstFetchCompleteProps {
 	userSavedTrack: boolean;
 	userPlayList: boolean;
 	userArtist: boolean;
+}
+
+export interface searchParamProps {
+	query: string | null;
 }

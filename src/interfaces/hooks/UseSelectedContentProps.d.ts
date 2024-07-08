@@ -1,6 +1,7 @@
+import { searchParamProps } from './../provider/ContextProviderProps.d';
 import { UseArtistProps } from './UserArtistProps.d';
 import { PlaylistItem, SpotifyArtistProps, SpotifyTrackProps } from '../api';
-import { selectedContentsProps } from '../provider';
+import { searchParamProps, selectedContentsProps } from '../provider';
 
 export interface UseSelectedContentProps {
 	selectedContents: selectedContentsProps;
@@ -15,6 +16,11 @@ export interface UseSelectedContentProps {
 }
 
 export interface handleSelectContentProps {
-	name: 'userSavedTrack' | 'playList' | 'artist';
-	content: SpotifyTrackProps | PlaylistItem | SpotifyArtistProps | null;
+	name: 'userSavedTrack' | 'playList' | 'artist' | 'search';
+	content:
+		| SpotifyTrackProps
+		| PlaylistItem
+		| SpotifyArtistProps
+		| searchParamProps
+		| null;
 }

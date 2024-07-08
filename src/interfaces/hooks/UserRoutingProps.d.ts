@@ -1,5 +1,5 @@
 export interface UserRoutingProps {
-	currentContent: 'userSavedTrack' | 'playList' | 'artist' | null;
+	currentContent: 'userSavedTrack' | 'playList' | 'artist' | 'search' | null;
 	handleLeftBarRouting: ({ contentType }: HandleLeftBarRoutingProps) => void;
 	handleLeftDetailRouting: ({
 		contentType,
@@ -8,10 +8,10 @@ export interface UserRoutingProps {
 }
 
 export interface HandleLeftBarRoutingProps {
-	contentType?: 'userSavedTrack' | 'playList' | 'artist';
+	contentType?: 'userSavedTrack' | 'playList' | 'artist' | 'search';
 }
 
 export interface HandleLeftDetailRoutingProps {
-	contentType: 'userSavedTrack' | 'playList' | 'artist';
+	contentType: 'userSavedTrack' | 'playList' | 'artist' | 'search';
 	contentId: string;
 }

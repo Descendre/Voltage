@@ -1,12 +1,14 @@
-import { usePalette } from '@/utils';
+import { useBreakPoint, usePalette } from '@/utils';
 import { Box } from '@mui/material';
 
 export const Footer = () => {
 	const palette = usePalette();
+	const breakpoint = useBreakPoint();
 
 	return (
 		<>
 			<Box
+				display={['xs'].includes(breakpoint) ? 'none' : 'block'}
 				position="fixed"
 				bottom={0}
 				width="100%"
@@ -18,7 +20,10 @@ export const Footer = () => {
 			>
 				Footer
 			</Box>
-			<Box height="80px"></Box>
+			<Box
+				height="80px"
+				display={['xs'].includes(breakpoint) ? 'none' : 'block'}
+			></Box>
 		</>
 	);
 };

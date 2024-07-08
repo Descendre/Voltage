@@ -40,6 +40,9 @@ export const useRouting = (): UserRoutingProps => {
 					break;
 				}
 				break;
+			case 'search':
+				setCurrentContent('search');
+				break;
 			default:
 				break;
 		}
@@ -81,6 +84,17 @@ export const useRouting = (): UserRoutingProps => {
 					}
 				} else {
 					setCurrentContent('artist');
+				}
+				break;
+			case 'search':
+				if (selectedContents.artist) {
+					if (selectedContents.artist.id === contentId) {
+						setCurrentContent(null);
+					} else {
+						setCurrentContent('search');
+					}
+				} else {
+					setCurrentContent('search');
 				}
 				break;
 			default:

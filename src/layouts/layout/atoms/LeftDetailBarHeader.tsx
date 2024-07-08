@@ -1,8 +1,7 @@
 'use client';
 import { LeftDetailBarHeaderProps } from '@/interfaces';
 import { usePalette } from '@/utils';
-import { AddCircleOutline, DeleteOutline } from '@mui/icons-material';
-import { Box, IconButton, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import React from 'react';
 
 export const LeftDetailBarHeader = ({ title }: LeftDetailBarHeaderProps) => {
@@ -29,36 +28,6 @@ export const LeftDetailBarHeader = ({ title }: LeftDetailBarHeaderProps) => {
 				>
 					{title}
 				</Typography>
-				<Box
-					sx={{
-						display: 'flex',
-						justifyContent: 'center',
-						alignItems: 'center',
-					}}
-				>
-					<IconButton
-						color="info"
-						disableTouchRipple
-						size="small"
-						sx={{
-							width: '50%',
-							borderRadius: 0,
-						}}
-					>
-						<AddCircleOutline fontSize="small" />
-					</IconButton>
-					<IconButton
-						color="error"
-						disableTouchRipple
-						size="small"
-						sx={{
-							width: '50%',
-							borderRadius: 0,
-						}}
-					>
-						<DeleteOutline fontSize="small" />
-					</IconButton>
-				</Box>
 			</Box>
 		</Box>
 	);
