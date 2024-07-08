@@ -1,6 +1,7 @@
 'use client';
 import {
 	useArtist,
+	useContentSort,
 	useFirstFetchComplete,
 	useLayouts,
 	usePlayList,
@@ -17,11 +18,11 @@ import {
 import { useBreakPoint, usePalette } from '@/utils';
 import {
 	DndContext,
-	DragEndEvent,
 	useDroppable,
 	useSensor,
 	useSensors,
 	MouseSensor,
+	pointerWithin,
 } from '@dnd-kit/core';
 import { SortableContext } from '@dnd-kit/sortable';
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
@@ -33,6 +34,7 @@ export const LeftDetailBar = () => {
 	const { userArtist } = useArtist();
 	const { isFirstFetchComplete } = useFirstFetchComplete();
 	const { handleContentClick } = useSelectedContent();
+	const { handleCollentionDragEnd } = useContentSort();
 	const palette = usePalette();
 	const breakpoint = useBreakPoint();
 
@@ -42,14 +44,6 @@ export const LeftDetailBar = () => {
 	const sensors = useSensors(
 		useSensor(MouseSensor, { activationConstraint: { distance: 5 } })
 	);
-
-	const handleDragEnd = (result: DragEndEvent) => {
-		const { active, over } = result;
-		if (active && over) {
-			console.log('元の位置:', active.id);
-			console.log('入れ替え先の位置:', over.id);
-		}
-	};
 
 	return (
 		<>
@@ -74,7 +68,8 @@ export const LeftDetailBar = () => {
 				/>
 				<DndContext
 					sensors={sensors}
-					onDragEnd={handleDragEnd}
+					collisionDetection={pointerWithin}
+					onDragEnd={handleCollentionDragEnd}
 					modifiers={[restrictToVerticalAxis]}
 				>
 					<List
