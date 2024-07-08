@@ -1,3 +1,4 @@
+'use client';
 import Vibrant from 'node-vibrant';
 
 export const getDominantColor = async (imageUrl: string): Promise<string> => {

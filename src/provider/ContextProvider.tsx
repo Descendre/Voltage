@@ -34,7 +34,9 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 			playList: null,
 			artist: null,
 		});
-	const [currentContent, setCurrentContent] = useState<ReactNode>(NoSelected);
+	const [currentContent, setCurrentContent] = useState<
+		'userSavedTrack' | 'playList' | 'artist' | null
+	>(null);
 
 	const [isPlay, setIsPlay] = useState<boolean>(false);
 	const [isPlayListModal, setIsPlayListModal] = useState<boolean>(false);
