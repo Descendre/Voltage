@@ -8,17 +8,17 @@ import {
 } from '@/interfaces';
 import { Context } from '@/provider';
 import { useContext } from 'react';
-import { useLayouts } from './useLayouts';
 import { useBreakPoint } from '@/utils';
 
 export const useSelectedContent = (): UseSelectedContentProps => {
-	const { setSelectedLeftContent, setIsLeftDetail } = useLayouts();
 	const breakpoint = useBreakPoint();
 
 	const context = useContext(Context);
 	if (!context) {
 		throw new Error('Context is not provided');
 	}
+
+	const { setIsLeftDetail, setSelectedLeftContent } = context;
 
 	const handleSelectContent = ({
 		name,

@@ -1,7 +1,5 @@
-import { ReactNode } from 'react';
-
 export interface UserRoutingProps {
-	currentContent: ReactNode;
+	currentContent: 'userSavedTrack' | 'playList' | 'artist' | null;
 	handleLeftBarRouting: ({ contentType }: HandleLeftBarRoutingProps) => void;
 	handleLeftDetailRouting: ({
 		contentType,

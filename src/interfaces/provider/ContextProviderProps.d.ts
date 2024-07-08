@@ -54,8 +54,10 @@ export interface ContextProviderProps {
 			'コレクション' | 'プロフィール' | 'プレイリスト' | 'アーティスト' | null
 		>
 	>;
-	currentContent: ReactNode;
-	setCurrentContent: React.Dispatch<React.SetStateAction<ReactNode>>;
+	currentContent: 'userSavedTrack' | 'playList' | 'artist' | null;
+	setCurrentContent: React.Dispatch<
+		React.SetStateAction<'userSavedTrack' | 'playList' | 'artist' | null>
+	>;
 
 	isPlayListModal: boolean;
 	setIsPlayListModal: React.Dispatch<React.SetStateAction<boolean>>;

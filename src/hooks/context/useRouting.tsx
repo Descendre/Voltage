@@ -1,14 +1,12 @@
 'use client';
-import { useRouter } from 'next/navigation';
-import { useSelectedContent, useUserInfo } from '../context';
-import { useContext, useEffect } from 'react';
+import { useSelectedContent } from '../context';
+import { useContext } from 'react';
 import {
 	UserRoutingProps,
 	HandleLeftBarRoutingProps,
 	HandleLeftDetailRoutingProps,
 } from '@/interfaces';
 import { Context } from '@/provider';
-import { Artist, NoSelected, PlayList, UserSavedTrack } from '@/contents';
 
 export const useRouting = (): UserRoutingProps => {
 	const context = useContext(Context);
@@ -18,9 +16,7 @@ export const useRouting = (): UserRoutingProps => {
 
 	const { currentContent, setCurrentContent } = context;
 
-	const { handleSetSpotifyToken } = useUserInfo();
 	const { selectedContents } = useSelectedContent();
-	const router = useRouter();
 
 	const handleLeftBarRouting = ({
 		contentType,
@@ -28,19 +24,19 @@ export const useRouting = (): UserRoutingProps => {
 		switch (contentType) {
 			case `userSavedTrack`:
 				if (selectedContents.userSavedTrack) {
-					setCurrentContent(UserSavedTrack);
+					setCurrentContent('userSavedTrack');
 					break;
 				}
 				break;
 			case `playList`:
 				if (selectedContents.playList) {
-					setCurrentContent(PlayList);
+					setCurrentContent('playList');
 					break;
 				}
 				break;
 			case 'artist':
 				if (selectedContents.artist) {
-					setCurrentContent(Artist);
+					setCurrentContent('artist');
 					break;
 				}
 				break;
@@ -57,34 +53,34 @@ export const useRouting = (): UserRoutingProps => {
 			case `userSavedTrack`:
 				if (selectedContents.userSavedTrack) {
 					if (selectedContents.userSavedTrack.id === contentId) {
-						setCurrentContent(NoSelected);
+						setCurrentContent(null);
 					} else {
-						setCurrentContent(UserSavedTrack);
+						setCurrentContent('userSavedTrack');
 					}
 				} else {
-					setCurrentContent(UserSavedTrack);
+					setCurrentContent('userSavedTrack');
 				}
 				break;
 			case 'playList':
 				if (selectedContents.playList) {
 					if (selectedContents.playList.id === contentId) {
-						setCurrentContent(NoSelected);
+						setCurrentContent(null);
 					} else {
-						setCurrentContent(PlayList);
+						setCurrentContent('playList');
 					}
 				} else {
-					setCurrentContent(PlayList);
+					setCurrentContent('playList');
 				}
 				break;
 			case 'artist':
 				if (selectedContents.artist) {
 					if (selectedContents.artist.id === contentId) {
-						setCurrentContent(NoSelected);
+						setCurrentContent(null);
 					} else {
-						setCurrentContent(Artist);
+						setCurrentContent('artist');
 					}
 				} else {
-					setCurrentContent(Artist);
+					setCurrentContent('artist');
 				}
 				break;
 			default:
