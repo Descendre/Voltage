@@ -1,3 +1,4 @@
+'use client';
 import {
 	SpotifyTokenProps,
 	SpotifyUserInfoResponse,
@@ -15,11 +16,12 @@ export const useUserInfo = (): UseUserInfoProps => {
 
 	const { userInfo, setUserInfo, spotifyToken, setSpotifyToken } = context;
 
-	const handleSetSpotifyToken = async (): Promise<void> => {
+	const handleSetSpotifyToken = async (): Promise<SpotifyTokenProps> => {
 		const response: SpotifyTokenProps = await axiosFetch.get(
 			'/api/user/spotifyToken'
 		);
 		setSpotifyToken(response);
+		return response;
 	};
 
 	const handleSetUserInfo = async (

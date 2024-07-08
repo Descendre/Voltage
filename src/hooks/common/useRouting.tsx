@@ -5,13 +5,14 @@ import { useEffect } from 'react';
 import { UserRoutingProps, HandleRoutingProps } from '@/interfaces';
 
 export const useRouting = (): UserRoutingProps => {
-	const { spotifyToken, handleSetSpotifyToken } = useUserInfo();
+	const { handleSetSpotifyToken } = useUserInfo();
 	const { selectedContents } = useSelectedContent();
 	const router = useRouter();
 
 	useEffect(() => {
 		(async () => {
-			if (spotifyToken) return;
+			const coolieSpotifyToken = await handleSetSpotifyToken();
+			if (coolieSpotifyToken) return;
 			router.push('/api/auth/login');
 			await handleSetSpotifyToken();
 		})();
