@@ -1,7 +1,7 @@
 'use client';
 import { useDominantColors, useSelectedContent } from '@/hooks';
 import { LeftDetailHeaderListItemProps } from '@/interfaces';
-import { DragHandle } from '@mui/icons-material';
+import { KeyboardArrowRight } from '@mui/icons-material';
 import {
 	Avatar,
 	ListItemAvatar,
@@ -71,7 +71,7 @@ export const LeftDetailListItemButton = ({
 					},
 				}}
 			/>
-			<DragHandle fontSize="small" />
+			<KeyboardArrowRight fontSize="small" />
 		</ListItemButton>
 	);
 };
