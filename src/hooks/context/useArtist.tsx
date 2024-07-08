@@ -6,7 +6,7 @@ import {
 } from '@/interfaces';
 import { axiosFetch } from '@/libs';
 import { Context } from '@/provider';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 
 export const useArtist = (): UseArtistProps => {
 	const context = useContext(Context);
@@ -14,7 +14,7 @@ export const useArtist = (): UseArtistProps => {
 		throw new Error('Context is not provided');
 	}
 
-	const { spotifyToken, userArtist, setUserArtist } = context;
+	const { userArtist, setUserArtist } = context;
 
 	const handleSetArtistList = async (
 		spotifyToken: SpotifyTokenProps
@@ -28,15 +28,9 @@ export const useArtist = (): UseArtistProps => {
 		setUserArtist(response);
 	};
 
-	useEffect(() => {
-		if (!spotifyToken) return;
-		(async (): Promise<void> => {
-			handleSetArtistList(spotifyToken);
-		})();
-	}, [spotifyToken]);
-
 	return {
 		userArtist,
 		setUserArtist,
+		handleSetArtistList,
 	};
 };
