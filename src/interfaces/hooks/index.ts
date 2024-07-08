@@ -6,4 +6,3 @@ export * from './UseSelectedContentProps';
 export * from './UserArtistProps';
 export * from './UseDominantColorProps';
 export * from './UseTrackProps';
-export * from './UseContentSortProps';
