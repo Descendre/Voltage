@@ -1,10 +1,19 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { useSelectedContent, useUserInfo } from '../context';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { UserRoutingProps, HandleRoutingProps } from '@/interfaces';
+import { Context } from '@/provider';
+import { Artist, NoSelected, PlayList, UserSavedTrack } from '@/contents';
 
 export const useRouting = (): UserRoutingProps => {
+	const context = useContext(Context);
+	if (!context) {
+		throw new Error('Context is not provided');
+	}
+
+	const { currentContent, setCurrentContent } = context;
+
 	const { handleSetSpotifyToken } = useUserInfo();
 	const { selectedContents } = useSelectedContent();
 	const router = useRouter();
@@ -26,34 +35,34 @@ export const useRouting = (): UserRoutingProps => {
 			case `userSavedTrack`:
 				if (selectedContents.userSavedTrack) {
 					if (selectedContents.userSavedTrack.id === contentId) {
-						router.push(`/`);
+						setCurrentContent(NoSelected);
 					} else {
-						router.push(`/track/${contentId}`);
+						setCurrentContent(UserSavedTrack);
 					}
 				} else {
-					router.push(`/track/${contentId}`);
+					setCurrentContent(UserSavedTrack);
 				}
 				break;
 			case 'playList':
 				if (selectedContents.playList) {
 					if (selectedContents.playList.id === contentId) {
-						router.push(`/`);
+						setCurrentContent(NoSelected);
 					} else {
-						router.push(`/playList/${contentId}`);
+						setCurrentContent(PlayList);
 					}
 				} else {
-					router.push(`/playList/${contentId}`);
+					setCurrentContent(PlayList);
 				}
 				break;
 			case 'artist':
 				if (selectedContents.artist) {
 					if (selectedContents.artist.id === contentId) {
-						router.push(`/`);
+						setCurrentContent(NoSelected);
 					} else {
-						router.push(`/artist/${contentId}`);
+						setCurrentContent(Artist);
 					}
 				} else {
-					router.push(`/artist/${contentId}`);
+					setCurrentContent(Artist);
 				}
 				break;
 			default:
@@ -62,6 +71,7 @@ export const useRouting = (): UserRoutingProps => {
 	};
 
 	return {
+		currentContent,
 		handleRouting,
 	};
 };

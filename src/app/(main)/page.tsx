@@ -3,7 +3,7 @@
 import { useRouting } from '@/hooks';
 
 export default function Home() {
-	useRouting();
+	const { currentContent } = useRouting();
 
-	return <>home</>;
+	return <>{currentContent}</>;
 }

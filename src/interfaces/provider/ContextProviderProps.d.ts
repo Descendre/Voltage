@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import {
 	PlaylistItem,
 	SpotifyArtistProps,
@@ -53,6 +54,8 @@ export interface ContextProviderProps {
 			'コレクション' | 'プロフィール' | 'プレイリスト' | 'アーティスト' | null
 		>
 	>;
+	currentContent: ReactNode;
+	setCurrentContent: React.Dispatch<React.SetStateAction<ReactNode>>;
 
 	isPlayListModal: boolean;
 	setIsPlayListModal: React.Dispatch<React.SetStateAction<boolean>>;
