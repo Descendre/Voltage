@@ -1,5 +1,4 @@
 'use client';
-import { NoSelected } from '@/contents';
 import {
 	ContextProviderProps,
 	SpotifyTokenProps,
@@ -33,19 +32,32 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 			userSavedTrack: null,
 			playList: null,
 			artist: null,
+			search: {
+				query: null,
+			},
 		});
 	const [currentContent, setCurrentContent] = useState<
-		'userSavedTrack' | 'playList' | 'artist' | null
+		'userSavedTrack' | 'playList' | 'artist' | 'search' | null
 	>(null);
 
 	const [isPlay, setIsPlay] = useState<boolean>(false);
-	const [isPlayListModal, setIsPlayListModal] = useState<boolean>(false);
+	const [isSearchModal, setIsSearchModal] = useState<boolean>(false);
 	const [isFullScreen, setIsFullscreen] = useState<boolean>(false);
 	const [selectedLeftContent, setSelectedLeftContent] = useState<
-		'コレクション' | 'プロフィール' | 'プレイリスト' | 'アーティスト' | null
+		| 'コレクション'
+		| 'プロフィール'
+		| 'プレイリスト'
+		| 'アーティスト'
+		| '検索'
+		| null
 	>('コレクション');
 	const [selectedLastContent, setSelectedLastContent] = useState<
-		'コレクション' | 'プロフィール' | 'プレイリスト' | 'アーティスト' | null
+		| 'コレクション'
+		| 'プロフィール'
+		| 'プレイリスト'
+		| 'アーティスト'
+		| '検索'
+		| null
 	>('コレクション');
 	const [isLeftDetail, setIsLeftDetail] = useState<boolean>(true);
 	const [isFooter, setIsFooter] = useState<boolean>(true);
@@ -74,8 +86,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 
 		isPlay,
 		setIsPlay,
-		isPlayListModal,
-		setIsPlayListModal,
+		isSearchModal,
+		setIsSearchModal,
 		isFullScreen,
 		setIsFullscreen,
 		selectedLeftContent,

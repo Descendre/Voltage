@@ -1,12 +1,12 @@
 'use client';
 import { createTheme } from '@mui/material';
-import { green, orange } from '@mui/material/colors';
+import { blue, green, orange, yellow } from '@mui/material/colors';
 
 export const siteTheme = createTheme({
 	palette: {
 		mode: 'dark',
 		primary: {
-			main: orange[900],
+			main: blue[800],
 		},
 		background: {
 			default: '#151515',
@@ -17,6 +17,7 @@ export const siteTheme = createTheme({
 			secondary: '#000000',
 			line: '#233240',
 			subLine: '#233240',
+			grayLine: '#444444',
 			playIcon: {
 				play: green['A700'],
 				pause: orange['A700'],

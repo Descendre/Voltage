@@ -1,8 +1,11 @@
 'use client';
 import Vibrant from 'node-vibrant';
 
-export const getDominantColor = async (imageUrl: string): Promise<string> => {
+export const getDominantColor = async (
+	imageUrl: string | undefined
+): Promise<string> => {
 	try {
+		if (!imageUrl) return '0000ff';
 		const palette = await Vibrant.from(imageUrl).getPalette();
 
 		const dominantSwatch =

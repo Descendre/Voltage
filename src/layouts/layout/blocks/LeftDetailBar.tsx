@@ -70,7 +70,7 @@ export const LeftDetailBar = () => {
 									}}
 									key={index}
 									title={item.track.name}
-									subTitle={item.track.name}
+									subTitle={item.track.artists[0].name}
 									url={item.track.album.images[0]?.url}
 									id={item.track.id}
 								/>
@@ -123,7 +123,11 @@ export const LeftDetailBar = () => {
 				</List>
 			</Box>
 			{!['xs', 'xm'].includes(breakpoint) && (
-				<Box sx={{ width: '300px', maxWidth: 'calc(100% - 50px)' }} />
+				<Box
+					sx={{
+						width: ['xs'].includes(breakpoint) ? 'calc(100vw - 50px)' : '300px',
+					}}
+				/>
 			)}
 		</>
 	);

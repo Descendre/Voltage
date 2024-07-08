@@ -15,10 +15,11 @@ export const LeftBarIcon = ({ icon, titleJp, contentType }: LeftBarProps) => {
 	} = useLayouts();
 
 	const handleSelectedLeftContent = () => {
-		setIsLeftDetail(true);
 		if (titleJp === selectedLeftContent) {
+			setIsLeftDetail(false);
 			setSelectedLeftContent(null);
 		} else {
+			setIsLeftDetail(true);
 			setSelectedLeftContent(titleJp);
 			setSelectedLastContent(titleJp);
 		}

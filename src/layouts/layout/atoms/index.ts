@@ -6,3 +6,4 @@ export * from './LeftBarIcon';
 export * from './LeftDetailBarHeader';
 export * from './LeftDetailListItemButton';
 export * from './LeftDetailBarProgress';
+export * from './SearchModalHeader';

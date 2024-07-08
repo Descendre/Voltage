@@ -1,18 +1,19 @@
 'use client';
 import { useLayouts } from '@/hooks';
-import { useBreakPoint } from '@/utils';
-import { Close } from '@mui/icons-material';
-import { Grow, IconButton, Modal, Paper } from '@mui/material';
+import { useBreakPoint, usePalette } from '@/utils';
+import { Grow, Modal, Paper } from '@mui/material';
 import React, { useEffect } from 'react';
+import { SearchModalHeader } from '../atoms';
 
-export const PlayListModal = () => {
-	const { isPlayListModal, setIsPlayListModal } = useLayouts();
+export const SearchModal = () => {
+	const { isSearchModal, setIsSearchModal } = useLayouts();
 	const breakpoint = useBreakPoint();
+	const palette = usePalette();
 
 	useEffect(() => {
 		const handleKeyDown = (event: KeyboardEvent) => {
 			if (event.key === '/') {
-				setIsPlayListModal(true);
+				setIsSearchModal(true);
 			}
 		};
 		document.addEventListener('keydown', handleKeyDown);
@@ -23,31 +24,31 @@ export const PlayListModal = () => {
 
 	return (
 		<Modal
-			open={isPlayListModal}
-			onClose={() => setIsPlayListModal(false)}
+			open={isSearchModal}
+			onClose={() => setIsSearchModal(false)}
 			sx={{
 				display: 'flex',
 				justifyContent: 'center',
 				alignItems: 'start',
 			}}
 		>
-			<Grow in={isPlayListModal} timeout={300}>
+			<Grow in={isSearchModal} timeout={200}>
 				<Paper
-					elevation={4}
+					elevation={10}
 					sx={{
 						position: 'relative',
+						backgroundColor: palette.layout.secondary,
 						width: ['xs', 'sm'].includes(breakpoint) ? '100vw' : '800px',
 						height: ['xs', 'sm'].includes(breakpoint)
 							? '100vh'
 							: 'calc(100vh - 90px)',
 						maxHeight: '800px',
 						marginTop: ['xs', 'sm'].includes(breakpoint) ? '0px' : '60px',
-						borderRadius: '10px',
+						borderRadius: ['xs', 'sm'].includes(breakpoint) ? '0px' : '10px',
+						overflow: 'hidden',
 					}}
 				>
-					<IconButton sx={{ position: 'absolute', top: '2%', right: '2%' }}>
-						<Close onClick={() => setIsPlayListModal(false)} />
-					</IconButton>
+					<SearchModalHeader />
 				</Paper>
 			</Grow>
 		</Modal>

@@ -7,6 +7,7 @@ import {
 	FavoriteBorderOutlined,
 	LibraryMusicOutlined,
 	PeopleAltOutlined,
+	SearchOutlined,
 } from '@mui/icons-material';
 import { usePalette } from '@/utils';
 
@@ -53,6 +54,11 @@ export const LeftBar = () => {
 					icon={<PeopleAltOutlined />}
 					titleJp="アーティスト"
 					contentType="artist"
+				/>
+				<LeftBarIcon
+					icon={<SearchOutlined />}
+					titleJp="検索"
+					contentType="search"
 				/>
 				<LeftBarIcon icon={<AccountCircleOutlined />} titleJp="プロフィール" />
 			</Box>
