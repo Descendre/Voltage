@@ -4,6 +4,7 @@ import {
 	useFirstFetchComplete,
 	useLayouts,
 	usePlayList,
+	useRouting,
 	useSelectedContent,
 	useTrack,
 } from '@/hooks';
@@ -23,6 +24,7 @@ export const LeftDetailBar = () => {
 	const { userArtist } = useArtist();
 	const { isFirstFetchComplete } = useFirstFetchComplete();
 	const { handleContentClick } = useSelectedContent();
+	const { handleRouting } = useRouting();
 	const palette = usePalette();
 	const breakpoint = useBreakPoint();
 
@@ -58,9 +60,13 @@ export const LeftDetailBar = () => {
 						(isFirstFetchComplete.userSavedTrack ? (
 							userSavedTrack?.items.map((item, index) => (
 								<LeftDetailListItemButton
-									onClick={() =>
-										handleContentClick('userSavedTrack', item.track)
-									}
+									onClick={() => {
+										handleContentClick('userSavedTrack', item.track);
+										handleRouting({
+											contentType: 'userSavedTrack',
+											contentId: item.track.id,
+										});
+									}}
 									key={index}
 									title={item.track.name}
 									subTitle={item.track.name}
@@ -75,7 +81,13 @@ export const LeftDetailBar = () => {
 						(isFirstFetchComplete.userPlayList ? (
 							userPlayList?.items.map((item, index) => (
 								<LeftDetailListItemButton
-									onClick={() => handleContentClick('playList', item)}
+									onClick={() => {
+										handleContentClick('playList', item);
+										handleRouting({
+											contentType: 'playList',
+											contentId: item.id,
+										});
+									}}
 									key={index}
 									title={item.name}
 									subTitle={item.description}
@@ -90,7 +102,13 @@ export const LeftDetailBar = () => {
 						(isFirstFetchComplete.userArtist ? (
 							userArtist?.artists.items.map((item, index) => (
 								<LeftDetailListItemButton
-									onClick={() => handleContentClick('artist', item)}
+									onClick={() => {
+										handleContentClick('artist', item);
+										handleRouting({
+											contentType: 'artist',
+											contentId: item.id,
+										});
+									}}
 									key={index}
 									title={item.name}
 									subTitle={[...item.genres].toString()}
