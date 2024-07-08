@@ -9,5 +9,5 @@ export interface UseUserInfoProps {
 	setSpotifyToken: React.Dispatch<
 		React.SetStateAction<SpotifyTokenProps | null>
 	>;
-	handleSetSpotifyToken: () => Promise<void>;
+	handleSetSpotifyToken: () => Promise<SpotifyTokenProps>;
 }
