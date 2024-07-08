@@ -32,6 +32,7 @@ export const LeftDetailBar = () => {
 		<>
 			<Box
 				sx={{
+					zIndex: 50,
 					position: 'fixed',
 					top: '60px',
 					left: '50px',

@@ -24,6 +24,7 @@ export const LeftBar = () => {
 			<Box
 				sx={{
 					...scrollBarStyles,
+					zIndex: 50,
 					position: 'fixed',
 					top: '60px',
 					left: 0,
