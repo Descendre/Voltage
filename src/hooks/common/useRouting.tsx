@@ -22,16 +22,6 @@ export const useRouting = (): UserRoutingProps => {
 	const { selectedContents } = useSelectedContent();
 	const router = useRouter();
 
-	useEffect(() => {
-		(async () => {
-			console.log('a');
-			const coolieSpotifyToken = await handleSetSpotifyToken();
-			if (coolieSpotifyToken) return;
-			router.push('/api/auth/login');
-			await handleSetSpotifyToken();
-		})();
-	}, []);
-
 	const handleLeftBarRouting = ({
 		contentType,
 	}: HandleLeftBarRoutingProps): void => {

@@ -1,12 +1,8 @@
 'use client';
-import {
-	SpotifyTokenProps,
-	SpotifyUserInfoResponse,
-	UseUserInfoProps,
-} from '@/interfaces';
+import { SpotifyTokenProps, UseUserInfoProps } from '@/interfaces';
 import { axiosFetch } from '@/libs';
 import { Context } from '@/provider';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 
 export const useUserInfo = (): UseUserInfoProps => {
 	const context = useContext(Context);
@@ -23,26 +19,6 @@ export const useUserInfo = (): UseUserInfoProps => {
 		setSpotifyToken(response);
 		return response;
 	};
-
-	const handleSetUserInfo = async (
-		spotifyToken: SpotifyTokenProps
-	): Promise<void> => {
-		const response = await axiosFetch.get<SpotifyUserInfoResponse>(
-			`/api/user/userInfo`,
-			{
-				Authorization: `Bearer ${spotifyToken.access_token}`,
-			}
-		);
-		setUserInfo(response);
-	};
-
-	useEffect(() => {
-		if (!spotifyToken) return;
-		(async (): Promise<void> => {
-			console.log('call');
-			handleSetUserInfo(spotifyToken);
-		})();
-	}, [spotifyToken]);
 
 	return {
 		userInfo,

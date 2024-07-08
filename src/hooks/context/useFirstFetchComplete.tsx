@@ -2,6 +2,7 @@
 import { UseFirstFetchCompleteProps } from '@/interfaces';
 import { Context } from '@/provider';
 import { useContext, useEffect } from 'react';
+import { useArtist } from './useArtist';
 
 export const useFirstFetchComplete = (): UseFirstFetchCompleteProps => {
 	const context = useContext(Context);
@@ -23,7 +24,7 @@ export const useFirstFetchComplete = (): UseFirstFetchCompleteProps => {
 			userPlayList: userPlayList ? true : false,
 			userArtist: userArtist ? true : false,
 		});
-	}, [userPlayList]);
+	}, [userSavedTrack, userPlayList, useArtist]);
 
 	return {
 		isFirstFetchComplete,
