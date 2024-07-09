@@ -12,6 +12,8 @@ export const useLayouts = (): UseLayoutsProps => {
 	const {
 		isSearchModal,
 		setIsSearchModal,
+		isSettingModal,
+		setIsSettingModal,
 		isFullScreen,
 		setIsFullscreen,
 		selectedLeftContent,
@@ -31,6 +33,8 @@ export const useLayouts = (): UseLayoutsProps => {
 	return {
 		isSearchModal,
 		setIsSearchModal,
+		isSettingModal,
+		setIsSettingModal,
 		isFullScreen,
 		setIsFullscreen,
 		handleToggleScreen,

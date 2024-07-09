@@ -51,6 +51,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 
 	const [isPlay, setIsPlay] = useState<boolean>(false);
 	const [isSearchModal, setIsSearchModal] = useState<boolean>(false);
+	const [isSettingModal, setIsSettingModal] = useState<boolean>(false);
 	const [isFullScreen, setIsFullscreen] = useState<boolean>(false);
 	const [selectedLeftContent, setSelectedLeftContent] = useState<
 		| 'コレクション'
@@ -103,6 +104,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		setIsPlay,
 		isSearchModal,
 		setIsSearchModal,
+		isSettingModal,
+		setIsSettingModal,
 		isFullScreen,
 		setIsFullscreen,
 		selectedLeftContent,
