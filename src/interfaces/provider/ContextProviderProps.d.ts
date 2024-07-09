@@ -82,6 +82,14 @@ export interface ContextProviderProps {
 	>;
 	isPause: boolean | null;
 	setIsPause: React.Dispatch<React.SetStateAction<boolean | null>>;
+	trackValue: number;
+	setTrackValue: React.Dispatch<React.SetStateAction<number>>;
+	duration: number;
+	setDuration: React.Dispatch<React.SetStateAction<number>>;
+	currentTime: number;
+	setCurrentTime: React.Dispatch<React.SetStateAction<number>>;
+	isSeeking: boolean;
+	setIsSeeking: React.Dispatch<React.SetStateAction<boolean>>;
 
 	isSearchModal: boolean;
 	setIsSearchModal: React.Dispatch<React.SetStateAction<boolean>>;

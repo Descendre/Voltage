@@ -13,6 +13,9 @@ declare module '@mui/material/styles' {
 				play: string;
 				pause: string;
 			};
+			slider: {
+				rail: string;
+			};
 		};
 		icon: {
 			main: string;
@@ -30,6 +33,9 @@ declare module '@mui/material/styles' {
 			playIcon: {
 				play: string;
 				pause: string;
+			};
+			slider: {
+				rail: string;
 			};
 		};
 		icon: {

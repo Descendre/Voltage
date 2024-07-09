@@ -7,6 +7,7 @@ export const FooterPlayingContents = () => {
 
 	return (
 		<Box
+			zIndex={10}
 			height="60px"
 			overflow="hidden"
 			sx={{
