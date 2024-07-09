@@ -12,6 +12,7 @@ export const TrackHeaderDetail = ({ isColumn }: TrackHeaderDetailProps) => {
 			justifyContent="center"
 			alignItems="start"
 			flexDirection="column"
+			gap="5px"
 			sx={{
 				width: '100%',
 				height: '100%',

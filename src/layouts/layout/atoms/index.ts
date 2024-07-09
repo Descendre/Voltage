@@ -8,3 +8,4 @@ export * from './LeftDetailListItemButton';
 export * from './LeftDetailBarProgress';
 export * from './SearchModalHeader';
 export * from './SettingModalHeader';
+export * from './SettingModalToggleSection';

@@ -81,9 +81,6 @@ export const LeftDetailBar = () => {
 											<PlayArrow fontSize="small" />
 										) : playingContents?.id === item.track.id ? (
 											<Pause fontSize="small" />
-										) : selectedContents.userSavedTrack?.id ===
-										  item.track.id ? (
-											<PlayArrow fontSize="small" />
 										) : (
 											<KeyboardArrowRight fontSize="small" />
 										)
