@@ -1,5 +1,5 @@
 'use client';
-import { UseMusicProps } from '@/interfaces';
+import { HandlePlayTrackProps, UseMusicProps } from '@/interfaces';
 import { Context } from '@/provider';
 import { useContext } from 'react';
 
@@ -9,23 +9,44 @@ export const useMusic = (): UseMusicProps => {
 		throw new Error('Context is not provided');
 	}
 
-	const { currentTrack, setCurrentTrack } = context;
+	const { currentTrack, setCurrentTrack, playingContents, setPlayingContents } =
+		context;
 
-	const handlePlayTrack = (url: string | null | undefined) => {
-		if (currentTrack) {
-			currentTrack.pause();
-			setCurrentTrack(null);
-			return;
-		}
+	const handlePlayTrack = ({ url, content }: HandlePlayTrackProps): void => {
 		if (!url) return;
-		const audio = new Audio(url);
-		audio.play();
-		setCurrentTrack(audio);
+		if (currentTrack) {
+			if (playingContents?.id === content?.id) {
+				currentTrack.pause();
+				setCurrentTrack(null);
+				setPlayingContents(null);
+			} else {
+				currentTrack.pause();
+				setCurrentTrack(null);
+				const audio = new Audio(url);
+				audio.play();
+				audio.addEventListener('ended', () => {
+					setPlayingContents(null);
+				});
+				setCurrentTrack(audio);
+				setPlayingContents(content);
+			}
+			return;
+		} else {
+			const audio = new Audio(url);
+			audio.addEventListener('ended', () => {
+				setPlayingContents(null);
+			});
+			audio.play();
+			setCurrentTrack(audio);
+			setPlayingContents(content);
+		}
 	};
 
 	return {
 		currentTrack,
 		setCurrentTrack,
 		handlePlayTrack,
+		playingContents,
+		setPlayingContents,
 	};
 };

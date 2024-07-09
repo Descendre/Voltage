@@ -1,11 +1,5 @@
 'use client';
-import {
-	useArtist,
-	usePlayList,
-	useRouting,
-	useTrack,
-	useUserInfo,
-} from '@/hooks';
+import { useArtist, usePlayList, useTrack, useUserInfo } from '@/hooks';
 import { SpotifyUserInfoResponse } from '@/interfaces';
 import { axiosFetch } from '@/libs';
 import { SwitchingContents } from '@/views';
@@ -15,7 +9,6 @@ import { useEffect } from 'react';
 export default function Home() {
 	const router = useRouter();
 	const { setUserInfo, handleSetSpotifyToken } = useUserInfo();
-	const { currentContent } = useRouting();
 	const { handleSetTrackList } = useTrack();
 	const { handleSetUserPlayList } = usePlayList();
 	const { handleSetArtistList } = useArtist();

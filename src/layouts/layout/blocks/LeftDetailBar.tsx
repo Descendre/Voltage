@@ -3,6 +3,7 @@ import {
 	useArtist,
 	useFirstFetchComplete,
 	useLayouts,
+	useMusic,
 	usePlayList,
 	useRouting,
 	useSelectedContent,
@@ -16,6 +17,7 @@ import {
 	LeftDetailListItemButton,
 } from '../atoms';
 import { useBreakPoint, usePalette } from '@/utils';
+import { KeyboardArrowRight, Pause, PlayArrow } from '@mui/icons-material';
 
 export const LeftDetailBar = () => {
 	const { selectedLeftContent } = useLayouts();
@@ -23,8 +25,9 @@ export const LeftDetailBar = () => {
 	const { userPlayList } = usePlayList();
 	const { userArtist } = useArtist();
 	const { isFirstFetchComplete } = useFirstFetchComplete();
-	const { handleContentClick } = useSelectedContent();
+	const { selectedContents, handleContentClick } = useSelectedContent();
 	const { handleLeftDetailRouting } = useRouting();
+	const { playingContents } = useMusic();
 	const palette = usePalette();
 	const breakpoint = useBreakPoint();
 
@@ -73,6 +76,16 @@ export const LeftDetailBar = () => {
 									subTitle={item.track.artists[0].name}
 									url={item.track.album.images[0]?.url}
 									id={item.track.id}
+									icon={
+										playingContents?.id === item.track.id ? (
+											<Pause fontSize="small" />
+										) : selectedContents.userSavedTrack?.id ===
+										  item.track.id ? (
+											<PlayArrow fontSize="small" />
+										) : (
+											<KeyboardArrowRight fontSize="small" />
+										)
+									}
 								/>
 							))
 						) : (
@@ -94,6 +107,7 @@ export const LeftDetailBar = () => {
 									subTitle={item.description}
 									url={item.images[0]?.url}
 									id={item.id}
+									icon={<KeyboardArrowRight fontSize="small" />}
 								/>
 							))
 						) : (
@@ -115,6 +129,7 @@ export const LeftDetailBar = () => {
 									subTitle={[...item.genres].toString()}
 									url={item.images[0]?.url}
 									id={item.id}
+									icon={<KeyboardArrowRight fontSize="small" />}
 								/>
 							))
 						) : (
