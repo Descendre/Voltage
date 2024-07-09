@@ -9,3 +9,5 @@ export * from './LeftDetailBarProgress';
 export * from './SearchModalHeader';
 export * from './SettingModalHeader';
 export * from './SettingModalToggleSection';
+export * from './FooterPlayingContents';
+export * from './FooterPlayingDetail';

@@ -5,8 +5,7 @@ import { Box } from '@mui/material';
 
 export const TrackPLayArea = () => {
 	const { selectedContents } = useSelectedContent();
-	const { handlePlayTrack, playingContents, currentTrack, isPause } =
-		useMusic();
+	const { handlePlayTrack, playingContents, isPause } = useMusic();
 
 	return (
 		<Box

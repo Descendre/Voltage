@@ -5,9 +5,9 @@ export interface UseMusicProps {
 	setCurrentTrack: React.Dispatch<
 		React.SetStateAction<HTMLAudioElement | null>
 	>;
-	playingContents: SpotifyTrackProps | PlaylistItem | null;
+	playingContents: SpotifyTrackProps | null;
 	setPlayingContents: React.Dispatch<
-		React.SetStateAction<SpotifyTrackProps | PlaylistItem | null>
+		React.SetStateAction<SpotifyTrackProps | null>
 	>;
 	handlePlayTrack: ({ url, content }: HandlePlayTrackProps) => Promise<void>;
 	isPause: boolean | null;
@@ -16,5 +16,5 @@ export interface UseMusicProps {
 
 export interface HandlePlayTrackProps {
 	url: string | undefined | null;
-	content: SpotifyTrackProps | PlaylistItem | null;
+	content: SpotifyTrackProps | null;
 }

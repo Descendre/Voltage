@@ -76,9 +76,9 @@ export interface ContextProviderProps {
 	setCurrentTrack: React.Dispatch<
 		React.SetStateAction<HTMLAudioElement | null>
 	>;
-	playingContents: SpotifyTrackProps | PlaylistItem | null;
+	playingContents: SpotifyTrackProps | null;
 	setPlayingContents: React.Dispatch<
-		React.SetStateAction<SpotifyTrackProps | PlaylistItem | null>
+		React.SetStateAction<SpotifyTrackProps | null>
 	>;
 	isPause: boolean | null;
 	setIsPause: React.Dispatch<React.SetStateAction<boolean | null>>;
