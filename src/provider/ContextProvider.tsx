@@ -45,9 +45,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 	const [currentTrack, setCurrentTrack] = useState<HTMLAudioElement | null>(
 		null
 	);
-	const [playingContents, setPlayingContents] = useState<
-		SpotifyTrackProps | PlaylistItem | null
-	>(null);
+	const [playingContents, setPlayingContents] =
+		useState<SpotifyTrackProps | null>(null);
 	const [isPause, setIsPause] = useState<boolean | null>(null);
 
 	const [isPlay, setIsPlay] = useState<boolean>(false);

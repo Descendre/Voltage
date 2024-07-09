@@ -40,7 +40,7 @@ export const useMusic = (): UseMusicProps => {
 				setIsPause(null);
 				const audio = new Audio(url);
 				audio.addEventListener('ended', () => {
-					setPlayingContents(null);
+					setIsPause(true);
 				});
 				await audio.play();
 				setCurrentTrack(audio);
@@ -49,7 +49,7 @@ export const useMusic = (): UseMusicProps => {
 		} else {
 			const audio = new Audio(url);
 			audio.addEventListener('ended', () => {
-				setPlayingContents(null);
+				setIsPause(true);
 			});
 			await audio.play();
 			setCurrentTrack(audio);
