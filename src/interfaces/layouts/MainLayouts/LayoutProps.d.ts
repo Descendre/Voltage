@@ -1,4 +1,5 @@
 import { HandleLeftBarRoutingProps } from '@/interfaces/hooks';
+import { UserSettingProps } from '@/interfaces/provider';
 import { ReactHTMLElement, ReactNode } from 'react';
 
 export interface HeaderIconButtonProps {
@@ -29,4 +30,9 @@ export interface LeftDetailHeaderListItemProps {
 	url: string;
 	id: string;
 	icon: ReactHTMLElement;
+}
+
+export interface SettingModalToggleSectionProps {
+	toggles: { value: UserSettingProps[keyof UserSettingProps]; label: string }[];
+	keyName: keyof UserSettingProps;
 }

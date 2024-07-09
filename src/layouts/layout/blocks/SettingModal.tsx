@@ -1,9 +1,9 @@
 'use client';
 import { useLayouts } from '@/hooks';
 import { useBreakPoint, usePalette } from '@/utils';
-import { Grow, Modal, Paper } from '@mui/material';
+import { Box, Grow, Modal, Paper } from '@mui/material';
 import React from 'react';
-import { SettingModalHeader } from '../atoms';
+import { SettingModalHeader, SettingModalToggleSection } from '../atoms';
 
 export const SettingModal = () => {
 	const { isSettingModal, setIsSettingModal } = useLayouts();
@@ -37,6 +37,22 @@ export const SettingModal = () => {
 					}}
 				>
 					<SettingModalHeader />
+					<Box
+						width="100%"
+						height="calc(100% - 50px)"
+						sx={{
+							overflowY: 'scroll',
+						}}
+					>
+						<SettingModalToggleSection
+							toggles={[
+								{ value: 'normal', label: 'ノーマル' },
+								{ value: 'dominant', label: 'ドミナントカラー' },
+								{ value: 'image', label: 'イメージ' },
+							]}
+							keyName="background"
+						/>
+					</Box>
 				</Paper>
 			</Grow>
 		</Modal>

@@ -29,7 +29,7 @@ export const SettingModalHeader = () => {
 					}}
 				/>
 				<Typography variant="body2" color={palette.icon.hide}>
-					設定
+					ユーザー設定
 				</Typography>
 			</Box>
 			<IconButton color="error" size="small">

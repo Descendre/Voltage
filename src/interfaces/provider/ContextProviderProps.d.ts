@@ -103,6 +103,8 @@ export interface ContextProviderProps {
 	setSelectedContents: React.Dispatch<
 		React.SetStateAction<selectedContentsProps>
 	>;
+	userSetting: UserSettingProps;
+	setUserSetting: React.Dispatch<React.SetStateAction<UserSettingProps>>;
 }
 
 export interface selectedContentsProps {
@@ -120,4 +122,8 @@ export interface isFirstFetchCompleteProps {
 
 export interface searchParamProps {
 	query: string | null;
+}
+
+export interface UserSettingProps {
+	background: 'normal' | 'dominant' | 'image';
 }

@@ -99,7 +99,7 @@ export const Header = () => {
 							/>
 							<HeaderIconButton
 								icon={<SettingsSuggest fontSize="small" />}
-								title="画面設定"
+								title="ユーザー設定"
 								onClick={() => setIsSettingModal(true)}
 							/>
 						</>

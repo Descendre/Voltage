@@ -8,6 +8,7 @@ import {
 	SpotifyUserInfoResponse,
 	SpotifyUserPlayListResponse,
 	SpotifyUserSavedTrackResponse,
+	UserSettingProps,
 	isFirstFetchCompleteProps,
 	selectedContentsProps,
 } from '@/interfaces';
@@ -77,6 +78,9 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 			userPlayList: false,
 			userArtist: false,
 		});
+	const [userSetting, setUserSetting] = useState<UserSettingProps>({
+		background: 'dominant',
+	});
 	const contextValue = {
 		userInfo,
 		setUserInfo,
@@ -118,6 +122,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		setIsFooter,
 		isFirstFetchComplete,
 		setIsFirstFetchComplete,
+		userSetting,
+		setUserSetting,
 	};
 
 	return <Context.Provider value={contextValue}>{children}</Context.Provider>;
