@@ -1,5 +1,5 @@
 import { HandleLeftBarRoutingProps } from '@/interfaces/hooks';
-import { ReactNode } from 'react';
+import { ReactHTMLElement, ReactNode } from 'react';
 
 export interface HeaderIconButtonProps<T = void> {
 	icon: ReactNode;
@@ -28,4 +28,5 @@ export interface LeftDetailHeaderListItemProps {
 	subTitle: string;
 	url: string;
 	id: string;
+	icon: ReactHTMLElement;
 }

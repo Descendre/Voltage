@@ -76,6 +76,10 @@ export interface ContextProviderProps {
 	setCurrentTrack: React.Dispatch<
 		React.SetStateAction<HTMLAudioElement | null>
 	>;
+	playingContents: SpotifyTrackProps | PlaylistItem | null;
+	setPlayingContents: React.Dispatch<
+		React.SetStateAction<SpotifyTrackProps | PlaylistItem | null>
+	>;
 
 	isSearchModal: boolean;
 	setIsSearchModal: React.Dispatch<React.SetStateAction<boolean>>;

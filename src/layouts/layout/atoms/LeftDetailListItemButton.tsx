@@ -16,6 +16,7 @@ export const LeftDetailListItemButton = ({
 	url,
 	onClick,
 	id,
+	icon,
 }: LeftDetailHeaderListItemProps) => {
 	const { selectedContents } = useSelectedContent();
 	const { dominantColor, dominantRgbaColor } = useDominantColors(url);
@@ -71,7 +72,7 @@ export const LeftDetailListItemButton = ({
 					},
 				}}
 			/>
-			<KeyboardArrowRight fontSize="small" />
+			{icon}
 		</ListItemButton>
 	);
 };

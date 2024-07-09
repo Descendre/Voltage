@@ -1,7 +1,9 @@
 'use client';
 import {
 	ContextProviderProps,
+	PlaylistItem,
 	SpotifyTokenProps,
+	SpotifyTrackProps,
 	SpotifyUserArtistResponse,
 	SpotifyUserInfoResponse,
 	SpotifyUserPlayListResponse,
@@ -42,6 +44,9 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 	const [currentTrack, setCurrentTrack] = useState<HTMLAudioElement | null>(
 		null
 	);
+	const [playingContents, setPlayingContents] = useState<
+		SpotifyTrackProps | PlaylistItem | null
+	>(null);
 
 	const [isPlay, setIsPlay] = useState<boolean>(false);
 	const [isSearchModal, setIsSearchModal] = useState<boolean>(false);
@@ -88,6 +93,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		setCurrentContent,
 		currentTrack,
 		setCurrentTrack,
+		playingContents,
+		setPlayingContents,
 
 		isPlay,
 		setIsPlay,

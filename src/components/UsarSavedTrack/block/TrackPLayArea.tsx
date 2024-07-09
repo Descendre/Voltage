@@ -1,11 +1,11 @@
 'use client';
 import { useMusic, useSelectedContent } from '@/hooks';
-import { PlayCircle } from '@mui/icons-material';
+import { PauseCircle, PlayCircle } from '@mui/icons-material';
 import { Box } from '@mui/material';
 
 export const TrackPLayArea = () => {
 	const { selectedContents } = useSelectedContent();
-	const { handlePlayTrack } = useMusic();
+	const { handlePlayTrack, playingContents } = useMusic();
 
 	return (
 		<Box
@@ -18,15 +18,27 @@ export const TrackPLayArea = () => {
 				cursor: 'pointer',
 			}}
 			onClick={() =>
-				handlePlayTrack(selectedContents.userSavedTrack?.preview_url)
+				handlePlayTrack({
+					url: selectedContents.userSavedTrack?.preview_url,
+					content: selectedContents.userSavedTrack,
+				})
 			}
 		>
-			<PlayCircle
-				sx={{
-					width: '50px',
-					height: '50px',
-				}}
-			/>
+			{playingContents?.id === selectedContents.userSavedTrack?.id ? (
+				<PauseCircle
+					sx={{
+						width: '50px',
+						height: '50px',
+					}}
+				/>
+			) : (
+				<PlayCircle
+					sx={{
+						width: '50px',
+						height: '50px',
+					}}
+				/>
+			)}
 		</Box>
 	);
 };
