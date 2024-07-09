@@ -27,7 +27,7 @@ export const LeftDetailBar = () => {
 	const { isFirstFetchComplete } = useFirstFetchComplete();
 	const { selectedContents, handleContentClick } = useSelectedContent();
 	const { handleLeftDetailRouting } = useRouting();
-	const { playingContents } = useMusic();
+	const { playingContents, isPause } = useMusic();
 	const palette = usePalette();
 	const breakpoint = useBreakPoint();
 
@@ -77,7 +77,9 @@ export const LeftDetailBar = () => {
 									url={item.track.album.images[0]?.url}
 									id={item.track.id}
 									icon={
-										playingContents?.id === item.track.id ? (
+										playingContents?.id === item.track.id && isPause ? (
+											<PlayArrow fontSize="small" />
+										) : playingContents?.id === item.track.id ? (
 											<Pause fontSize="small" />
 										) : selectedContents.userSavedTrack?.id ===
 										  item.track.id ? (
