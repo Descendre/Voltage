@@ -9,7 +9,9 @@ export interface UseMusicProps {
 	setPlayingContents: React.Dispatch<
 		React.SetStateAction<SpotifyTrackProps | PlaylistItem | null>
 	>;
-	handlePlayTrack: ({ url, content }: HandlePlayTrackProps) => void;
+	handlePlayTrack: ({ url, content }: HandlePlayTrackProps) => Promise<void>;
+	isPause: boolean | null;
+	setIsPause: React.Dispatch<React.SetStateAction<boolean | null>>;
 }
 
 export interface HandlePlayTrackProps {

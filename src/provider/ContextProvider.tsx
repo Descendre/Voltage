@@ -47,6 +47,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 	const [playingContents, setPlayingContents] = useState<
 		SpotifyTrackProps | PlaylistItem | null
 	>(null);
+	const [isPause, setIsPause] = useState<boolean | null>(null);
 
 	const [isPlay, setIsPlay] = useState<boolean>(false);
 	const [isSearchModal, setIsSearchModal] = useState<boolean>(false);
@@ -95,6 +96,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		setCurrentTrack,
 		playingContents,
 		setPlayingContents,
+		isPause,
+		setIsPause,
 
 		isPlay,
 		setIsPlay,
