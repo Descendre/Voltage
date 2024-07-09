@@ -48,6 +48,10 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 	const [playingContents, setPlayingContents] =
 		useState<SpotifyTrackProps | null>(null);
 	const [isPause, setIsPause] = useState<boolean | null>(null);
+	const [trackValue, setTrackValue] = useState<number>(0);
+	const [duration, setDuration] = useState<number>(0);
+	const [currentTime, setCurrentTime] = useState<number>(0);
+	const [isSeeking, setIsSeeking] = useState<boolean>(false);
 
 	const [isPlay, setIsPlay] = useState<boolean>(false);
 	const [isSearchModal, setIsSearchModal] = useState<boolean>(false);
@@ -102,6 +106,14 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		setPlayingContents,
 		isPause,
 		setIsPause,
+		trackValue,
+		setTrackValue,
+		duration,
+		setDuration,
+		currentTime,
+		setCurrentTime,
+		isSeeking,
+		setIsSeeking,
 
 		isPlay,
 		setIsPlay,

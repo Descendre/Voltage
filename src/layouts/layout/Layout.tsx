@@ -70,7 +70,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 						>
 							{children}
 						</Box>
-						<Footer />
+						<Footer isLeftDetailBar={isLeftDetailBar} />
 					</Box>
 				</Box>
 			</Box>

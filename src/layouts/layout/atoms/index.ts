@@ -11,3 +11,4 @@ export * from './SettingModalHeader';
 export * from './SettingModalToggleSection';
 export * from './FooterPlayingContents';
 export * from './FooterPlayingDetail';
+export * from './FooterSlider';

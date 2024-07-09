@@ -1,13 +1,36 @@
 import { useMusic } from '@/hooks';
 import { usePalette } from '@/utils';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, keyframes } from '@mui/material';
+import { useEffect, useState } from 'react';
 
 export const FooterPlayingDetail = () => {
-	const { playingContents } = useMusic();
+	const [animationTime, setAnimationTime] = useState<number>(10);
+	const { playingContents, isPause } = useMusic();
 	const palette = usePalette();
+
+	const loop = keyframes`
+		0% {
+			transform: translateX(100%);
+		}
+		100% {
+			transform: translateX(-100%);
+		}
+	`;
+
+	useEffect(() => {
+		if (playingContents?.name) {
+			const titleLength = playingContents.name.length;
+			if (titleLength > 20) {
+				setAnimationTime(Math.round(10 + (titleLength - 20) / 2.5));
+			} else {
+				setAnimationTime(10);
+			}
+		}
+	}, [playingContents]);
 
 	return (
 		<Box
+			zIndex={10}
 			display="flex"
 			justifyContent="center"
 			alignItems="start"
@@ -16,19 +39,31 @@ export const FooterPlayingDetail = () => {
 			sx={{
 				width: 'calc(100% - 70px)',
 				height: '100%',
+				overflow: 'hidden',
 			}}
 		>
-			<Typography
+			<Box
 				sx={{
 					width: '100%',
+					maxWidth: '250px',
 					overflow: 'hidden',
-					textOverflow: 'ellipsis',
 					whiteSpace: 'nowrap',
 				}}
-				variant="body2"
 			>
-				{playingContents?.name}
-			</Typography>
+				<Typography
+					sx={{
+						width: 'fit-content',
+						minWidth: '100%',
+						display: 'inline-block',
+						whiteSpace: 'nowrap',
+						animation: `${loop} ${animationTime}s linear infinite`,
+						animationPlayState: isPause ? 'paused' : 'unset',
+					}}
+					variant="body2"
+				>
+					{playingContents?.name}
+				</Typography>
+			</Box>
 			<Typography
 				sx={{
 					width: '100%',

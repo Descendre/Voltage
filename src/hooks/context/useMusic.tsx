@@ -1,5 +1,10 @@
 'use client';
-import { HandlePlayTrackProps, UseMusicProps } from '@/interfaces';
+import {
+	HandlePlayTrackProps,
+	HandleSeekTrackCommittedProps,
+	HandleSeekTrackProps,
+	UseMusicProps,
+} from '@/interfaces';
 import { Context } from '@/provider';
 import { useContext, useEffect } from 'react';
 
@@ -16,6 +21,14 @@ export const useMusic = (): UseMusicProps => {
 		setPlayingContents,
 		isPause,
 		setIsPause,
+		trackValue,
+		setTrackValue,
+		duration,
+		setDuration,
+		currentTime,
+		setCurrentTime,
+		isSeeking,
+		setIsSeeking,
 	} = context;
 
 	const handlePlayTrack = async ({
@@ -57,6 +70,49 @@ export const useMusic = (): UseMusicProps => {
 		}
 	};
 
+	useEffect(() => {
+		const updateSliderValue = () => {
+			if (currentTrack && !currentTrack.paused && !isSeeking) {
+				setCurrentTime(Math.round(currentTrack.currentTime));
+				setDuration(Math.round(currentTrack.duration));
+				setTrackValue(Math.round(currentTrack.currentTime));
+			}
+		};
+		const interval = setInterval(updateSliderValue, 1000);
+		return () => clearInterval(interval);
+	}, [currentTrack]);
+
+	useEffect(() => {
+		(async () => {
+			if (currentTrack) {
+				if (isSeeking) {
+					currentTrack.pause();
+				} else {
+					if (!isPause) {
+						await currentTrack.play();
+					}
+				}
+			}
+		})();
+	}, [isSeeking]);
+
+	const handleSeekTrack = ({ event, value }: HandleSeekTrackProps) => {
+		setIsSeeking(true);
+		setTrackValue(value as number);
+		if (currentTrack) {
+			const newPosition = value as number;
+			currentTrack.currentTime = newPosition;
+			setCurrentTime(newPosition);
+		}
+	};
+
+	const handleSeekCommitted = ({
+		event,
+		value,
+	}: HandleSeekTrackCommittedProps) => {
+		setIsSeeking(false);
+	};
+
 	return {
 		currentTrack,
 		setCurrentTrack,
@@ -65,5 +121,15 @@ export const useMusic = (): UseMusicProps => {
 		setPlayingContents,
 		isPause,
 		setIsPause,
+		trackValue,
+		setTrackValue,
+		duration,
+		setDuration,
+		currentTime,
+		setCurrentTime,
+		isSeeking,
+		setIsSeeking,
+		handleSeekTrack,
+		handleSeekCommitted,
 	};
 };

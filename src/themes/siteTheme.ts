@@ -22,6 +22,9 @@ export const siteTheme = createTheme({
 				play: green['A700'],
 				pause: orange['A700'],
 			},
+			slider: {
+				rail: '#444444',
+			},
 		},
 		icon: {
 			main: '#fff',

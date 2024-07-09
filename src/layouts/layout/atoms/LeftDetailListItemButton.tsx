@@ -1,7 +1,6 @@
 'use client';
 import { useDominantColors, useSelectedContent } from '@/hooks';
 import { LeftDetailHeaderListItemProps } from '@/interfaces';
-import { KeyboardArrowRight } from '@mui/icons-material';
 import {
 	Avatar,
 	ListItemAvatar,

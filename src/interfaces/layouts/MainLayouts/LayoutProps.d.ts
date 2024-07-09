@@ -36,3 +36,7 @@ export interface SettingModalToggleSectionProps {
 	toggles: { value: UserSettingProps[keyof UserSettingProps]; label: string }[];
 	keyName: keyof UserSettingProps;
 }
+
+export interface FooterProps {
+	isLeftDetailBar: boolean;
+}
