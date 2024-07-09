@@ -1,10 +1,10 @@
 import { HandleLeftBarRoutingProps } from '@/interfaces/hooks';
 import { ReactHTMLElement, ReactNode } from 'react';
 
-export interface HeaderIconButtonProps<T = void> {
+export interface HeaderIconButtonProps {
 	icon: ReactNode;
 	title?: string;
-	onClick?: (T: arg) => void;
+	onClick?: () => void;
 }
 
 export interface LeftBarProps {

@@ -24,6 +24,7 @@ export const Header = () => {
 	const breakpoint = useBreakPoint();
 	const {
 		setIsSearchModal,
+		setIsSettingModal,
 		isFullScreen,
 		handleToggleScreen,
 		handleTogglePlay,
@@ -62,7 +63,7 @@ export const Header = () => {
 						<>
 							<HeaderIconButton
 								icon={<Mic fontSize="small" />}
-								onClick={setIsSearchModal}
+								onClick={() => setIsSearchModal(true)}
 							/>
 							<HeaderIconButton icon={<MoreHoriz fontSize="small" />} />
 						</>
@@ -99,6 +100,7 @@ export const Header = () => {
 							<HeaderIconButton
 								icon={<SettingsSuggest fontSize="small" />}
 								title="画面設定"
+								onClick={() => setIsSettingModal(true)}
 							/>
 						</>
 					)}

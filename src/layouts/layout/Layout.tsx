@@ -1,6 +1,13 @@
 'use client';
 import React, { ReactNode } from 'react';
-import { Footer, Header, LeftBar, LeftDetailBar, SearchModal } from './blocks';
+import {
+	Footer,
+	Header,
+	LeftBar,
+	LeftDetailBar,
+	SearchModal,
+	SettingModal,
+} from './blocks';
 import { Box } from '@mui/material';
 import { useLayouts } from '@/hooks';
 import { useBreakPoint } from '@/utils';
@@ -69,6 +76,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 			</Box>
 
 			<SearchModal />
+			<SettingModal />
 		</>
 	);
 };

@@ -4,11 +4,11 @@ import { usePalette } from '@/utils';
 import { IconButton, Tooltip } from '@mui/material';
 import React from 'react';
 
-export const HeaderIconButton = <T extends any>({
+export const HeaderIconButton = ({
 	icon,
 	title,
 	onClick,
-}: HeaderIconButtonProps<T>) => {
+}: HeaderIconButtonProps) => {
 	const palette = usePalette();
 
 	return (

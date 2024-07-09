@@ -1,6 +1,8 @@
 export interface UseLayoutsProps {
 	isSearchModal: boolean;
 	setIsSearchModal: React.Dispatch<React.SetStateAction<boolean>>;
+	isSettingModal: boolean;
+	setIsSettingModal: React.Dispatch<React.SetStateAction<boolean>>;
 	isFullScreen: boolean;
 	setIsFullscreen: React.Dispatch<React.SetStateAction<boolean>>;
 	handleToggleScreen: () => void;
