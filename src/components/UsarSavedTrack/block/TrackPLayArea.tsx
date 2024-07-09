@@ -5,7 +5,8 @@ import { Box } from '@mui/material';
 
 export const TrackPLayArea = () => {
 	const { selectedContents } = useSelectedContent();
-	const { handlePlayTrack, playingContents } = useMusic();
+	const { handlePlayTrack, playingContents, currentTrack, isPause } =
+		useMusic();
 
 	return (
 		<Box
@@ -24,7 +25,15 @@ export const TrackPLayArea = () => {
 				})
 			}
 		>
-			{playingContents?.id === selectedContents.userSavedTrack?.id ? (
+			{isPause &&
+			playingContents?.id === selectedContents.userSavedTrack?.id ? (
+				<PlayCircle
+					sx={{
+						width: '50px',
+						height: '50px',
+					}}
+				/>
+			) : playingContents?.id === selectedContents.userSavedTrack?.id ? (
 				<PauseCircle
 					sx={{
 						width: '50px',

@@ -80,6 +80,8 @@ export interface ContextProviderProps {
 	setPlayingContents: React.Dispatch<
 		React.SetStateAction<SpotifyTrackProps | PlaylistItem | null>
 	>;
+	isPause: boolean | null;
+	setIsPause: React.Dispatch<React.SetStateAction<boolean | null>>;
 
 	isSearchModal: boolean;
 	setIsSearchModal: React.Dispatch<React.SetStateAction<boolean>>;
