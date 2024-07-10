@@ -1,5 +1,5 @@
 'use client';
-import { usePlayList } from '@/hooks';
+import { usePlayList, useSelectedContent } from '@/hooks';
 import { formatMsSeconds, usePalette } from '@/utils';
 import { CheckCircle, DragIndicator, PlayArrow } from '@mui/icons-material';
 import {
@@ -15,7 +15,15 @@ import {
 
 export const PlayListTable = () => {
 	const palette = usePalette();
-	const { playListTrack } = usePlayList();
+	const { selectedContents } = useSelectedContent();
+	const { playListTrack, playingPlayList, playingPlaylistIndex } =
+		usePlayList();
+	const isSelected = (index: number): boolean => {
+		const isSelected: boolean =
+			playingPlayList?.id === selectedContents.playList?.id &&
+			playingPlaylistIndex === index;
+		return isSelected;
+	};
 
 	return (
 		<TableContainer sx={{ width: '95%' }}>
@@ -36,6 +44,9 @@ export const PlayListTable = () => {
 							key={index}
 							sx={{
 								cursor: 'pointer',
+								backgroundColor: isSelected(index)
+									? palette.table.hoverBg
+									: 'transparent',
 								'&: hover': {
 									backgroundColor: palette.table.hoverBg,
 								},
