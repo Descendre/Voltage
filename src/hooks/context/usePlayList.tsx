@@ -1,5 +1,6 @@
 'use client';
 import {
+	PlaylistTracksResponse,
 	SpotifyTokenProps,
 	SpotifyUserPlayListResponse,
 	UsePlayListProps,
@@ -14,7 +15,17 @@ export const usePlayList = (): UsePlayListProps => {
 		throw new Error('Context is not provided');
 	}
 
-	const { userPlayList, setUserPlayList } = context;
+	const {
+		spotifyToken,
+		userPlayList,
+		setUserPlayList,
+		playListTrack,
+		setPlayListTrack,
+		lastPlayedPlayList,
+		setLastPlayedPlayList,
+		playingPlayList,
+		setPlayingPlayList,
+	} = context;
 
 	const handleSetUserPlayList = async (
 		spotifyToken: SpotifyTokenProps
@@ -28,9 +39,29 @@ export const usePlayList = (): UsePlayListProps => {
 		setUserPlayList(response);
 	};
 
+	const handleSetUserPlayListTracks = async (
+		playListId: string
+	): Promise<void> => {
+		if (!spotifyToken) return;
+		const response = await axiosFetch.get<PlaylistTracksResponse>(
+			`/api/playList/tracks/${playListId}`,
+			{
+				Authorization: `Bearer ${spotifyToken.access_token}`,
+			}
+		);
+		setPlayListTrack(response);
+	};
+
 	return {
 		userPlayList,
 		setUserPlayList,
+		playListTrack,
+		setPlayListTrack,
+		playingPlayList,
+		setPlayingPlayList,
+		lastPlayedPlayList,
+		setLastPlayedPlayList,
 		handleSetUserPlayList,
+		handleSetUserPlayListTracks,
 	};
 };

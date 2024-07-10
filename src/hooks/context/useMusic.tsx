@@ -1,5 +1,6 @@
 'use client';
 import {
+	HandlePlayPlayListProps,
 	HandlePlayTrackProps,
 	HandleSeekTrackCommittedProps,
 	HandleSeekTrackProps,
@@ -22,6 +23,9 @@ export const useMusic = (): UseMusicProps => {
 		setCurrentTrack,
 		playingContents,
 		setPlayingContents,
+		playingPlayList,
+		setPlayingPlayList,
+		setLastPlayedPlayList,
 		isPause,
 		setIsPause,
 		trackValue,
@@ -50,7 +54,7 @@ export const useMusic = (): UseMusicProps => {
 		url,
 		content,
 	}: HandlePlayTrackProps): Promise<void> => {
-		if (!url) return;
+		if (!url || !content) return;
 		if (currentTrack) {
 			if (playingContents?.id === content?.id) {
 				if (currentTrack.paused) {
@@ -72,6 +76,8 @@ export const useMusic = (): UseMusicProps => {
 					handleTrackAudioEnded();
 				});
 				await audio.play();
+				setPlayingPlayList(null);
+				setLastPlayedPlayList(null);
 				setCurrentTrack(audio);
 				setPlayingContents(content);
 			}
@@ -82,8 +88,53 @@ export const useMusic = (): UseMusicProps => {
 				handleTrackAudioEnded();
 			});
 			await audio.play();
+			setPlayingPlayList(null);
+			setLastPlayedPlayList(null);
 			setCurrentTrack(audio);
 			setPlayingContents(content);
+		}
+	};
+
+	const handlePlayPlayList = async ({
+		url,
+		content,
+	}: HandlePlayPlayListProps): Promise<void> => {
+		if (!url || !content) return;
+		if (currentTrack) {
+			if (playingPlayList?.id === content?.id) {
+				if (currentTrack.paused) {
+					await currentTrack.play();
+					setIsPause(false);
+					setCurrentTrack(currentTrack);
+				} else {
+					currentTrack.pause();
+					setIsPause(true);
+					setCurrentTrack(currentTrack);
+				}
+			} else {
+				currentTrack.pause();
+				setCurrentTrack(null);
+				setIsPause(null);
+				const audio = new Audio(url);
+				audio.addEventListener('ended', () => {
+					setIsPause(true);
+					handleTrackAudioEnded();
+				});
+				await audio.play();
+				setPlayingContents(null);
+				setCurrentTrack(audio);
+				setPlayingPlayList(content);
+			}
+		} else {
+			const audio = new Audio(url);
+			audio.addEventListener('ended', () => {
+				setIsPause(true);
+				handleTrackAudioEnded();
+			});
+			await audio.play();
+			setPlayingContents(null);
+			setCurrentTrack(audio);
+			setPlayingPlayList(content);
 		}
 	};
 
@@ -216,6 +267,7 @@ export const useMusic = (): UseMusicProps => {
 		currentTrack,
 		setCurrentTrack,
 		handlePlayTrack,
+		handlePlayPlayList,
 		playingContents,
 		setPlayingContents,
 		isPause,

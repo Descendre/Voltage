@@ -2,6 +2,7 @@
 import {
 	ContextProviderProps,
 	PlaylistItem,
+	PlaylistTracksResponse,
 	RepeatModeType,
 	SpotifyTokenProps,
 	SpotifyTrackProps,
@@ -31,6 +32,10 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		useState<SpotifyUserArtistResponse | null>(null);
 	const [userSavedTrack, setUserSavedTrack] =
 		useState<SpotifyUserSavedTrackResponse | null>(null);
+	const [playListTrack, setPlayListTrack] =
+		useState<PlaylistTracksResponse | null>(null);
+	const [lastPlayedPlayList, setLastPlayedPlayList] =
+		useState<PlaylistTracksResponse | null>(null);
 	const [selectedContents, setSelectedContents] =
 		useState<selectedContentsProps>({
 			userSavedTrack: null,
@@ -48,6 +53,9 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 	);
 	const [playingContents, setPlayingContents] =
 		useState<SpotifyTrackProps | null>(null);
+	const [playingPlayList, setPlayingPlayList] = useState<PlaylistItem | null>(
+		null
+	);
 	const [isPause, setIsPause] = useState<boolean | null>(null);
 	const [trackValue, setTrackValue] = useState<number>(0);
 	const [duration, setDuration] = useState<number>(0);
@@ -98,6 +106,10 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		setUserArtist,
 		userSavedTrack,
 		setUserSavedTrack,
+		playListTrack,
+		setPlayListTrack,
+		lastPlayedPlayList,
+		setLastPlayedPlayList,
 		selectedContents,
 		setSelectedContents,
 		currentContent,
@@ -106,6 +118,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		setCurrentTrack,
 		playingContents,
 		setPlayingContents,
+		playingPlayList,
+		setPlayingPlayList,
 		isPause,
 		setIsPause,
 		trackValue,

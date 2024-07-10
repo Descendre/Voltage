@@ -21,6 +21,9 @@ declare module '@mui/material/styles' {
 			main: string;
 			hide: string;
 		};
+		table: {
+			hoverBg: string;
+		};
 	}
 	interface PaletteOptions {
 		layout: {
@@ -41,6 +44,9 @@ declare module '@mui/material/styles' {
 		icon: {
 			main: string;
 			hide: string;
+		};
+		table: {
+			hoverBg: string;
 		};
 	}
 }

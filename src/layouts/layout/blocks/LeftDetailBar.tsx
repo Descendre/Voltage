@@ -22,10 +22,11 @@ import { KeyboardArrowRight, Pause, PlayArrow } from '@mui/icons-material';
 export const LeftDetailBar = () => {
 	const { selectedLeftContent } = useLayouts();
 	const { userSavedTrack } = useTrack();
-	const { userPlayList } = usePlayList();
+	const { userPlayList, handleSetUserPlayListTracks, playingPlayList } =
+		usePlayList();
 	const { userArtist } = useArtist();
 	const { isFirstFetchComplete } = useFirstFetchComplete();
-	const { selectedContents, handleContentClick } = useSelectedContent();
+	const { handleContentClick } = useSelectedContent();
 	const { handleLeftDetailRouting } = useRouting();
 	const { playingContents, isPause } = useMusic();
 	const palette = usePalette();
@@ -73,7 +74,11 @@ export const LeftDetailBar = () => {
 									}}
 									key={index}
 									title={item.track.name}
-									subTitle={item.track.artists[0].name}
+									subTitle={item.track.artists
+										.map((artist, index) =>
+											index > 0 ? `・${artist.name}` : artist.name
+										)
+										.join('')}
 									url={item.track.album.images[0]?.url}
 									id={item.track.id}
 									icon={
@@ -95,6 +100,7 @@ export const LeftDetailBar = () => {
 							userPlayList?.items.map((item, index) => (
 								<LeftDetailListItemButton
 									onClick={() => {
+										handleSetUserPlayListTracks(item.id);
 										handleContentClick('playList', item);
 										handleLeftDetailRouting({
 											contentType: 'playList',
@@ -106,7 +112,15 @@ export const LeftDetailBar = () => {
 									subTitle={item.description}
 									url={item.images[0]?.url}
 									id={item.id}
-									icon={<KeyboardArrowRight fontSize="small" />}
+									icon={
+										playingPlayList?.id === item.id && isPause ? (
+											<PlayArrow fontSize="small" />
+										) : playingPlayList?.id === item.id ? (
+											<Pause fontSize="small" />
+										) : (
+											<KeyboardArrowRight fontSize="small" />
+										)
+									}
 								/>
 							))
 						) : (

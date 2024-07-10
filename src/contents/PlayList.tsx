@@ -1,5 +1,5 @@
 'use client';
-import { PlayListHeader, PlayListPlayArea } from '@/components';
+import { PlayListHeader, PlayListPlayArea, PlayListTable } from '@/components';
 import { useLayouts } from '@/hooks';
 import { useBreakPoint } from '@/utils';
 import { Box } from '@mui/material';
@@ -21,6 +21,7 @@ export const PlayList = () => {
 		>
 			<PlayListHeader isColumn={isColumn} />
 			<PlayListPlayArea />
+			<PlayListTable />
 		</Box>
 	);
 };

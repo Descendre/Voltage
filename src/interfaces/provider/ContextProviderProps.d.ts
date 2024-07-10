@@ -1,10 +1,14 @@
 import { ReactNode } from 'react';
 import {
+	PlayListTracksProps,
+	PlayListTracksTrackProps,
 	PlaylistItem,
+	PlaylistTracksResponse,
 	SpotifyArtistProps,
 	SpotifyTrackProps,
 	SpotifyUserArtistResponse,
 	SpotifyUserInfoResponse,
+	SpotifyUserPlayListResponse,
 	SpotifyUserPlaylistResponse,
 	SpotifyUserSavedTrackResponse,
 } from '../api';
@@ -20,7 +24,7 @@ export interface ContextProviderProps {
 		React.SetStateAction<SpotifyTokenProps | null>
 	>;
 
-	userPlayList: SpotifyUserPlaylistResponse | null;
+	userPlayList: SpotifyUserPlayListResponse | null;
 	setUserPlayList: React.Dispatch<
 		React.SetStateAction<SpotifyUserPlaylistResponse | null>
 	>;
@@ -31,6 +35,14 @@ export interface ContextProviderProps {
 	userSavedTrack: SpotifyUserSavedTrackResponse | null;
 	setUserSavedTrack: React.Dispatch<
 		React.SetStateAction<SpotifyUserSavedTrackResponse | null>
+	>;
+	playListTrack: PlaylistTracksResponse | null;
+	setPlayListTrack: React.Dispatch<
+		React.SetStateAction<PlaylistTracksResponse | null>
+	>;
+	lastPlayedPlayList: PlaylistTracksResponse | null;
+	setLastPlayedPlayList: React.Dispatch<
+		React.SetStateAction<PlaylistTracksResponse | null>
 	>;
 	selectedLeftContent:
 		| 'コレクション'
@@ -80,6 +92,8 @@ export interface ContextProviderProps {
 	setPlayingContents: React.Dispatch<
 		React.SetStateAction<SpotifyTrackProps | null>
 	>;
+	playingPlayList: PlaylistItem | null;
+	setPlayingPlayList: React.Dispatch<React.SetStateAction<PlaylistItem | null>>;
 	isPause: boolean | null;
 	setIsPause: React.Dispatch<React.SetStateAction<boolean | null>>;
 	trackValue: number;

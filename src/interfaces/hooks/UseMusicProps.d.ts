@@ -11,6 +11,10 @@ export interface UseMusicProps {
 		React.SetStateAction<SpotifyTrackProps | null>
 	>;
 	handlePlayTrack: ({ url, content }: HandlePlayTrackProps) => Promise<void>;
+	handlePlayPlayList: ({
+		url,
+		content,
+	}: HandlePlayPlayListProps) => Promise<void>;
 	isPause: boolean | null;
 	setIsPause: React.Dispatch<React.SetStateAction<boolean | null>>;
 	trackValue: number;
@@ -36,7 +40,12 @@ export interface UseMusicProps {
 
 export interface HandlePlayTrackProps {
 	url: string | undefined | null;
-	content: SpotifyTrackProps | null;
+	content: SpotifyTrackProps | null | undefined;
+}
+
+export interface HandlePlayPlayListProps {
+	url: string | undefined | null;
+	content: PlaylistItem | null | undefined;
 }
 
 export interface HandleSeekTrackProps {
