@@ -5,9 +5,18 @@ import { Box } from '@mui/material';
 
 export const PlayListPlayArea = () => {
 	const { selectedContents } = useSelectedContent();
-	const { playListTrack, playingPlayList, setLastPlayedPlayList } =
-		usePlayList();
+	const {
+		playListTrack,
+		playingPlayList,
+		setLastPlayedPlayList,
+		playingPlaylistIndex,
+	} = usePlayList();
 	const { isPause, handlePlayPlayList } = useMusic();
+	const isSelected = (): boolean => {
+		const isSelected: boolean =
+			playingPlayList?.id === selectedContents.playList?.id;
+		return isSelected;
+	};
 
 	return (
 		<Box
@@ -21,20 +30,22 @@ export const PlayListPlayArea = () => {
 			}}
 			onClick={() => {
 				handlePlayPlayList({
-					url: playListTrack?.items[0].track.preview_url,
+					url: playListTrack?.items[isSelected() ? playingPlaylistIndex : 0]
+						?.track?.preview_url,
 					content: selectedContents.playList,
+					index: isSelected() ? playingPlaylistIndex : 0,
 				});
 				setLastPlayedPlayList(playListTrack);
 			}}
 		>
-			{isPause && playingPlayList?.id === selectedContents.playList?.id ? (
+			{isPause && isSelected() ? (
 				<PlayCircle
 					sx={{
 						width: '50px',
 						height: '50px',
 					}}
 				/>
-			) : playingPlayList?.id === selectedContents.playList?.id ? (
+			) : isSelected() ? (
 				<PauseCircle
 					sx={{
 						width: '50px',

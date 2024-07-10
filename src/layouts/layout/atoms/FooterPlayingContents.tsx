@@ -20,8 +20,8 @@ export const FooterPlayingContents = () => {
 			<Avatar
 				src={
 					playingContents?.album.images[0].url ||
-					lastPlayedPlayList?.items[playingPlaylistIndex].track.album.images[0]
-						.url
+					lastPlayedPlayList?.items[playingPlaylistIndex]?.track?.album
+						?.images[0]?.url
 				}
 				variant="square"
 				sx={{

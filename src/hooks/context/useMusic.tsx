@@ -118,25 +118,42 @@ export const useMusic = (): UseMusicProps => {
 	const handlePlayPlayList = async ({
 		url,
 		content,
+		index,
 	}: HandlePlayPlayListProps): Promise<void> => {
 		if (!url || !content) return;
 		if (currentTrack) {
 			if (playingPlayList?.id === content?.id) {
-				if (currentTrack.paused) {
-					await currentTrack.play();
-					setIsPause(false);
-					setCurrentTrack(currentTrack);
+				if (index === playingPlaylistIndex) {
+					if (currentTrack.paused) {
+						await currentTrack.play();
+						setIsPause(false);
+						setCurrentTrack(currentTrack);
+					} else {
+						currentTrack.pause();
+						setIsPause(true);
+						setCurrentTrack(currentTrack);
+					}
 				} else {
 					currentTrack.pause();
-					setIsPause(true);
-					setCurrentTrack(currentTrack);
+					setCurrentTrack(null);
+					setIsPause(null);
+					const audio = new Audio(url);
+					setPlayingPlaylistIndex(index);
+					audio.addEventListener('ended', () => {
+						setIsPause(true);
+						handleTrackAudioEnded();
+					});
+					await audio.play();
+					setPlayingContents(null);
+					setCurrentTrack(audio);
+					setPlayingPlayList(content);
 				}
 			} else {
 				currentTrack.pause();
 				setCurrentTrack(null);
 				setIsPause(null);
 				const audio = new Audio(url);
-				setPlayingPlaylistIndex(0);
+				setPlayingPlaylistIndex(index);
 				audio.addEventListener('ended', () => {
 					setIsPause(true);
 					handleTrackAudioEnded();
@@ -153,7 +170,7 @@ export const useMusic = (): UseMusicProps => {
 				handleTrackAudioEnded();
 			});
 			await audio.play();
-			setPlayingPlaylistIndex(0);
+			setPlayingPlaylistIndex(index);
 			setPlayingContents(null);
 			setCurrentTrack(audio);
 			setPlayingPlayList(content);

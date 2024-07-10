@@ -31,9 +31,9 @@ export const FooterPlayingDetail = () => {
 	}, [playingContents]);
 
 	useEffect(() => {
-		if (lastPlayedPlayList?.items[playingPlaylistIndex].track.name) {
+		if (lastPlayedPlayList?.items[playingPlaylistIndex]?.track?.name) {
 			const titleLength =
-				lastPlayedPlayList.items[playingPlaylistIndex].track.name.length;
+				lastPlayedPlayList.items[playingPlaylistIndex]?.track?.name?.length;
 			if (titleLength > 20) {
 				setAnimationTime(Math.round(10 + (titleLength - 20) / 2.5));
 			} else {
@@ -76,7 +76,7 @@ export const FooterPlayingDetail = () => {
 					variant="body2"
 				>
 					{playingContents?.name ||
-						lastPlayedPlayList?.items[playingPlaylistIndex].track.name}
+						lastPlayedPlayList?.items[playingPlaylistIndex]?.track?.name}
 				</Typography>
 			</Box>
 			<Typography

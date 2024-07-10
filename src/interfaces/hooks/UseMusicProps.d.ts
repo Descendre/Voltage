@@ -48,6 +48,7 @@ export interface HandlePlayTrackProps {
 export interface HandlePlayPlayListProps {
 	url: string | undefined | null;
 	content: PlaylistItem | null | undefined;
+	index: number;
 }
 
 export interface HandleSeekTrackProps {
