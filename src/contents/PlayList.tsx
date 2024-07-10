@@ -1,3 +1,26 @@
+'use client';
+import { PlayListHeader, PlayListPlayArea } from '@/components';
+import { useLayouts } from '@/hooks';
+import { useBreakPoint } from '@/utils';
+import { Box } from '@mui/material';
+
 export const PlayList = () => {
-	return <div>PlayList</div>;
+	const { isLeftDetail } = useLayouts();
+	const breakpoint = useBreakPoint();
+	const isColumn: boolean =
+		breakpoint === 'xs' || (breakpoint === 'sm' && isLeftDetail);
+
+	return (
+		<Box
+			display="flex"
+			justifyContent="center"
+			alignItems="center"
+			flexDirection="column"
+			gap="20px"
+			width="100%"
+		>
+			<PlayListHeader isColumn={isColumn} />
+			<PlayListPlayArea />
+		</Box>
+	);
 };
