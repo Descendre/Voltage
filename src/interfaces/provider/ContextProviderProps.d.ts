@@ -90,10 +90,8 @@ export interface ContextProviderProps {
 	setCurrentTime: React.Dispatch<React.SetStateAction<number>>;
 	isSeeking: boolean;
 	setIsSeeking: React.Dispatch<React.SetStateAction<boolean>>;
-	repeatMode: 'default' | 'repeat' | 'one';
-	setRepeatMode: React.Dispatch<
-		React.SetStateAction<'default' | 'repeat' | 'one'>
-	>;
+	repeatMode: RepeatModeType;
+	setRepeatMode: React.Dispatch<React.SetStateAction<RepeatModeType>>;
 
 	isSearchModal: boolean;
 	setIsSearchModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -139,3 +137,5 @@ export interface searchParamProps {
 export interface UserSettingProps {
 	background: 'normal' | 'dominant' | 'image';
 }
+
+export type RepeatModeType = 'default' | 'repeat' | 'one';

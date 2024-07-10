@@ -1,18 +1,26 @@
 'use client';
-import { useMusic, useTrack } from '@/hooks';
+import { useMusic } from '@/hooks';
 import { usePalette } from '@/utils';
 import {
 	PauseCircle,
 	PlayCircle,
 	Repeat,
+	RepeatOne,
 	SkipNext,
 	SkipPrevious,
 } from '@mui/icons-material';
 import { Box, Tooltip } from '@mui/material';
 
 export const FooterCommands = () => {
-	const { handleSetNextTrack, handleSetPrevTrack } = useTrack();
-	const { handlePlayTrack, playingContents, isPause } = useMusic();
+	const {
+		handlePlayTrack,
+		playingContents,
+		isPause,
+		handleSetNextTrack,
+		handleSetPrevTrack,
+		repeatMode,
+		setRepeatMode,
+	} = useMusic();
 	const palette = usePalette();
 
 	return (
@@ -85,15 +93,46 @@ export const FooterCommands = () => {
 					/>
 				</Tooltip>
 			)}
-			<Repeat
-				sx={{
-					cursor: 'pointer',
-					color: palette.icon.hide,
-					'&:hover': {
-						color: palette.icon.main,
-					},
-				}}
-			/>
+			{repeatMode === 'default' ? (
+				<Tooltip title="リピートを有効にする" placement="top">
+					<Repeat
+						sx={{
+							cursor: 'pointer',
+							color: palette.icon.hide,
+							'&:hover': {
+								color: palette.icon.main,
+							},
+						}}
+						onClick={() => setRepeatMode('repeat')}
+					/>
+				</Tooltip>
+			) : repeatMode === 'repeat' ? (
+				<Tooltip title="1曲リピートを有効" placement="top">
+					<Repeat
+						sx={{
+							cursor: 'pointer',
+							color: palette.primary.main,
+							'&:hover': {
+								color: palette.primary.main,
+							},
+						}}
+						onClick={() => setRepeatMode('one')}
+					/>
+				</Tooltip>
+			) : (
+				<Tooltip title="リピートを無効にする" placement="top">
+					<RepeatOne
+						sx={{
+							cursor: 'pointer',
+							color: palette.primary.main,
+							'&:hover': {
+								color: palette.primary.main,
+							},
+						}}
+						onClick={() => setRepeatMode('default')}
+					/>
+				</Tooltip>
+			)}
 			<Tooltip title="次へ" placement="top">
 				<SkipNext
 					sx={{

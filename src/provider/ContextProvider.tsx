@@ -2,6 +2,7 @@
 import {
 	ContextProviderProps,
 	PlaylistItem,
+	RepeatModeType,
 	SpotifyTokenProps,
 	SpotifyTrackProps,
 	SpotifyUserArtistResponse,
@@ -52,9 +53,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 	const [duration, setDuration] = useState<number>(0);
 	const [currentTime, setCurrentTime] = useState<number>(0);
 	const [isSeeking, setIsSeeking] = useState<boolean>(false);
-	const [repeatMode, setRepeatMode] = useState<'default' | 'repeat' | 'one'>(
-		'default'
-	);
+	const [repeatMode, setRepeatMode] = useState<RepeatModeType>('default');
 
 	const [isPlay, setIsPlay] = useState<boolean>(false);
 	const [isSearchModal, setIsSearchModal] = useState<boolean>(false);

@@ -30,6 +30,8 @@ export interface UseMusicProps {
 	setRepeatMode: React.Dispatch<
 		React.SetStateAction<'default' | 'repeat' | 'one'>
 	>;
+	handleSetNextTrack: () => Promise<void>;
+	handleSetPrevTrack: () => Promise<void>;
 }
 
 export interface HandlePlayTrackProps {
