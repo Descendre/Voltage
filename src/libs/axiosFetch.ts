@@ -66,7 +66,7 @@ export const axiosFetch = {
 				'Content-Type': 'application/json',
 				...header,
 			},
-			method: 'POST',
+			method: 'PUT',
 			data: body,
 		};
 		try {

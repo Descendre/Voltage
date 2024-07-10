@@ -25,7 +25,7 @@ export const PlayListHeaderDetail = ({ isColumn }: TrackHeaderDetailProps) => {
 					overflow: 'hidden',
 					textOverflow: 'ellipsis',
 					display: '-webkit-box',
-					WebkitLineClamp: 3,
+					WebkitLineClamp: isColumn ? 3 : 2,
 					WebkitBoxOrient: 'vertical',
 				}}
 				textAlign={isColumn ? 'center' : 'left'}

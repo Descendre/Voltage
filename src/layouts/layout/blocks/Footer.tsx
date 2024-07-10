@@ -7,13 +7,14 @@ import {
 	FooterPlayingDetail,
 	FooterSlider,
 } from '../atoms';
-import { useDominantColors, useMusic } from '@/hooks';
+import { useDominantColors, useMusic, usePlayList } from '@/hooks';
 import { FooterProps } from '@/interfaces';
 
 export const Footer = ({ isLeftDetailBar }: FooterProps) => {
+	const { playListTrack, playingPlayList } = usePlayList();
 	const { playingContents, isPause } = useMusic();
 	const { dominantRgbaColor } = useDominantColors(
-		playingContents?.album.images[0].url || ''
+		playingContents?.album.images[0].url || playingPlayList?.images[0].url || ''
 	);
 	const palette = usePalette();
 	const breakpoint = useBreakPoint();
@@ -42,7 +43,7 @@ export const Footer = ({ isLeftDetailBar }: FooterProps) => {
 					width="250px"
 					height="100%"
 				>
-					{playingContents && (
+					{(playingContents || playListTrack) && (
 						<Box
 							position="relative"
 							display="flex"

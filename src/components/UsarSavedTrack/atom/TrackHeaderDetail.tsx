@@ -25,7 +25,7 @@ export const TrackHeaderDetail = ({ isColumn }: TrackHeaderDetailProps) => {
 					overflow: 'hidden',
 					textOverflow: 'ellipsis',
 					display: '-webkit-box',
-					WebkitLineClamp: 3,
+					WebkitLineClamp: isColumn ? 3 : 2,
 					WebkitBoxOrient: 'vertical',
 				}}
 				textAlign={isColumn ? 'center' : 'left'}
@@ -44,7 +44,12 @@ export const TrackHeaderDetail = ({ isColumn }: TrackHeaderDetailProps) => {
 				}}
 				variant="h6"
 			>
-				{selectedContents.userSavedTrack?.artists[0].name}
+				{selectedContents.userSavedTrack?.artists.map((artist, index) => (
+					<span key={index}>
+						{index > 0 && '・'}
+						{artist.name}
+					</span>
+				))}
 			</Typography>
 		</Box>
 	);

@@ -1,5 +1,5 @@
 'use client';
-import { useMusic } from '@/hooks';
+import { useMusic, usePlayList } from '@/hooks';
 import { formatTime, usePalette } from '@/utils';
 import { Box, Slider, Typography } from '@mui/material';
 
@@ -12,6 +12,7 @@ export const FooterSlider = () => {
 		handleSeekCommitted,
 		playingContents,
 	} = useMusic();
+	const { playingPlayList } = usePlayList();
 	const palette = usePalette();
 
 	return (
@@ -26,7 +27,7 @@ export const FooterSlider = () => {
 		>
 			<Typography variant="body2">{formatTime(currentTime)}</Typography>
 			<Slider
-				disabled={!playingContents}
+				disabled={!playingContents && !playingPlayList}
 				value={trackValue}
 				min={0}
 				max={duration - 1}

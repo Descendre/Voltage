@@ -1,4 +1,4 @@
-import { useMusic } from '@/hooks';
+import { useMusic, usePlayList } from '@/hooks';
 import { usePalette } from '@/utils';
 import { Box, Typography, keyframes } from '@mui/material';
 import { useEffect, useState } from 'react';
@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 export const FooterPlayingDetail = () => {
 	const [animationTime, setAnimationTime] = useState<number>(10);
 	const { playingContents, isPause } = useMusic();
+	const { lastPlayedPlayList, playingPlayList } = usePlayList();
 	const palette = usePalette();
 
 	const loop = keyframes`
@@ -27,6 +28,17 @@ export const FooterPlayingDetail = () => {
 			}
 		}
 	}, [playingContents]);
+
+	useEffect(() => {
+		if (lastPlayedPlayList?.items[0].track.name) {
+			const titleLength = lastPlayedPlayList.items[0].track.name.length;
+			if (titleLength > 20) {
+				setAnimationTime(Math.round(10 + (titleLength - 20) / 2.5));
+			} else {
+				setAnimationTime(10);
+			}
+		}
+	}, [lastPlayedPlayList]);
 
 	return (
 		<Box
@@ -61,7 +73,7 @@ export const FooterPlayingDetail = () => {
 					}}
 					variant="body2"
 				>
-					{playingContents?.name}
+					{playingContents?.name || lastPlayedPlayList?.items[0].track.name}
 				</Typography>
 			</Box>
 			<Typography
@@ -74,7 +86,7 @@ export const FooterPlayingDetail = () => {
 				}}
 				variant="body2"
 			>
-				{playingContents?.artists[0].name}
+				{playingContents?.artists[0].name || playingPlayList?.name}
 			</Typography>
 		</Box>
 	);

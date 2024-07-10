@@ -1,5 +1,5 @@
 'use client';
-import { useMusic } from '@/hooks';
+import { useMusic, usePlayList } from '@/hooks';
 import { usePalette } from '@/utils';
 import {
 	PauseCircle,
@@ -14,6 +14,7 @@ import { Box, Tooltip } from '@mui/material';
 export const FooterCommands = () => {
 	const {
 		handlePlayTrack,
+		handlePlayPlayList,
 		playingContents,
 		isPause,
 		handleSetNextTrack,
@@ -21,7 +22,22 @@ export const FooterCommands = () => {
 		repeatMode,
 		setRepeatMode,
 	} = useMusic();
+	const { playingPlayList, playListTrack } = usePlayList();
 	const palette = usePalette();
+
+	const handleTrackPlay = () => {
+		if (playingContents) {
+			handlePlayTrack({
+				url: playingContents?.preview_url,
+				content: playingContents,
+			});
+		} else if (playingPlayList) {
+			handlePlayPlayList({
+				url: playListTrack?.items[0].track.preview_url,
+				content: playingPlayList,
+			});
+		}
+	};
 
 	return (
 		<Box
@@ -33,7 +49,7 @@ export const FooterCommands = () => {
 			width="100%"
 			height="50%"
 		>
-			{!playingContents ? (
+			{!playingContents && !playingPlayList ? (
 				<Tooltip title="前へ" placement="top">
 					<SkipPrevious
 						sx={{
@@ -55,7 +71,7 @@ export const FooterCommands = () => {
 					/>
 				</Tooltip>
 			)}
-			{!playingContents ? (
+			{!playingContents && !playingPlayList ? (
 				<Tooltip title="再生" placement="top">
 					<PlayCircle
 						fontSize="large"
@@ -64,7 +80,7 @@ export const FooterCommands = () => {
 						}}
 					/>
 				</Tooltip>
-			) : isPause && playingContents?.id === playingContents?.id ? (
+			) : isPause && (playingContents || playingPlayList) ? (
 				<Tooltip title="再生" placement="top">
 					<PlayCircle
 						fontSize="large"
@@ -72,15 +88,10 @@ export const FooterCommands = () => {
 							cursor: 'pointer',
 							color: palette.icon.main,
 						}}
-						onClick={() =>
-							handlePlayTrack({
-								url: playingContents?.preview_url,
-								content: playingContents,
-							})
-						}
+						onClick={() => handleTrackPlay()}
 					/>
 				</Tooltip>
-			) : playingContents?.id === playingContents?.id ? (
+			) : playingContents || playingPlayList ? (
 				<Tooltip title="一時停止" placement="top">
 					<PauseCircle
 						fontSize="large"
@@ -88,12 +99,7 @@ export const FooterCommands = () => {
 							cursor: 'pointer',
 							color: palette.icon.main,
 						}}
-						onClick={() =>
-							handlePlayTrack({
-								url: playingContents?.preview_url,
-								content: playingContents,
-							})
-						}
+						onClick={() => handleTrackPlay()}
 					/>
 				</Tooltip>
 			) : (
@@ -104,12 +110,7 @@ export const FooterCommands = () => {
 							cursor: 'pointer',
 							color: palette.icon.main,
 						}}
-						onClick={() =>
-							handlePlayTrack({
-								url: playingContents?.preview_url,
-								content: playingContents,
-							})
-						}
+						onClick={() => handleTrackPlay()}
 					/>
 				</Tooltip>
 			)}
@@ -153,7 +154,7 @@ export const FooterCommands = () => {
 					/>
 				</Tooltip>
 			)}
-			{!playingContents ? (
+			{!playingContents && !playingPlayList ? (
 				<Tooltip title="次へ" placement="top">
 					<SkipNext
 						sx={{

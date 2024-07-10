@@ -30,6 +30,9 @@ export const siteTheme = createTheme({
 			main: '#fff',
 			hide: '#888',
 		},
+		table: {
+			hoverBg: 'rgba(255, 255, 255, 0.1)',
+		},
 	},
 	components: {
 		MuiCssBaseline: {

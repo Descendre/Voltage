@@ -1,8 +1,9 @@
 'use client';
-import { useMusic } from '@/hooks';
+import { useMusic, usePlayList, useSelectedContent } from '@/hooks';
 import { Avatar, Box } from '@mui/material';
 
 export const FooterPlayingContents = () => {
+	const { lastPlayedPlayList } = usePlayList();
 	const { playingContents } = useMusic();
 
 	return (
@@ -17,7 +18,10 @@ export const FooterPlayingContents = () => {
 			}}
 		>
 			<Avatar
-				src={playingContents?.album.images[0].url}
+				src={
+					playingContents?.album.images[0].url ||
+					lastPlayedPlayList?.items[0].track.album.images[0].url
+				}
 				variant="square"
 				sx={{
 					width: '100%',
