@@ -19,8 +19,8 @@ export const FooterSlider = () => {
 			justifyContent="center"
 			alignItems="center"
 			gap="20px"
-			width="50%"
-			height="100%"
+			width="100%"
+			height="50%"
 		>
 			<Typography variant="body2">{formatTime(currentTime)}</Typography>
 			<Slider
@@ -35,6 +35,7 @@ export const FooterSlider = () => {
 					handleSeekCommitted({ event: event, value: value })
 				}
 				sx={{
+					width: '100%',
 					'&:hover': {
 						'& .MuiSlider-thumb': {
 							width: 15,

@@ -7,4 +7,6 @@ export interface UseTrackProps {
 		React.SetStateAction<SpotifyUserSavedTrackResponse | null>
 	>;
 	handleSetTrackList: (spotifyToken: SpotifyTokenProps) => Promise<void>;
+	handleSetNextTrack: () => Promise<void>;
+	handleSetPrevTrack: () => Promise<void>;
 }

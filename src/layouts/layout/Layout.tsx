@@ -62,7 +62,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 						<Box
 							width="100%"
 							height={
-								['xs'].includes(breakpoint) ? '100%' : 'calc(100% - 80px)'
+								['xs'].includes(breakpoint) ? '100%' : 'calc(100% - 100px)'
 							}
 							sx={{
 								overflowY: 'overlay',
