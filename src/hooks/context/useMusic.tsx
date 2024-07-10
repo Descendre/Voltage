@@ -4,6 +4,8 @@ import {
 	HandlePlayTrackProps,
 	HandleSeekTrackCommittedProps,
 	HandleSeekTrackProps,
+	PlaylistItem,
+	PlaylistTracksResponse,
 	RepeatModeType,
 	SpotifyTrackProps,
 	UseMusicProps,
@@ -25,6 +27,9 @@ export const useMusic = (): UseMusicProps => {
 		setPlayingContents,
 		playingPlayList,
 		setPlayingPlayList,
+		playingPlaylistIndex,
+		setPlayingPlaylistIndex,
+		lastPlayedPlayList,
 		setLastPlayedPlayList,
 		isPause,
 		setIsPause,
@@ -42,13 +47,28 @@ export const useMusic = (): UseMusicProps => {
 
 	const currentTrackRef = useRef<HTMLAudioElement | null>(currentTrack);
 	const playingContentsRef = useRef<SpotifyTrackProps | null>(playingContents);
+	const playingPlayListRef = useRef<PlaylistItem | null>(playingPlayList);
+	const lastPlayedPlayListRef = useRef<PlaylistTracksResponse | null>(
+		lastPlayedPlayList
+	);
 	const repeatModeRef = useRef<RepeatModeType>('default');
+	const playingPlaylistIndexRef = useRef<number>(playingPlaylistIndex);
 
 	useEffect(() => {
 		currentTrackRef.current = currentTrack;
 		playingContentsRef.current = playingContents;
+		playingPlayListRef.current = playingPlayList;
+		lastPlayedPlayListRef.current = lastPlayedPlayList;
 		repeatModeRef.current = repeatMode;
-	}, [currentTrack, playingContents, repeatMode]);
+		playingPlaylistIndexRef.current = playingPlaylistIndex;
+	}, [
+		currentTrack,
+		playingContents,
+		lastPlayedPlayList,
+		repeatMode,
+		playingPlayList,
+		playingPlaylistIndex,
+	]);
 
 	const handlePlayTrack = async ({
 		url,
@@ -116,6 +136,7 @@ export const useMusic = (): UseMusicProps => {
 				setCurrentTrack(null);
 				setIsPause(null);
 				const audio = new Audio(url);
+				setPlayingPlaylistIndex(0);
 				audio.addEventListener('ended', () => {
 					setIsPause(true);
 					handleTrackAudioEnded();
@@ -132,6 +153,7 @@ export const useMusic = (): UseMusicProps => {
 				handleTrackAudioEnded();
 			});
 			await audio.play();
+			setPlayingPlaylistIndex(0);
 			setPlayingContents(null);
 			setCurrentTrack(audio);
 			setPlayingPlayList(content);
@@ -248,14 +270,76 @@ export const useMusic = (): UseMusicProps => {
 		setIsPause(false);
 	};
 
+	const handleSetNextPlayListTrack = async (): Promise<void> => {
+		if (
+			!playingPlayListRef.current ||
+			!lastPlayedPlayListRef.current ||
+			!currentTrackRef.current
+		)
+			return;
+		let nextIndex = playingPlaylistIndexRef.current + 1;
+		if (nextIndex >= lastPlayedPlayListRef.current.items.length) {
+			nextIndex = 0;
+		}
+
+		const nextUrl =
+			lastPlayedPlayListRef.current.items[nextIndex].track.preview_url;
+		if (!nextUrl) return;
+		currentTrackRef.current.pause();
+		const audio = new Audio(nextUrl);
+		audio.addEventListener('ended', () => {
+			setIsPause(true);
+			handleTrackAudioEnded();
+		});
+		await audio.play();
+		setCurrentTrack(audio);
+		setPlayingPlaylistIndex(nextIndex);
+		setIsPause(false);
+	};
+
+	const handleSetPrevPlayListTrack = async (): Promise<void> => {
+		if (
+			!playingPlayListRef.current ||
+			!lastPlayedPlayList ||
+			!currentTrackRef.current
+		)
+			return;
+
+		let prevIndex = playingPlaylistIndexRef.current - 1;
+		if (prevIndex < 0) {
+			prevIndex = lastPlayedPlayList.items.length - 1;
+		}
+
+		const prevUrl = lastPlayedPlayList.items[prevIndex].track.preview_url;
+		if (!prevUrl) return;
+		currentTrackRef.current.pause();
+		const audio = new Audio(prevUrl);
+		audio.addEventListener('ended', () => {
+			setIsPause(true);
+			handleTrackAudioEnded();
+		});
+		await audio.play();
+		setCurrentTrack(audio);
+		setPlayingPlaylistIndex(prevIndex);
+		setIsPause(false);
+	};
+
 	const handleTrackAudioEnded = async (): Promise<void> => {
 		switch (repeatModeRef.current) {
 			case 'repeat': {
-				await handleSetNextTrack();
+				if (playingContentsRef.current) {
+					await handleSetNextTrack();
+				} else if (playingPlayListRef.current) {
+					handleSetNextPlayListTrack();
+				}
 				break;
 			}
 			case 'one': {
-				handleSetSameTrack();
+				if (playingContentsRef.current) {
+					await handleSetSameTrack();
+				} else if (playingPlayListRef.current) {
+					handleSetSameTrack();
+				}
 			}
 			default: {
 				break;
@@ -286,5 +370,7 @@ export const useMusic = (): UseMusicProps => {
 		setRepeatMode,
 		handleSetNextTrack,
 		handleSetPrevTrack,
+		handleSetNextPlayListTrack,
+		handleSetPrevPlayListTrack,
 	};
 };

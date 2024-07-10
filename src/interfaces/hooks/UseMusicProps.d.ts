@@ -36,6 +36,8 @@ export interface UseMusicProps {
 	>;
 	handleSetNextTrack: () => Promise<void>;
 	handleSetPrevTrack: () => Promise<void>;
+	handleSetNextPlayListTrack: () => Promise<void>;
+	handleSetPrevPlayListTrack: () => Promise<void>;
 }
 
 export interface HandlePlayTrackProps {

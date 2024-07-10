@@ -16,6 +16,8 @@ export interface UsePlayListProps {
 	>;
 	playingPlayList: PlaylistItem | null;
 	setPlayingPlayList: React.Dispatch<React.SetStateAction<PlaylitItem | null>>;
+	playingPlaylistIndex: number;
+	setPlayingPlaylistIndex: React.Dispatch<React.SetStateAction<number>>;
 	lastPlayedPlayList: PlaylistTracksResponse | null;
 	setLastPlayedPlayList: React.Dispatch<
 		React.SetStateAction<PlaylistTracksResponse | null>
