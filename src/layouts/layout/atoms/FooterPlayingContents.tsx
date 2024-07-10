@@ -3,7 +3,7 @@ import { useMusic, usePlayList, useSelectedContent } from '@/hooks';
 import { Avatar, Box } from '@mui/material';
 
 export const FooterPlayingContents = () => {
-	const { lastPlayedPlayList } = usePlayList();
+	const { lastPlayedPlayList, playingPlaylistIndex } = usePlayList();
 	const { playingContents } = useMusic();
 
 	return (
@@ -20,7 +20,8 @@ export const FooterPlayingContents = () => {
 			<Avatar
 				src={
 					playingContents?.album.images[0].url ||
-					lastPlayedPlayList?.items[0].track.album.images[0].url
+					lastPlayedPlayList?.items[playingPlaylistIndex].track.album.images[0]
+						.url
 				}
 				variant="square"
 				sx={{

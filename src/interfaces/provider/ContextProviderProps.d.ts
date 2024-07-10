@@ -94,6 +94,8 @@ export interface ContextProviderProps {
 	>;
 	playingPlayList: PlaylistItem | null;
 	setPlayingPlayList: React.Dispatch<React.SetStateAction<PlaylistItem | null>>;
+	playingPlaylistIndex: number;
+	setPlayingPlaylistIndex: React.Dispatch<React.SetStateAction<number>>;
 	isPause: boolean | null;
 	setIsPause: React.Dispatch<React.SetStateAction<boolean | null>>;
 	trackValue: number;

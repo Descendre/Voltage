@@ -19,13 +19,15 @@ export const FooterCommands = () => {
 		isPause,
 		handleSetNextTrack,
 		handleSetPrevTrack,
+		handleSetNextPlayListTrack,
+		handleSetPrevPlayListTrack,
 		repeatMode,
 		setRepeatMode,
 	} = useMusic();
 	const { playingPlayList, playListTrack } = usePlayList();
 	const palette = usePalette();
 
-	const handleTrackPlay = () => {
+	const handleTrackPlay = (): void => {
 		if (playingContents) {
 			handlePlayTrack({
 				url: playingContents?.preview_url,
@@ -36,6 +38,22 @@ export const FooterCommands = () => {
 				url: playListTrack?.items[0].track.preview_url,
 				content: playingPlayList,
 			});
+		}
+	};
+
+	const handleTrackNext = (): void => {
+		if (playingContents) {
+			handleSetNextTrack();
+		} else if (playingPlayList) {
+			handleSetNextPlayListTrack();
+		}
+	};
+
+	const handleTrackPrev = (): void => {
+		if (playingContents) {
+			handleSetPrevTrack();
+		} else if (playingPlayList) {
+			handleSetPrevPlayListTrack();
 		}
 	};
 
@@ -67,7 +85,7 @@ export const FooterCommands = () => {
 								color: palette.icon.main,
 							},
 						}}
-						onClick={() => handleSetPrevTrack()}
+						onClick={() => handleTrackPrev()}
 					/>
 				</Tooltip>
 			)}
@@ -172,7 +190,7 @@ export const FooterCommands = () => {
 								color: palette.icon.main,
 							},
 						}}
-						onClick={() => handleSetNextTrack()}
+						onClick={() => handleTrackNext()}
 					/>
 				</Tooltip>
 			)}

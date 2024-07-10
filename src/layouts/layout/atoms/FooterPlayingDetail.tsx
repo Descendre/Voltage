@@ -6,7 +6,8 @@ import { useEffect, useState } from 'react';
 export const FooterPlayingDetail = () => {
 	const [animationTime, setAnimationTime] = useState<number>(10);
 	const { playingContents, isPause } = useMusic();
-	const { lastPlayedPlayList, playingPlayList } = usePlayList();
+	const { lastPlayedPlayList, playingPlayList, playingPlaylistIndex } =
+		usePlayList();
 	const palette = usePalette();
 
 	const loop = keyframes`
@@ -30,8 +31,9 @@ export const FooterPlayingDetail = () => {
 	}, [playingContents]);
 
 	useEffect(() => {
-		if (lastPlayedPlayList?.items[0].track.name) {
-			const titleLength = lastPlayedPlayList.items[0].track.name.length;
+		if (lastPlayedPlayList?.items[playingPlaylistIndex].track.name) {
+			const titleLength =
+				lastPlayedPlayList.items[playingPlaylistIndex].track.name.length;
 			if (titleLength > 20) {
 				setAnimationTime(Math.round(10 + (titleLength - 20) / 2.5));
 			} else {
@@ -73,7 +75,8 @@ export const FooterPlayingDetail = () => {
 					}}
 					variant="body2"
 				>
-					{playingContents?.name || lastPlayedPlayList?.items[0].track.name}
+					{playingContents?.name ||
+						lastPlayedPlayList?.items[playingPlaylistIndex].track.name}
 				</Typography>
 			</Box>
 			<Typography

@@ -56,6 +56,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 	const [playingPlayList, setPlayingPlayList] = useState<PlaylistItem | null>(
 		null
 	);
+	const [playingPlaylistIndex, setPlayingPlaylistIndex] = useState<number>(0);
 	const [isPause, setIsPause] = useState<boolean | null>(null);
 	const [trackValue, setTrackValue] = useState<number>(0);
 	const [duration, setDuration] = useState<number>(0);
@@ -120,6 +121,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		setPlayingContents,
 		playingPlayList,
 		setPlayingPlayList,
+		playingPlaylistIndex,
+		setPlayingPlaylistIndex,
 		isPause,
 		setIsPause,
 		trackValue,
