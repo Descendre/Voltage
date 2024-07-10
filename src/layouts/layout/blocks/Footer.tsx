@@ -1,5 +1,5 @@
 'use client';
-import { useBreakPoint, usePalette } from '@/utils';
+import { hexToRgba, useBreakPoint, usePalette } from '@/utils';
 import { Box } from '@mui/material';
 import {
 	FooterCommands,
@@ -46,7 +46,7 @@ export const Footer = ({ isLeftDetailBar }: FooterProps) => {
 						<Box
 							position="relative"
 							display="flex"
-							justifyContent="centr"
+							justifyContent="center"
 							alignItems="center"
 							gap="20px"
 							width="100%"
@@ -75,18 +75,34 @@ export const Footer = ({ isLeftDetailBar }: FooterProps) => {
 				</Box>
 
 				<Box
+					position="relative"
 					display="flex"
 					justifyContent="center"
 					alignItems="center"
 					flexDirection="column"
 					width="calc(100% - 250px)"
-					maxWidth="1000px"
 					height="100%"
 					padding="10px 20px"
 					margin="0 auto"
 				>
 					<FooterCommands />
 					<FooterSlider />
+
+					<Box
+						zIndex={1}
+						position="absolute"
+						top={0}
+						right={0}
+						width="70%"
+						height="100%"
+						sx={{
+							backgroundImage: `linear-gradient(to left, rgba(${hexToRgba(palette.layout.secondary)}, 0.6), rgba(${hexToRgba(palette.layout.secondary)}, 1)), url('${playingContents?.album.images[0].url}')`,
+							backgroundSize: 'cover',
+							backgroundPosition: 'center',
+							backgroundRepeat: 'no-repeat',
+							backgroundClip: 'content-box',
+						}}
+					/>
 				</Box>
 			</Box>
 

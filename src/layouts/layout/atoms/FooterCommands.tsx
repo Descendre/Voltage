@@ -25,6 +25,7 @@ export const FooterCommands = () => {
 
 	return (
 		<Box
+			zIndex={10}
 			display="flex"
 			justifyContent="center"
 			alignItems="center"
@@ -32,19 +33,38 @@ export const FooterCommands = () => {
 			width="100%"
 			height="50%"
 		>
-			<Tooltip title="前へ" placement="top">
-				<SkipPrevious
-					sx={{
-						cursor: 'pointer',
-						color: palette.icon.hide,
-						'&:hover': {
-							color: palette.icon.main,
-						},
-					}}
-					onClick={() => handleSetPrevTrack()}
-				/>
-			</Tooltip>
-			{isPause && playingContents?.id === playingContents?.id ? (
+			{!playingContents ? (
+				<Tooltip title="前へ" placement="top">
+					<SkipPrevious
+						sx={{
+							color: palette.icon.hide,
+						}}
+					/>
+				</Tooltip>
+			) : (
+				<Tooltip title="前へ" placement="top">
+					<SkipPrevious
+						sx={{
+							cursor: 'pointer',
+							color: palette.icon.hide,
+							'&:hover': {
+								color: palette.icon.main,
+							},
+						}}
+						onClick={() => handleSetPrevTrack()}
+					/>
+				</Tooltip>
+			)}
+			{!playingContents ? (
+				<Tooltip title="再生" placement="top">
+					<PlayCircle
+						fontSize="large"
+						sx={{
+							color: palette.icon.hide,
+						}}
+					/>
+				</Tooltip>
+			) : isPause && playingContents?.id === playingContents?.id ? (
 				<Tooltip title="再生" placement="top">
 					<PlayCircle
 						fontSize="large"
@@ -133,18 +153,28 @@ export const FooterCommands = () => {
 					/>
 				</Tooltip>
 			)}
-			<Tooltip title="次へ" placement="top">
-				<SkipNext
-					sx={{
-						cursor: 'pointer',
-						color: palette.icon.hide,
-						'&:hover': {
-							color: palette.icon.main,
-						},
-					}}
-					onClick={() => handleSetNextTrack()}
-				/>
-			</Tooltip>
+			{!playingContents ? (
+				<Tooltip title="次へ" placement="top">
+					<SkipNext
+						sx={{
+							color: palette.icon.hide,
+						}}
+					/>
+				</Tooltip>
+			) : (
+				<Tooltip title="次へ" placement="top">
+					<SkipNext
+						sx={{
+							cursor: 'pointer',
+							color: palette.icon.hide,
+							'&:hover': {
+								color: palette.icon.main,
+							},
+						}}
+						onClick={() => handleSetNextTrack()}
+					/>
+				</Tooltip>
+			)}
 		</Box>
 	);
 };

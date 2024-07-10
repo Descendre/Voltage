@@ -10,11 +10,13 @@ export const FooterSlider = () => {
 		currentTime,
 		handleSeekTrack,
 		handleSeekCommitted,
+		playingContents,
 	} = useMusic();
 	const palette = usePalette();
 
 	return (
 		<Box
+			zIndex={10}
 			display="flex"
 			justifyContent="center"
 			alignItems="center"
@@ -24,6 +26,7 @@ export const FooterSlider = () => {
 		>
 			<Typography variant="body2">{formatTime(currentTime)}</Typography>
 			<Slider
+				disabled={!playingContents}
 				value={trackValue}
 				min={0}
 				max={duration - 1}
