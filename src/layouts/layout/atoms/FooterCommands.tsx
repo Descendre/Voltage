@@ -24,7 +24,8 @@ export const FooterCommands = () => {
 		repeatMode,
 		setRepeatMode,
 	} = useMusic();
-	const { playingPlayList, playListTrack } = usePlayList();
+	const { playingPlayList, playListTrack, playingPlaylistIndex } =
+		usePlayList();
 	const palette = usePalette();
 
 	const handleTrackPlay = (): void => {
@@ -37,6 +38,7 @@ export const FooterCommands = () => {
 			handlePlayPlayList({
 				url: playListTrack?.items[0].track.preview_url,
 				content: playingPlayList,
+				index: playingPlaylistIndex,
 			});
 		}
 	};

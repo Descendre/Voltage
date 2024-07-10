@@ -16,7 +16,7 @@ export const Footer = ({ isLeftDetailBar }: FooterProps) => {
 	const { playingContents, isPause } = useMusic();
 	const { dominantRgbaColor } = useDominantColors(
 		playingContents?.album.images[0].url ||
-			lastPlayedPlayList?.items[playingPlaylistIndex].track.album.images[0]
+			lastPlayedPlayList?.items[playingPlaylistIndex]?.track?.album?.images[0]
 				.url ||
 			''
 	);
@@ -101,7 +101,7 @@ export const Footer = ({ isLeftDetailBar }: FooterProps) => {
 						width="70%"
 						height="100%"
 						sx={{
-							backgroundImage: `linear-gradient(to left, rgba(${hexToRgba(palette.layout.secondary)}, 0.6), rgba(${hexToRgba(palette.layout.secondary)}, 1)), url('${playingContents?.album.images[0].url || lastPlayedPlayList?.items[playingPlaylistIndex].track.album.images[0].url}')`,
+							backgroundImage: `linear-gradient(to left, rgba(${hexToRgba(palette.layout.secondary)}, 0.6), rgba(${hexToRgba(palette.layout.secondary)}, 1)), url('${playingContents?.album.images[0].url || lastPlayedPlayList?.items[playingPlaylistIndex]?.track?.album?.images[0]?.url}')`,
 							backgroundSize: 'cover',
 							backgroundPosition: 'center',
 							backgroundRepeat: 'no-repeat',

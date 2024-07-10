@@ -1,7 +1,12 @@
 'use client';
-import { usePlayList, useSelectedContent } from '@/hooks';
+import { useMusic, usePlayList, useSelectedContent } from '@/hooks';
 import { formatMsSeconds, usePalette } from '@/utils';
-import { CheckCircle, DragIndicator, PlayArrow } from '@mui/icons-material';
+import {
+	CheckCircle,
+	DragIndicator,
+	Pause,
+	PlayArrow,
+} from '@mui/icons-material';
 import {
 	Avatar,
 	Box,
@@ -16,8 +21,13 @@ import {
 export const PlayListTable = () => {
 	const palette = usePalette();
 	const { selectedContents } = useSelectedContent();
-	const { playListTrack, playingPlayList, playingPlaylistIndex } =
-		usePlayList();
+	const {
+		playListTrack,
+		playingPlayList,
+		playingPlaylistIndex,
+		setLastPlayedPlayList,
+	} = usePlayList();
+	const { handlePlayPlayList, isPause } = useMusic();
 	const isSelected = (index: number): boolean => {
 		const isSelected: boolean =
 			playingPlayList?.id === selectedContents.playList?.id &&
@@ -54,6 +64,14 @@ export const PlayListTable = () => {
 									opacity: 1,
 									userSelect: 'auto',
 								},
+							}}
+							onClick={() => {
+								handlePlayPlayList({
+									url: playListTrack?.items[index].track.preview_url,
+									content: selectedContents.playList,
+									index: index,
+								});
+								setLastPlayedPlayList(playListTrack);
 							}}
 						>
 							<TableCell
@@ -114,7 +132,13 @@ export const PlayListTable = () => {
 										}}
 									>
 										<CheckCircle fontSize="small" color="primary" />
-										<PlayArrow />
+										{isSelected(index) &&
+										!isPause &&
+										playingPlaylistIndex === index ? (
+											<Pause />
+										) : (
+											<PlayArrow />
+										)}
 									</Box>
 									<DragIndicator
 										fontSize="small"
