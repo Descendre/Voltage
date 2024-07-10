@@ -90,6 +90,10 @@ export interface ContextProviderProps {
 	setCurrentTime: React.Dispatch<React.SetStateAction<number>>;
 	isSeeking: boolean;
 	setIsSeeking: React.Dispatch<React.SetStateAction<boolean>>;
+	repeatMode: 'default' | 'repeat' | 'one';
+	setRepeatMode: React.Dispatch<
+		React.SetStateAction<'default' | 'repeat' | 'one'>
+	>;
 
 	isSearchModal: boolean;
 	setIsSearchModal: React.Dispatch<React.SetStateAction<boolean>>;

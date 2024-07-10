@@ -29,6 +29,8 @@ export const useMusic = (): UseMusicProps => {
 		setCurrentTime,
 		isSeeking,
 		setIsSeeking,
+		repeatMode,
+		setRepeatMode,
 	} = context;
 
 	const handlePlayTrack = async ({
@@ -131,5 +133,7 @@ export const useMusic = (): UseMusicProps => {
 		setIsSeeking,
 		handleSeekTrack,
 		handleSeekCommitted,
+		repeatMode,
+		setRepeatMode,
 	};
 };

@@ -26,6 +26,10 @@ export interface UseMusicProps {
 		event,
 		value,
 	}: HandleSeekTrackCommittedProps) => void;
+	repeatMode: 'default' | 'repeat' | 'one';
+	setRepeatMode: React.Dispatch<
+		React.SetStateAction<'default' | 'repeat' | 'one'>
+	>;
 }
 
 export interface HandlePlayTrackProps {

@@ -2,6 +2,7 @@
 import { useBreakPoint, usePalette } from '@/utils';
 import { Box } from '@mui/material';
 import {
+	FooterCommands,
 	FooterPlayingContents,
 	FooterPlayingDetail,
 	FooterSlider,
@@ -26,7 +27,7 @@ export const Footer = ({ isLeftDetailBar }: FooterProps) => {
 				position="fixed"
 				bottom={0}
 				width={`calc(100% - 50px - ${isLeftDetailBar ? '300px' : '0px'})`}
-				height="80px"
+				height="100px"
 				color="#fff"
 				sx={{
 					backgroundColor: palette.layout.secondary,
@@ -77,16 +78,20 @@ export const Footer = ({ isLeftDetailBar }: FooterProps) => {
 					display="flex"
 					justifyContent="center"
 					alignItems="center"
-					gap="20px"
+					flexDirection="column"
 					width="calc(100% - 250px)"
+					maxWidth="1000px"
 					height="100%"
+					padding="10px 20px"
+					margin="0 auto"
 				>
+					<FooterCommands />
 					<FooterSlider />
 				</Box>
 			</Box>
 
 			<Box
-				height="80px"
+				height="100px"
 				width="100%"
 				display={['xs'].includes(breakpoint) ? 'none' : 'block'}
 			></Box>
