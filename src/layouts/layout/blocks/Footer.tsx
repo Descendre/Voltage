@@ -47,7 +47,7 @@ export const Footer = ({ isLeftDetailBar }: FooterProps) => {
 					width="250px"
 					height="100%"
 				>
-					{(playingContents || playListTrack) && (
+					{(playingContents || lastPlayedPlayList) && (
 						<Box
 							position="relative"
 							display="flex"
