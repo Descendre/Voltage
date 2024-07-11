@@ -9,6 +9,6 @@ export interface UseSpeechProps {
 	setTranscript: React.Dispatch<React.SetStateAction<string>>;
 	emotion: string;
 	setEmotion: React.Dispatch<React.SetStateAction<string>>;
-	handleStartRecognition: () => void;
+	handleStartRecognition: () => Promise<void>;
 	handleStopRecognition: () => void;
 }

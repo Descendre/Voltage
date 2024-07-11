@@ -7,6 +7,7 @@ import {
 	SpeechRecognitionEvent,
 	UseSpeechProps,
 } from '@/interfaces';
+import { axiosFetch } from '@/libs';
 
 export const useSpeech = (): UseSpeechProps => {
 	const context = useContext(Context);
@@ -21,7 +22,7 @@ export const useSpeech = (): UseSpeechProps => {
 
 	const { transcript, setTranscript, emotion, setEmotion } = context;
 
-	const handleStartRecognition = (): void => {
+	const handleStartRecognition = async (): Promise<void> => {
 		const SpeechRecognition =
 			(window as ExtendedWindow).SpeechRecognition ||
 			(window as ExtendedWindow).webkitSpeechRecognition;
@@ -35,8 +36,12 @@ export const useSpeech = (): UseSpeechProps => {
 		recognition.interimResults = false;
 		recognition.maxAlternatives = 1;
 
-		recognition.onresult = (event: SpeechRecognitionEvent) => {
+		recognition.onresult = async (event: SpeechRecognitionEvent) => {
 			const speechResult = event.results[0][0]?.transcript || '';
+			const response = await axiosFetch.get<string>(
+				`/api/playList/speech/${speechResult}`
+			);
+			console.log('答えだ: ', response);
 			setTranscript(speechResult);
 		};
 
