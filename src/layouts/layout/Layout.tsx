@@ -5,8 +5,8 @@ import {
 	Header,
 	LeftBar,
 	LeftDetailBar,
-	SearchModal,
 	SettingModal,
+	SpeechModal,
 } from './blocks';
 import { Box } from '@mui/material';
 import { useLayouts } from '@/hooks';
@@ -75,7 +75,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 				</Box>
 			</Box>
 
-			<SearchModal />
+			<SpeechModal />
 			<SettingModal />
 		</>
 	);

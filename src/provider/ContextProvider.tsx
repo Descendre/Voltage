@@ -65,7 +65,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 	const [repeatMode, setRepeatMode] = useState<RepeatModeType>('default');
 
 	const [isPlay, setIsPlay] = useState<boolean>(false);
-	const [isSearchModal, setIsSearchModal] = useState<boolean>(false);
+	const [isSpeechModal, setIsSpeechModal] = useState<boolean>(false);
 	const [isSettingModal, setIsSettingModal] = useState<boolean>(false);
 	const [isFullScreen, setIsFullscreen] = useState<boolean>(false);
 	const [selectedLeftContent, setSelectedLeftContent] = useState<
@@ -95,6 +95,10 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 	const [userSetting, setUserSetting] = useState<UserSettingProps>({
 		background: 'dominant',
 	});
+
+	const [transcript, setTranscript] = useState<string>('');
+	const [emotion, setEmotion] = useState<string>('');
+
 	const contextValue = {
 		userInfo,
 		setUserInfo,
@@ -138,8 +142,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 
 		isPlay,
 		setIsPlay,
-		isSearchModal,
-		setIsSearchModal,
+		isSpeechModal,
+		setIsSpeechModal,
 		isSettingModal,
 		setIsSettingModal,
 		isFullScreen,
@@ -156,6 +160,11 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		setIsFirstFetchComplete,
 		userSetting,
 		setUserSetting,
+
+		transcript,
+		setTranscript,
+		emotion,
+		setEmotion,
 	};
 
 	return <Context.Provider value={contextValue}>{children}</Context.Provider>;

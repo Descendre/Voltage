@@ -6,12 +6,12 @@ import { Box, Chip, InputAdornment, TextField } from '@mui/material';
 import React, { useRef } from 'react';
 
 export const HeaderSearchBar = () => {
-	const { setIsSearchModal } = useLayouts();
+	const { setIsSpeechModal } = useLayouts();
 	const palette = usePalette();
 	const disabledRef = useRef<HTMLInputElement>(null);
 
 	const handleBarClick = (): void => {
-		setIsSearchModal(true);
+		setIsSpeechModal(true);
 		if (disabledRef.current) {
 			disabledRef.current.blur();
 		}

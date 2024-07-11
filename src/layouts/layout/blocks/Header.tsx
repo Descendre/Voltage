@@ -23,7 +23,7 @@ export const Header = () => {
 	const palette = usePalette();
 	const breakpoint = useBreakPoint();
 	const {
-		setIsSearchModal,
+		setIsSpeechModal,
 		setIsSettingModal,
 		isFullScreen,
 		handleToggleScreen,
@@ -63,7 +63,7 @@ export const Header = () => {
 						<>
 							<HeaderIconButton
 								icon={<Mic fontSize="small" />}
-								onClick={() => setIsSearchModal(true)}
+								onClick={() => setIsSpeechModal(true)}
 							/>
 							<HeaderIconButton icon={<MoreHoriz fontSize="small" />} />
 						</>

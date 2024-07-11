@@ -10,8 +10,8 @@ export const useLayouts = (): UseLayoutsProps => {
 	}
 
 	const {
-		isSearchModal,
-		setIsSearchModal,
+		isSpeechModal,
+		setIsSpeechModal,
 		isSettingModal,
 		setIsSettingModal,
 		isFullScreen,
@@ -31,8 +31,8 @@ export const useLayouts = (): UseLayoutsProps => {
 	const handleTogglePlay = () => setIsPlay((prev) => !prev);
 
 	return {
-		isSearchModal,
-		setIsSearchModal,
+		isSpeechModal,
+		setIsSpeechModal,
 		isSettingModal,
 		setIsSettingModal,
 		isFullScreen,
