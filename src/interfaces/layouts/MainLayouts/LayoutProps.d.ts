@@ -14,9 +14,10 @@ export interface LeftBarProps {
 		| 'コレクション'
 		| 'プロフィール'
 		| 'プレイリスト'
+		| 'AI'
 		| 'アーティスト'
 		| '検索';
-	contentType?: 'userSavedTrack' | 'playList' | 'artist' | 'search';
+	contentType?: 'userSavedTrack' | 'playList' | 'AI' | 'artist' | 'search';
 }
 
 export interface LeftDetailBarHeaderProps {

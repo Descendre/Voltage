@@ -49,6 +49,7 @@ export interface ContextProviderProps {
 		| 'コレクション'
 		| 'プロフィール'
 		| 'プレイリスト'
+		| 'AI'
 		| 'アーティスト'
 		| '検索'
 		| null;
@@ -57,6 +58,7 @@ export interface ContextProviderProps {
 			| 'コレクション'
 			| 'プロフィール'
 			| 'プレイリスト'
+			| 'AI'
 			| 'アーティスト'
 			| '検索'
 			| null
@@ -66,6 +68,7 @@ export interface ContextProviderProps {
 		| 'コレクション'
 		| 'プロフィール'
 		| 'プレイリスト'
+		| 'AI'
 		| 'アーティスト'
 		| '検索'
 		| null;
@@ -74,15 +77,22 @@ export interface ContextProviderProps {
 			| 'コレクション'
 			| 'プロフィール'
 			| 'プレイリスト'
+			| 'AI'
 			| 'アーティスト'
 			| '検索'
 			| null
 		>
 	>;
-	currentContent: 'userSavedTrack' | 'playList' | 'artist' | 'search' | null;
+	currentContent:
+		| 'userSavedTrack'
+		| 'playList'
+		| 'artist'
+		| 'AI'
+		| 'search'
+		| null;
 	setCurrentContent: React.Dispatch<
 		React.SetStateAction<
-			'userSavedTrack' | 'playList' | 'artist' | 'search' | null
+			'userSavedTrack' | 'playList' | 'artist' | 'AI' | 'search' | null
 		>
 	>;
 	currentTrack: HTMLAudioElement | null;
