@@ -1,10 +1,11 @@
 'use client';
-import { useDominantColors, useUserSetting } from '@/hooks';
+import { useDominantColors, useRouting, useUserSetting } from '@/hooks';
 import { ContentsBackgroundProps } from '@/interfaces';
 import { Box } from '@mui/material';
 
 export const ContentsBackground = ({ url }: ContentsBackgroundProps) => {
 	const { dominantRgbaColor } = useDominantColors(url || '');
+	const { currentContent } = useRouting();
 	const { userSetting } = useUserSetting();
 
 	return (
@@ -29,7 +30,10 @@ export const ContentsBackground = ({ url }: ContentsBackgroundProps) => {
 		>
 			<Box
 				sx={{
-					display: userSetting.background === 'image' ? 'block' : 'none',
+					display:
+						userSetting.background === 'image' && currentContent !== null
+							? 'block'
+							: 'none',
 					width: '100%',
 					height: '100%',
 					background: 'rgba(0, 0, 0, 0.7)',
