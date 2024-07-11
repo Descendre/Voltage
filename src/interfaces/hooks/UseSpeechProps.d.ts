@@ -1,3 +1,5 @@
+import { EmotionLabels } from '../provider';
+
 export interface UseSpeechProps {
 	recognition: SpeechRecognition | null;
 	setRecognition: React.Dispatch<
@@ -13,12 +15,20 @@ export interface UseSpeechProps {
 	handleStopRecognition: () => void;
 	processText: string;
 	setProcessText: React.Dispatch<React.SetStateAction<string>>;
+	recommendationPlaylists: SpotifyRecommendationResponse[][];
+	setRecommendationPlaylists: React.Dispatch<
+		React.SetStateAction<SpotifyRecommendationResponse[][]>
+	>;
+	speechText: string;
+	setSpeechText: React.Dispatch<React.SetStateAction<string>>;
+	voltage: EmotionLabels;
+	setVoltage: React.Dispatch<React.SetStateAction<EmotionLabels>>;
 }
 
 export interface EmotionResponese {
 	text: string;
 	voltage: number;
-	classification: string;
+	classification: EmotionLabels;
 }
 
 export interface HandleGenerateEmotionalPlayListProps {

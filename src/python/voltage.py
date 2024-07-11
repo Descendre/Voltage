@@ -29,7 +29,7 @@ def main():
         predicted_label = torch.argmax(logits, dim=1).item()
 
         # 感情ラベルの対応関係
-        emotion_labels = ["非常に否定的", "否定的", "中立", "肯定的", "非常に肯定的"]
+        emotion_labels = ["Super Negative", "Negative", "Neutral", "Positive", "Super Positive"]
         predicted_emotion = emotion_labels[predicted_label]
 
         result = {

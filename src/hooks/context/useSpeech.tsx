@@ -30,8 +30,19 @@ export const useSpeech = (): UseSpeechProps => {
 	);
 	const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
 
-	const { transcript, setTranscript, emotion, setEmotion, spotifyToken } =
-		context;
+	const {
+		transcript,
+		setTranscript,
+		emotion,
+		setEmotion,
+		spotifyToken,
+		recommendationPlaylists,
+		setRecommendationPlaylists,
+		speechText,
+		setSpeechText,
+		voltage,
+		setVoltage,
+	} = context;
 
 	const handleStartRecognition = async (): Promise<void> => {
 		const SpeechRecognition =
@@ -48,14 +59,17 @@ export const useSpeech = (): UseSpeechProps => {
 		recognition.maxAlternatives = 1;
 
 		recognition.onresult = async (event: SpeechRecognitionEvent) => {
+			setRecommendationPlaylists([]);
 			setProcessText('感情ボルテージを測定中...');
 			const speechResult = event.results[0][0]?.transcript || '';
 			const response = await axiosFetch.get<EmotionResponese>(
 				`/api/emotion/${speechResult}`
 			);
 			let { text, voltage, classification } = response;
-			const trackEnergy = getTrackEnergy(voltage);
+			setSpeechText(text);
+			setVoltage(classification);
 			setTranscript(speechResult);
+			const trackEnergy = getTrackEnergy(voltage);
 			setProcessText('プレイリストを構成中...');
 			await handleGenerateEmotionalPlayList({
 				trackEnergy: trackEnergy,
@@ -96,8 +110,8 @@ export const useSpeech = (): UseSpeechProps => {
 		trackEnergy,
 		offset,
 		limit,
-	}: HandleGenerateEmotionalPlayListProps): Promise<SpotifyRecommendationResponse | null> => {
-		if (!spotifyToken) return null;
+	}: HandleGenerateEmotionalPlayListProps): Promise<void> => {
+		if (!spotifyToken) return;
 
 		// 自分のアカウントのトップトラック5件を取得
 		const topTrackResponse = await axiosFetch.post<TopTracksResponse>(
@@ -127,14 +141,16 @@ export const useSpeech = (): UseSpeechProps => {
 					Authorization: `Bearer ${spotifyToken.access_token}`,
 				}
 			);
-		console.log(RecommendationTrackResponse);
-		return RecommendationTrackResponse;
+		setRecommendationPlaylists((prev) => [
+			...prev,
+			[RecommendationTrackResponse],
+		]);
 	};
 
 	const handleGenerateEmotionalPlayList2 = async ({
 		trackEnergy,
-	}: HandleGenerateEmotionalPlayList2Props): Promise<SpotifyRecommendationResponse | null> => {
-		if (!spotifyToken) return null;
+	}: HandleGenerateEmotionalPlayList2Props): Promise<void> => {
+		if (!spotifyToken) return;
 
 		// 自分のアカウントのトップアーティストを取得
 		const topArtistResponse = await axiosFetch.get<TopArtistsResponse>(
@@ -175,8 +191,10 @@ export const useSpeech = (): UseSpeechProps => {
 					Authorization: `Bearer ${spotifyToken.access_token}`,
 				}
 			);
-		console.log(RecommendationTrackResponse);
-		return RecommendationTrackResponse;
+		setRecommendationPlaylists((prev) => [
+			...prev,
+			[RecommendationTrackResponse],
+		]);
 	};
 
 	const getTrackEnergy = (voltage: number) => {
@@ -227,5 +245,11 @@ export const useSpeech = (): UseSpeechProps => {
 		handleStopRecognition,
 		processText,
 		setProcessText,
+		recommendationPlaylists,
+		setRecommendationPlaylists,
+		speechText,
+		setSpeechText,
+		voltage,
+		setVoltage,
 	};
 };

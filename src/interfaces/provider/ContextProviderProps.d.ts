@@ -5,6 +5,7 @@ import {
 	PlaylistItem,
 	PlaylistTracksResponse,
 	SpotifyArtistProps,
+	SpotifyRecommendationResponse,
 	SpotifyTrackProps,
 	SpotifyUserArtistResponse,
 	SpotifyUserInfoResponse,
@@ -136,6 +137,14 @@ export interface ContextProviderProps {
 	setTranscript: React.Dispatch<React.SetStateAction<string>>;
 	emotion: string;
 	setEmotion: React.Dispatch<React.SetStateAction<string>>;
+	recommendationPlaylists: SpotifyRecommendationResponse[][];
+	setRecommendationPlaylists: React.Dispatch<
+		React.SetStateAction<SpotifyRecommendationResponse[][]>
+	>;
+	speechText: string;
+	setSpeechText: React.Dispatch<React.SetStateAction<string>>;
+	voltage: EmotionLabels;
+	setVoltage: React.Dispatch<React.SetStateAction<EmotionLabels>>;
 }
 
 export interface selectedContentsProps {
@@ -160,3 +169,11 @@ export interface UserSettingProps {
 }
 
 export type RepeatModeType = 'default' | 'repeat' | 'one';
+
+export type EmotionLabels =
+	| 'Super Negative'
+	| 'Negative'
+	| 'Neutral'
+	| 'Positive'
+	| 'Super Positive'
+	| null;
