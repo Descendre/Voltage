@@ -1,6 +1,7 @@
 'use client';
 import { ContentsBackground } from '@/components';
 import {
+	AI,
 	Artist,
 	NoSelected,
 	PlayList,
@@ -36,6 +37,8 @@ export const SwitchingContents = () => {
 				<PlayList />
 			) : currentContent === 'artist' ? (
 				<Artist />
+			) : currentContent === 'AI' ? (
+				<AI />
 			) : currentContent === 'search' ? (
 				<Search />
 			) : (

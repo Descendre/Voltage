@@ -48,7 +48,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 			},
 		});
 	const [currentContent, setCurrentContent] = useState<
-		'userSavedTrack' | 'playList' | 'artist' | 'search' | null
+		'userSavedTrack' | 'playList' | 'artist' | 'AI' | 'search' | null
 	>(null);
 	const [currentTrack, setCurrentTrack] = useState<HTMLAudioElement | null>(
 		null
@@ -74,6 +74,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		| 'コレクション'
 		| 'プロフィール'
 		| 'プレイリスト'
+		| 'AI'
 		| 'アーティスト'
 		| '検索'
 		| null
@@ -82,6 +83,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		| 'コレクション'
 		| 'プロフィール'
 		| 'プレイリスト'
+		| 'AI'
 		| 'アーティスト'
 		| '検索'
 		| null

@@ -40,6 +40,9 @@ export const useRouting = (): UserRoutingProps => {
 					break;
 				}
 				break;
+			case 'AI':
+				setCurrentContent('AI');
+				break;
 			case 'search':
 				setCurrentContent('search');
 				break;

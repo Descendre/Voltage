@@ -1,3 +1,4 @@
+import { SpotifyRecommendationResponse } from '../api';
 import { EmotionLabels } from '../provider';
 
 export interface UseSpeechProps {

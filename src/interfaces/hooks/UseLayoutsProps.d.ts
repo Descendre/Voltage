@@ -11,6 +11,7 @@ export interface UseLayoutsProps {
 		| 'コレクション'
 		| 'プロフィール'
 		| 'プレイリスト'
+		| 'AI'
 		| 'アーティスト'
 		| '検索'
 		| null;
@@ -19,6 +20,7 @@ export interface UseLayoutsProps {
 			| 'コレクション'
 			| 'プロフィール'
 			| 'プレイリスト'
+			| 'AI'
 			| 'アーティスト'
 			| '検索'
 			| null
@@ -28,6 +30,7 @@ export interface UseLayoutsProps {
 		| 'コレクション'
 		| 'プロフィール'
 		| 'プレイリスト'
+		| 'AI'
 		| 'アーティスト'
 		| '検索'
 		| null;
@@ -36,6 +39,7 @@ export interface UseLayoutsProps {
 			| 'コレクション'
 			| 'プロフィール'
 			| 'プレイリスト'
+			| 'AI'
 			| 'アーティスト'
 			| '検索'
 			| null

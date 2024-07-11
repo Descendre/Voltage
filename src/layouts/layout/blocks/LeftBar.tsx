@@ -6,6 +6,7 @@ import {
 	AccountCircleOutlined,
 	FavoriteBorderOutlined,
 	LibraryMusicOutlined,
+	OfflineBoltOutlined,
 	PeopleAltOutlined,
 	SearchOutlined,
 } from '@mui/icons-material';
@@ -54,6 +55,11 @@ export const LeftBar = () => {
 					icon={<PeopleAltOutlined />}
 					titleJp="アーティスト"
 					contentType="artist"
+				/>
+				<LeftBarIcon
+					icon={<OfflineBoltOutlined />}
+					titleJp="AI"
+					contentType="AI"
 				/>
 				<LeftBarIcon
 					icon={<SearchOutlined />}

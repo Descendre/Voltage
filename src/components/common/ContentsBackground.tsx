@@ -31,7 +31,8 @@ export const ContentsBackground = ({ url }: ContentsBackgroundProps) => {
 			<Box
 				sx={{
 					display:
-						userSetting.background === 'image' && currentContent !== null
+						userSetting.background === 'image' &&
+						![null, 'search', 'AI', 'profile'].includes(currentContent)
 							? 'block'
 							: 'none',
 					width: '100%',

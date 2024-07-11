@@ -3,3 +3,4 @@ export * from './UserSavedTrack';
 export * from './PlayList';
 export * from './Artist';
 export * from './Search';
+export * from './AI';

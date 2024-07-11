@@ -128,22 +128,22 @@ export const useSpeech = (): UseSpeechProps => {
 			.join(',');
 
 		// トップトラック5件のIDを元におすすめトラック10件を検索
-		// const RecommendationTrackResponse =
-		// 	await axiosFetch.post<SpotifyRecommendationResponse>(
-		// 		`/api/track/recommendations/seedTracks`,
-		// 		{
-		// 			seedTracks: topTrackIds,
-		// 			limit: 10,
-		// 			trackEnergy: trackEnergy,
-		// 		},
-		// 		{
-		// 			Authorization: `Bearer ${spotifyToken.access_token}`,
-		// 		}
-		// 	);
-		// setRecommendationPlaylists((prev) => [
-		// 	...prev,
-		// 	[RecommendationTrackResponse],
-		// ]);
+		const RecommendationTrackResponse =
+			await axiosFetch.post<SpotifyRecommendationResponse>(
+				`/api/track/recommendations/seedTracks`,
+				{
+					seedTracks: topTrackIds,
+					limit: 10,
+					trackEnergy: trackEnergy,
+				},
+				{
+					Authorization: `Bearer ${spotifyToken.access_token}`,
+				}
+			);
+		setRecommendationPlaylists((prev) => [
+			...prev,
+			[RecommendationTrackResponse],
+		]);
 	};
 
 	const handleGenerateEmotionalPlayList2 = async ({
@@ -178,22 +178,22 @@ export const useSpeech = (): UseSpeechProps => {
 		);
 
 		// 関連アーティスト5件のIDを元におすすめトラック10件を検索
-		// const RecommendationTrackResponse =
-		// 	await axiosFetch.post<SpotifyRecommendationResponse>(
-		// 		`/api/track/recommendations/seedArtists`,
-		// 		{
-		// 			seedArtists: randomTopArtistIds,
-		// 			limit: 10,
-		// 			trackEnergy: trackEnergy,
-		// 		},
-		// 		{
-		// 			Authorization: `Bearer ${spotifyToken.access_token}`,
-		// 		}
-		// 	);
-		// setRecommendationPlaylists((prev) => [
-		// 	...prev,
-		// 	[RecommendationTrackResponse],
-		// ]);
+		const RecommendationTrackResponse =
+			await axiosFetch.post<SpotifyRecommendationResponse>(
+				`/api/track/recommendations/seedArtists`,
+				{
+					seedArtists: randomTopArtistIds,
+					limit: 10,
+					trackEnergy: trackEnergy,
+				},
+				{
+					Authorization: `Bearer ${spotifyToken.access_token}`,
+				}
+			);
+		setRecommendationPlaylists((prev) => [
+			...prev,
+			[RecommendationTrackResponse],
+		]);
 	};
 
 	const getTrackEnergy = (voltage: number) => {
