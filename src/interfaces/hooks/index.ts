@@ -9,3 +9,4 @@ export * from './UseTrackProps';
 export * from './UserRoutingProps';
 export * from './UseMusicProps';
 export * from './UseUserSettingProps';
+export * from './UseSpeechProps';

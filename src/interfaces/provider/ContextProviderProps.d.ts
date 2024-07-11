@@ -109,8 +109,8 @@ export interface ContextProviderProps {
 	repeatMode: RepeatModeType;
 	setRepeatMode: React.Dispatch<React.SetStateAction<RepeatModeType>>;
 
-	isSearchModal: boolean;
-	setIsSearchModal: React.Dispatch<React.SetStateAction<boolean>>;
+	isSpeechModal: boolean;
+	setIsSpeechModal: React.Dispatch<React.SetStateAction<boolean>>;
 	isSettingModal: boolean;
 	setIsSettingModal: React.Dispatch<React.SetStateAction<boolean>>;
 	isFullScreen: boolean;
@@ -131,6 +131,11 @@ export interface ContextProviderProps {
 	>;
 	userSetting: UserSettingProps;
 	setUserSetting: React.Dispatch<React.SetStateAction<UserSettingProps>>;
+
+	transcript: string;
+	setTranscript: React.Dispatch<React.SetStateAction<string>>;
+	emotion: string;
+	setEmotion: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface selectedContentsProps {

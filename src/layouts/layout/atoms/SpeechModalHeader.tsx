@@ -4,8 +4,8 @@ import { usePalette } from '@/utils';
 import { Close, Mic } from '@mui/icons-material';
 import { Box, IconButton, Typography } from '@mui/material';
 
-export const SearchModalHeader = () => {
-	const { setIsSearchModal } = useLayouts();
+export const SpeechModalHeader = () => {
+	const { setIsSpeechModal } = useLayouts();
 	const palette = usePalette();
 
 	return (
@@ -36,7 +36,7 @@ export const SearchModalHeader = () => {
 				<Close
 					fontSize="small"
 					color="error"
-					onClick={() => setIsSearchModal(false)}
+					onClick={() => setIsSpeechModal(false)}
 					sx={{
 						cursor: 'pointer',
 					}}

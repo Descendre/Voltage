@@ -1,5 +1,5 @@
 export * from './Header';
-export * from './SearchModal';
+export * from './SpeechModal';
 export * from './LeftBar';
 export * from './LeftDetailBar';
 export * from './Footer';

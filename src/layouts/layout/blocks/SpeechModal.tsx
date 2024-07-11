@@ -3,17 +3,17 @@ import { useLayouts } from '@/hooks';
 import { useBreakPoint, usePalette } from '@/utils';
 import { Grow, Modal, Paper } from '@mui/material';
 import React, { useEffect } from 'react';
-import { SearchModalHeader } from '../atoms';
+import { SpeechModalBody, SpeechModalHeader } from '../atoms';
 
-export const SearchModal = () => {
-	const { isSearchModal, setIsSearchModal } = useLayouts();
+export const SpeechModal = () => {
+	const { isSpeechModal, setIsSpeechModal } = useLayouts();
 	const breakpoint = useBreakPoint();
 	const palette = usePalette();
 
 	useEffect(() => {
 		const handleKeyDown = (event: KeyboardEvent) => {
 			if (event.key === '/') {
-				setIsSearchModal(true);
+				setIsSpeechModal(true);
 			}
 		};
 		document.addEventListener('keydown', handleKeyDown);
@@ -24,15 +24,15 @@ export const SearchModal = () => {
 
 	return (
 		<Modal
-			open={isSearchModal}
-			onClose={() => setIsSearchModal(false)}
+			open={isSpeechModal}
+			onClose={() => setIsSpeechModal(false)}
 			sx={{
 				display: 'flex',
 				justifyContent: 'center',
 				alignItems: 'start',
 			}}
 		>
-			<Grow in={isSearchModal} timeout={200}>
+			<Grow in={isSpeechModal} timeout={200}>
 				<Paper
 					elevation={10}
 					sx={{
@@ -48,7 +48,8 @@ export const SearchModal = () => {
 						overflow: 'hidden',
 					}}
 				>
-					<SearchModalHeader />
+					<SpeechModalHeader />
+					<SpeechModalBody isSpeechModal={isSpeechModal} />
 				</Paper>
 			</Grow>
 		</Modal>

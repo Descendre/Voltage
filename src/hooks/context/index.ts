@@ -8,3 +8,4 @@ export * from './useTrack';
 export * from './useRouting';
 export * from './useMusic';
 export * from './useUserSetting';
+export * from './useSpeech';
