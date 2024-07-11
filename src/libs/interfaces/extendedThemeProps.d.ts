@@ -16,6 +16,7 @@ declare module '@mui/material/styles' {
 			slider: {
 				rail: string;
 			};
+			speechChip: string;
 		};
 		icon: {
 			main: string;
@@ -40,6 +41,7 @@ declare module '@mui/material/styles' {
 			slider: {
 				rail: string;
 			};
+			speechChip: string;
 		};
 		icon: {
 			main: string;

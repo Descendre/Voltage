@@ -27,6 +27,7 @@ export const SpeechModal = () => {
 			open={isSpeechModal}
 			onClose={() => setIsSpeechModal(false)}
 			sx={{
+				zIndex: 150,
 				display: 'flex',
 				justifyContent: 'center',
 				alignItems: 'start',
