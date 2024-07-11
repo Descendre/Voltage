@@ -12,3 +12,25 @@ export interface UseSpeechProps {
 	handleStartRecognition: () => Promise<void>;
 	handleStopRecognition: () => void;
 }
+
+export interface EmotionResponese {
+	text: string;
+	voltage: number;
+	classification: string;
+}
+
+export interface HandleGenerateEmotionalPlayListProps {
+	trackEnergy: {
+		target_energy: number;
+		target_valence: number;
+	};
+	offset: number;
+	limit: number;
+}
+
+export interface HandleGenerateEmotionalPlayList2Props {
+	trackEnergy: {
+		target_energy: number;
+		target_valence: number;
+	};
+}
