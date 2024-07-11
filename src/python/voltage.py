@@ -1,5 +1,6 @@
 import os
 import sys
+import json
 from transformers import BertTokenizer, BertForSequenceClassification
 import torch
 
@@ -15,7 +16,6 @@ model = BertForSequenceClassification.from_pretrained(model_name)
 def main():
     if len(sys.argv) > 1:
         speech_text = sys.argv[1]
-        print(f"Received speech text: {speech_text}")
 
         # テキストの前処理
         inputs = tokenizer(speech_text, return_tensors="pt", padding=True, truncation=True)
@@ -32,8 +32,12 @@ def main():
         emotion_labels = ["非常に否定的", "否定的", "中立", "肯定的", "非常に肯定的"]
         predicted_emotion = emotion_labels[predicted_label]
 
-        print(f"Predicted emotion label: {predicted_label}")
-        print(f"Predicted emotion: {predicted_emotion}")
+        result = {
+            "text": speech_text,
+            "voltage": predicted_label,
+            "classification": predicted_emotion
+        }
+        print(json.dumps(result))
 
     else:
         print("No speech text provided.")

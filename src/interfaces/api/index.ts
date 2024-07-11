@@ -4,3 +4,7 @@ export * from './SpotifyUserPlayListResponse';
 export * from './SpotifyUserArtistResponse';
 export * from './SpotifyUserSavedTrackResponse';
 export * from './SpotifyUserPlayListTracksResponse';
+export * from './SpotifyTopTrackResponse';
+export * from './SpotifyTopArtistResponse';
+export * from './SpotifyRelatedArtistResponse';
+export * from './SpotifyRecommendationResponse';
