@@ -18,6 +18,8 @@ import { axiosFetch } from '@/libs';
 import { getRandomIndex, getRandomRelatedArtistIds } from '@/utils';
 
 export const useSpeech = (): UseSpeechProps => {
+	const [processText, setProcessText] = useState<string>('');
+
 	const context = useContext(Context);
 	if (!context) {
 		throw new Error('Context is not provided');
@@ -46,17 +48,15 @@ export const useSpeech = (): UseSpeechProps => {
 		recognition.maxAlternatives = 1;
 
 		recognition.onresult = async (event: SpeechRecognitionEvent) => {
+			setProcessText('感情ボルテージを測定中...');
 			const speechResult = event.results[0][0]?.transcript || '';
 			const response = await axiosFetch.get<EmotionResponese>(
 				`/api/emotion/${speechResult}`
 			);
-			console.log(response);
 			let { text, voltage, classification } = response;
-			console.log('テキスト:', text);
-			console.log('電圧:', voltage);
-			console.log('分類:', classification);
 			const trackEnergy = getTrackEnergy(voltage);
 			setTranscript(speechResult);
+			setProcessText('プレイリストを構成中...');
 			await handleGenerateEmotionalPlayList({
 				trackEnergy: trackEnergy,
 				offset: 0,
@@ -69,14 +69,17 @@ export const useSpeech = (): UseSpeechProps => {
 			});
 			await handleGenerateEmotionalPlayList2({ trackEnergy: trackEnergy }); // ランダムなトップアーティストのランダムな関連アーティストを元におすすめを返す
 			await handleGenerateEmotionalPlayList2({ trackEnergy: trackEnergy });
+			setProcessText('');
 		};
 
 		recognition.onaudiostart = () => {
 			setIsSpeaking(true);
+			setProcessText('音声を認識中...');
 		};
 
 		recognition.onaudioend = () => {
 			setIsSpeaking(false);
+			setProcessText('音声認識を終了');
 		};
 
 		setRecognition(recognition);
@@ -177,7 +180,6 @@ export const useSpeech = (): UseSpeechProps => {
 	};
 
 	const getTrackEnergy = (voltage: number) => {
-		console.log(voltage);
 		switch (voltage) {
 			case 0:
 				return {
@@ -223,5 +225,7 @@ export const useSpeech = (): UseSpeechProps => {
 		setEmotion,
 		handleStartRecognition,
 		handleStopRecognition,
+		processText,
+		setProcessText,
 	};
 };

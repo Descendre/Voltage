@@ -2,7 +2,7 @@
 import { useSpeech } from '@/hooks';
 import { useBreakPoint, usePalette } from '@/utils';
 import { Mic } from '@mui/icons-material';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 
 export const SpeechModalBody = ({
@@ -10,8 +10,12 @@ export const SpeechModalBody = ({
 }: {
 	isSpeechModal: boolean;
 }) => {
-	const { handleStartRecognition, handleStopRecognition, isSpeaking } =
-		useSpeech();
+	const {
+		handleStartRecognition,
+		handleStopRecognition,
+		isSpeaking,
+		processText,
+	} = useSpeech();
 	const breakpoint = useBreakPoint();
 	const palette = usePalette();
 
@@ -28,6 +32,8 @@ export const SpeechModalBody = ({
 			display="flex"
 			justifyContent="center"
 			alignItems="center"
+			flexDirection="column"
+			gap="20px"
 			width="100%"
 			height="calc(100% - 50px)"
 			sx={{
@@ -42,6 +48,9 @@ export const SpeechModalBody = ({
 				}}
 				onClick={() => handleStartRecognition()}
 			/>
+			<Typography variant="body1" sx={{ color: palette.text.secondary }}>
+				{processText}
+			</Typography>
 		</Box>
 	);
 };

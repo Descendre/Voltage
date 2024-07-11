@@ -11,6 +11,8 @@ export interface UseSpeechProps {
 	setEmotion: React.Dispatch<React.SetStateAction<string>>;
 	handleStartRecognition: () => Promise<void>;
 	handleStopRecognition: () => void;
+	processText: string;
+	setProcessText: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface EmotionResponese {
