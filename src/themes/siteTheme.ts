@@ -25,6 +25,7 @@ export const siteTheme = createTheme({
 			slider: {
 				rail: '#444444',
 			},
+			speechChip: 'rgba(0, 0, 0, 0.7)',
 		},
 		icon: {
 			main: '#fff',

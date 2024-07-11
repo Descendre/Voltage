@@ -4,6 +4,7 @@ import { useBreakPoint, usePalette } from '@/utils';
 import { Mic } from '@mui/icons-material';
 import { Box, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
+import { SpeechAnalyzeDisplay } from '../blocks';
 
 export const SpeechModalBody = ({
 	isSpeechModal,
@@ -29,6 +30,7 @@ export const SpeechModalBody = ({
 
 	return (
 		<Box
+			position="relative"
 			display="flex"
 			justifyContent="center"
 			alignItems="center"
@@ -51,6 +53,8 @@ export const SpeechModalBody = ({
 			<Typography variant="body1" sx={{ color: palette.text.secondary }}>
 				{processText}
 			</Typography>
+
+			{isSpeechModal && <SpeechAnalyzeDisplay />}
 		</Box>
 	);
 };
