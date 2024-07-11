@@ -1,9 +1,11 @@
 'use client';
 import {
 	ContextProviderProps,
+	EmotionLabels,
 	PlaylistItem,
 	PlaylistTracksResponse,
 	RepeatModeType,
+	SpotifyRecommendationResponse,
 	SpotifyTokenProps,
 	SpotifyTrackProps,
 	SpotifyUserArtistResponse,
@@ -98,6 +100,11 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 
 	const [transcript, setTranscript] = useState<string>('');
 	const [emotion, setEmotion] = useState<string>('');
+	const [recommendationPlaylists, setRecommendationPlaylists] = useState<
+		SpotifyRecommendationResponse[][]
+	>([]);
+	const [speechText, setSpeechText] = useState<string>('');
+	const [voltage, setVoltage] = useState<EmotionLabels | null>(null);
 
 	const contextValue = {
 		userInfo,
@@ -165,6 +172,12 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		setTranscript,
 		emotion,
 		setEmotion,
+		recommendationPlaylists,
+		setRecommendationPlaylists,
+		speechText,
+		setSpeechText,
+		voltage,
+		setVoltage,
 	};
 
 	return <Context.Provider value={contextValue}>{children}</Context.Provider>;
