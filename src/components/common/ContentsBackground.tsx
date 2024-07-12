@@ -1,5 +1,5 @@
 'use client';
-import { useDominantColors, useUserSetting } from '@/hooks';
+import { useDominantColors, useRouting, useUserSetting } from '@/hooks';
 import { ContentsBackgroundProps } from '@/interfaces';
 import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
@@ -9,6 +9,7 @@ export const ContentsBackground = ({ url }: ContentsBackgroundProps) => {
 	const [imageUrl, setImageUrl] = useState<string>('');
 	const { dominantRgbaColor } = useDominantColors(url || '');
 	const { userSetting } = useUserSetting();
+	const { currentContent } = useRouting();
 
 	useEffect(() => {
 		if (userSetting.background === 'image') {
@@ -60,6 +61,30 @@ export const ContentsBackground = ({ url }: ContentsBackgroundProps) => {
 					transition: 'background-color 0.5s ease',
 				}}
 			/>
+			{currentContent === null && (
+				<Box
+					zIndex={-1}
+					position="fixed"
+					top={0}
+					left={0}
+					width="100%"
+					height="100%"
+					sx={{
+						'::before': {
+							content: '""',
+							position: 'absolute',
+							top: 0,
+							left: 0,
+							width: '100%',
+							height: '100%',
+							backgroundImage:
+								'linear-gradient(to right, rgba(0, 0, 0, 0.2) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 1px, transparent 1px)',
+							backgroundSize: '30px 30px',
+							pointerEvents: 'none',
+						},
+					}}
+				/>
+			)}
 		</>
 	);
 };
