@@ -15,10 +15,15 @@ import {
 	UseSpeechProps,
 } from '@/interfaces';
 import { axiosFetch } from '@/libs';
-import { getRandomIndex, getRandomRelatedArtistIds } from '@/utils';
+import {
+	getRandomIndex,
+	getRandomRelatedArtistIds,
+	useBreakPoint,
+} from '@/utils';
 
 export const useSpeech = (): UseSpeechProps => {
 	const [processText, setProcessText] = useState<string>('');
+	const breakpoint = useBreakPoint();
 
 	const context = useContext(Context);
 	if (!context) {
@@ -42,6 +47,10 @@ export const useSpeech = (): UseSpeechProps => {
 		setSpeechText,
 		voltage,
 		setVoltage,
+		setCurrentContent,
+		setSelectedLeftContent,
+		setIsSpeechModal,
+		setIsLeftDetail,
 	} = context;
 
 	const handleStartRecognition = async (): Promise<void> => {
@@ -82,6 +91,13 @@ export const useSpeech = (): UseSpeechProps => {
 			});
 			await handleGenerateEmotionalPlayList2({ trackEnergy: trackEnergy }); // ランダムなトップアーティストのランダムな関連アーティストを元におすすめを返す
 			await handleGenerateEmotionalPlayList2({ trackEnergy: trackEnergy });
+
+			setSelectedLeftContent('AI');
+			setCurrentContent('AI');
+			if (['xs'].includes(breakpoint)) {
+				setIsSpeechModal(false);
+				setIsLeftDetail(false);
+			}
 			setProcessText('');
 		};
 

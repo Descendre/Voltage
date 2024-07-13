@@ -14,7 +14,7 @@ import { useBreakPoint } from '@/utils';
 
 export const Layout = ({ children }: { children: ReactNode }) => {
 	const breakpoint = useBreakPoint();
-	const { selectedLeftContent, isLeftDetail, isSpeechModal } = useLayouts();
+	const { selectedLeftContent, isLeftDetail } = useLayouts();
 
 	let isLeftDetailBar: boolean;
 	if (
