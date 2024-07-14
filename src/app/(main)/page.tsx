@@ -8,25 +8,25 @@ import { useEffect } from 'react';
 
 export default function Home() {
 	const router = useRouter();
-	const { setUserInfo, handleSetSpotifyToken } = useUserInfo();
+	const { spotifyToken, setUserInfo, handleSetSpotifyToken } = useUserInfo();
 	const { handleSetTrackList } = useTrack();
 	const { handleSetUserPlayList } = usePlayList();
 	const { handleSetArtistList } = useArtist();
 
 	useEffect(() => {
 		(async () => {
-			router.push('/api/auth/login');
-			const spotifyToken = await handleSetSpotifyToken();
+			if (!spotifyToken) router.push('/api/auth/login');
+			const spotifyTokenResponse = await handleSetSpotifyToken();
 			const response = await axiosFetch.get<SpotifyUserInfoResponse>(
 				`/api/user/userInfo`,
 				{
-					Authorization: `Bearer ${spotifyToken.access_token}`,
+					Authorization: `Bearer ${spotifyTokenResponse.access_token}`,
 				}
 			);
 			setUserInfo(response);
-			handleSetTrackList(spotifyToken);
-			handleSetUserPlayList(spotifyToken);
-			handleSetArtistList(spotifyToken);
+			handleSetTrackList(spotifyTokenResponse);
+			handleSetUserPlayList(spotifyTokenResponse);
+			handleSetArtistList(spotifyTokenResponse);
 		})();
 	}, []);
 
