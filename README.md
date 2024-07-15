@@ -1,3 +1,15 @@
+## 作品概要
+
+作品名: Voltage
+
+出展: 技育CAMPハッカソン2024 vol.8(最優秀賞)
+
+開発チーム: たくぼうちるどれん名古屋本部執行部
+
+開発メンバー: 
+Hinata0607
+xBlackTea
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
