@@ -7,8 +7,9 @@
 開発チーム: たくぼうちるどれん名古屋本部執行部
 
 開発メンバー: 
-Hinata0607
-xBlackTea
+
+Hinata0607(https://github.com/Hinata0607)
+xBlackTea(https://github.com/xBlackTea)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
