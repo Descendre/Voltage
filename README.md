@@ -1,3 +1,5 @@
+![Voltage_logo](https://github.com/user-attachments/assets/b4b98816-9cd0-4218-a40a-5988549c3811)
+
 ## 作品紹介
 
 作品名: Voltage
