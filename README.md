@@ -15,7 +15,6 @@ xBlackTea(https://github.com/xBlackTea)
 
 ## 作品資料
 
-![Voltage_logo](https://github.com/user-attachments/assets/dede94be-c665-4dce-afb1-d01824991f8c)
 ![スクリーンショット (83)](https://github.com/user-attachments/assets/bf4552fa-5516-43c8-a35c-8738296a286f)
 ![スクリーンショット (84)](https://github.com/user-attachments/assets/4743bcb8-11c8-4039-80d9-f2358dabf974)
 ![スクリーンショット (85)](https://github.com/user-attachments/assets/5a5343c4-1d77-4bcb-9087-f4b3501c11ae)
